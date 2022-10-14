@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="LMSService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="CourseCategory" EntityType="LMSService.CourseCategory">
+                    <NavigationPropertyBinding Path="texts" Target="CourseCategory_texts"/>
+                    <NavigationPropertyBinding Path="localized" Target="CourseCategory_texts"/>
+                </EntitySet>
+                <EntitySet Name="Course" EntityType="LMSService.Course">
+                    <NavigationPropertyBinding Path="CourseCategory" Target="CourseCategory"/>
+                </EntitySet>
+                <EntitySet Name="Review" EntityType="LMSService.Review">
+                    <NavigationPropertyBinding Path="Course" Target="Course"/>
+                </EntitySet>
+                <EntitySet Name="LearningObject" EntityType="LMSService.LearningObject"/>
+                <EntitySet Name="CourseMaterial" EntityType="LMSService.CourseMaterial">
+                    <NavigationPropertyBinding Path="Course" Target="Course"/>
+                    <NavigationPropertyBinding Path="LearningObject" Target="LearningObject"/>
+                </EntitySet>
+                <EntitySet Name="CourseCategory_texts" EntityType="LMSService.CourseCategory_texts"/>
+            </EntityContainer>
+            <EntityType Name="CourseCategory">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <NavigationProperty Name="texts" Type="Collection(LMSService.CourseCategory_texts)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="localized" Type="LMSService.CourseCategory_texts">
+                    <ReferentialConstraint Property="ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Course">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CourseName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="480"/>
+                <NavigationProperty Name="CourseCategory" Type="LMSService.CourseCategory">
+                    <ReferentialConstraint Property="CourseCategory_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="CourseCategory_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="Review">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Rating" Type="Edm.String" MaxLength="5"/>
+                <Property Name="Comment" Type="Edm.String" MaxLength="960"/>
+                <NavigationProperty Name="Course" Type="LMSService.Course">
+                    <ReferentialConstraint Property="Course_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="Course_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="LearningObject">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="200"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="20"/>
+                <Property Name="Content" Type="Edm.String" MaxLength="3040"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="480"/>
+            </EntityType>
+            <EntityType Name="CourseMaterial">
+                <NavigationProperty Name="Course" Type="LMSService.Course">
+                    <ReferentialConstraint Property="Course_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="Course_ID" Type="Edm.Guid"/>
+                <NavigationProperty Name="LearningObject" Type="LMSService.LearningObject">
+                    <ReferentialConstraint Property="LearningObject_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="LearningObject_ID" Type="Edm.Guid"/>
+            </EntityType>
+            <EntityType Name="CourseCategory_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+            </EntityType>
+            <Annotations Target="LMSService.CourseCategory">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="name"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="LMSService.CourseCategory/name">
+                <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                </Annotations>
+                <Annotations Target="LMSService.CourseCategory/descr">
+                    <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                    </Annotations>
+                    <Annotations Target="LMSService.Course/CourseCategory_ID">
+                        <Annotation Term="Common.ValueList">
+                            <Record Type="Common.ValueListType">
+                                <PropertyValue Property="Label" String="CourseCategory"/>
+                                <PropertyValue Property="CollectionPath" String="CourseCategory"/>
+                                <PropertyValue Property="Parameters">
+                                    <Collection>
+                                        <Record Type="Common.ValueListParameterInOut">
+                                            <PropertyValue Property="LocalDataProperty" PropertyPath="CourseCategory_ID"/>
+                                            <PropertyValue Property="ValueListProperty" String="ID"/>
+                                        </Record>
+                                        <Record Type="Common.ValueListParameterDisplayOnly">
+                                            <PropertyValue Property="ValueListProperty" String="name"/>
+                                        </Record>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </Annotation>
+                    </Annotations>
+                    <Annotations Target="LMSService.CourseCategory_texts/locale">
+                        <Annotation Term="Common.Label" String="{i18n>LanguageCode}"/>
+                        </Annotations>
+                        <Annotations Target="LMSService.CourseCategory_texts/name">
+                            <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                            </Annotations>
+                            <Annotations Target="LMSService.CourseCategory_texts/descr">
+                                <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                </Annotations>
+                            </Schema>
+                        </edmx:DataServices>
+                    </edmx:Edmx>

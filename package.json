@@ -7,14 +7,23 @@
     "private": true,
     "dependencies": {
         "@sap/cds": ">=6",
+        "@sap/xssec": "^3",
         "express": "^4",
-        "hdb": "^0.19.0"
+        "hdb": "^0.19.0",
+        "passport": "^0"
     },
     "devDependencies": {
-        "sqlite3": "^5.0.4"
+        "@sap/hdi-deploy": "^4.4.1",
+        "@sap/ux-specification": "^1.102.9",
+        "sqlite3": "^5.0.4",
+        "rimraf": "^3.0.2"
     },
     "scripts": {
-        "start": "cds run"
+        "start": "cds run",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-app_worklist": "cds watch --open app_worklist/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy LearnAndReturn --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive"
     },
     "eslintConfig": {
         "extends": "eslint:recommended",
@@ -43,7 +52,8 @@
     },
     "cds": {
         "build": {
-            "tasks": [{
+            "tasks": [
+                {
                     "for": "hana",
                     "dest": "../db"
                 },
@@ -55,7 +65,18 @@
         "requires": {
             "db": {
                 "kind": "hana-cloud"
+            },
+            "auth": {
+                "kind": "xsuaa"
+            },
+            "approuter": {
+                "kind": "cloudfoundry"
             }
         }
-    }
+    },
+    "sapux": [
+        "app/app_worklist",
+        "app/app_worklist",
+        "app/app_worklist"
+    ]
 }
