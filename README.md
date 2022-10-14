@@ -1,25 +1,12 @@
-# Getting Started
+# Learn&Return - The newest LMS solution
 
-Welcome to your new project.
+A simple web based application for qualification work at LU DF.
+This system allows user to use e-learning platform concepts.
+Implemented with SAP technology - SAPUI5, CAP, oData, HANA, Cloud Foundry env.
+3 month hours have been put into it, 1 creator.
 
-It contains these folders and files, following our recommended project layout:
+## Credits
 
-File or Folder | Purpose
----------|----------
-`app/` | content for UI frontends goes here
-`db/` | your domain models and data go here
-`srv/` | your service models and code go here
-`package.json` | project metadata and configuration
-`readme.md` | this getting started guide
-
-
-## Next Steps
-
-- Open a new terminal and run `cds watch` 
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
-
-## Learn More
-
-Learn more at https://cap.cloud.sap/docs/get-started/.
+Created by Maris Kalnins,
+3rd year student,
+Production: 2022 October ---> December
