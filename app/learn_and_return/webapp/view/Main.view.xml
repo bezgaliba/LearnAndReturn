@@ -1,0 +1,17 @@
+<mvc:View controllerName="learnandreturn.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:c="sap.ui.core" >
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <FlexBox
+                height="300px"
+				alignItems="Start"
+				justifyContent="End">
+                <Button text="Logout" type="Emphasized" class="sapUiSmallMarginEnd"/>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

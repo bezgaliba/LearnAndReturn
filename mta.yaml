@@ -3,118 +3,132 @@ ID: LearnAndReturn
 description: A simple CAP project.
 version: 1.0.0
 modules:
-  - name: LearnAndReturn-srv
-    type: nodejs
-    path: db
-    requires:
-      - name: LearnAndReturn-db
-      - name: LearnAndReturn-au
-    provides:
-      - name: srv-api
-        properties:
-          srv-url: ${default-url}
-    parameters:
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm-ci
-  - name: LearnAndReturn-db-deployer
-    type: hdb
-    path: db #gen/db
-    requires:
-      - name: LearnAndReturn-db
-    parameters:
-      buildpack: nodejs_buildpack
-  - name: LearnAndReturn
-    type: approuter.nodejs
-    path: app/
-    requires:
-      - name: srv-api
-        group: destinations
-        properties:
-          forwardAuthToken: true
-          name: srv-api
-          url: ~{srv-url}
-      - name: LearnAndReturn-au
-      - name: LearnAndReturn-destination-service
-        group: destinations
-        properties:
-          forwardAuthToken: false
-          name: ui5
-          url: https://ui5.sap.com
-    parameters:
-      disk-quota: 256M
-      keep-existing-routes: true
-      memory: 256M
-  - name: LearnAndReturn-app-content
-    type: com.sap.application.content
-    path: .
-    requires:
-      - name: LearnAndReturn-repo-host
-        parameters:
-          content-target: true
-    build-parameters:
-      build-result: resources
-      requires:
-        - artifacts:
-            - appworklist.zip
-          name: appworklist
-          target-path: resources/
-  - name: appworklist
-    type: html5
-    path: app/app_worklist
-    build-parameters:
-      build-result: dist
-      builder: custom
-      commands:
-        - npm install
-        - npm run build:cf
-      supported-platforms: []
-resources:
+- name: LearnAndReturn-srv
+  type: nodejs
+  path: db
+  requires:
   - name: LearnAndReturn-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
   - name: LearnAndReturn-au
-    type: org.cloudfoundry.managed-service
-    parameters:
-      config:
-        tenant-mode: dedicated
-        xsappname: LearnAndReturn-${org}-${space}
-      path: ./xs-security.json
-      service: xsuaa
-      service-plan: application
-  - name: LearnAndReturn-repo-host
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: html5-apps-repo
-      service-name: LearnAndReturn-html5-srv
-      service-plan: app-host
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+- name: LearnAndReturn-db-deployer
+  type: hdb
+  path: db
+  requires:
+  - name: LearnAndReturn-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: LearnAndReturn
+  type: approuter.nodejs
+  path: app/
+  requires:
+  - name: srv-api
+    group: destinations
+    properties:
+      forwardAuthToken: true
+      name: srv-api
+      url: ~{srv-url}
+  - name: LearnAndReturn-au
   - name: LearnAndReturn-destination-service
-    type: org.cloudfoundry.managed-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 256M
+    keep-existing-routes: true
+    memory: 256M
+- name: LearnAndReturn-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: LearnAndReturn-repo-host
     parameters:
-      config:
-        HTML5Runtime_enabled: false
-        init_data:
-          instance:
-            destinations:
-              - Authentication: NoAuthentication
-                Name: ui5
-                ProxyType: Internet
-                Type: HTTP
-                URL: https://ui5.sap.com
-            existing_destinations_policy: update
-        version: 1.0.0
-      service: destination
-      service-name: LearnAndReturn-destination-service
-      service-plan: lite
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - appworklist.zip
+      name: appworklist
+      target-path: resources/
+    - artifacts:
+      - learnandreturn.zip
+      name: learnandreturn
+      target-path: resources/
+- name: appworklist
+  type: html5
+  path: app/app_worklist
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: learnandreturn
+  type: html5
+  path: app/learn_and_return
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: LearnAndReturn-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: LearnAndReturn-au
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: LearnAndReturn-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: LearnAndReturn-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: LearnAndReturn-html5-srv
+    service-plan: app-host
+- name: LearnAndReturn-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: LearnAndReturn-destination-service
+    service-plan: lite
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm install --production
-        - npx -p @sap/cds-dk cds build --production
-        - npx rimraf gen/db/src/gen/data
+  - builder: custom
+    commands:
+    - npm install --production
+    - npx -p @sap/cds-dk cds build --production
+    - npx rimraf gen/db/src/gen/data

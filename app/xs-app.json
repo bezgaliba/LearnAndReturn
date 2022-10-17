@@ -4,6 +4,9 @@
         "logoutEndpoint": "/logout",
         "logoutPage": "/"
     },
+    "login": {
+        "callbackEndpoint": "/learn_and_return/webapp/index.html"
+    },
     "routes": [{
             "source": "^/app/(.*)$",
             "target": "$1",
