@@ -31,7 +31,6 @@
             </OverflowToolbar>
             <List
                 id="courseList"
-                press="onItem"
                 items="{
                         path: '/Course',
                         sorter: {
