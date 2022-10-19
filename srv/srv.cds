@@ -8,7 +8,11 @@ service LMSService @(path: '/browse'){
         as projection on LandR.Course;
 
     //@requires: ['Student', 'Instructor', 'Admin']
+
+   // @requires: ['Student', 'Instructor', 'Admin']
     entity LearningObject
         as projection on LandR.LearningObject;
+
+    //@requires: ['Student', 'Instructor', 'Admin']
 
 }

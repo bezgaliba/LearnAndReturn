@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "cds run",
-    "deploy": "cds deploy --to hana:LearnAndReturn-dev",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
     "watch-app_worklist": "cds watch --open app_worklist/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy LearnAndReturn --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
