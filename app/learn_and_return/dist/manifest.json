@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "/browse/",
+                "uri": "browse/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -81,9 +81,11 @@
             }
         },
         "resources": {
-            "css": [{
-                "uri": "css/style.css"
-            }]
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
         },
         "routing": {
             "config": {
@@ -95,7 +97,8 @@
                 "controlId": "app",
                 "clearControlAggregation": false
             },
-            "routes": [{
+            "routes": [
+                {
                     "name": "RouteMain",
                     "pattern": ":?query:",
                     "target": [

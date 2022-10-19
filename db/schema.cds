@@ -1,19 +1,20 @@
 namespace my.LandR;
-using { cuid, sap.common.CodeList } from '@sap/cds/common';
+using { cuid, sap.common.CodeList, managed } from '@sap/cds/common';
 
 entity CourseCategory : cuid, CodeList {
 }
 
-entity Course : cuid {
+entity Course : cuid, managed {
     CourseName : String(100);
     Description : String(480);
-    CourseCategory : Association to CourseCategory;
+    CourseCategory : Association to one CourseCategory;
+    Review : Composition of many Reviews;
+    CourseMaterial : Composition of many CourseMaterials;
 }
 
-entity Review : cuid {
+aspect Reviews : cuid, managed {
     Rating : String(5);
     Comment : String(960);
-    Course : Association to Course;
 }
 
 entity LearningObject : cuid{
@@ -23,7 +24,6 @@ entity LearningObject : cuid{
     Description : String(480);
 }
 
-entity CourseMaterial {
-    Course : Association to Course;
-    LearningObject : Association to LearningObject;
+aspect CourseMaterials : cuid, managed {
+    LearningObject : Association to one LearningObject;
 }
