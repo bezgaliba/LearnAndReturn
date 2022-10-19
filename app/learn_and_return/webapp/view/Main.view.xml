@@ -27,35 +27,25 @@
             </FlexBox>
 
             <OverflowToolbar>
-                <SearchField liveChange=".onSearch" width="100%" />
+                <SearchField placeholder="Enter Course suggestion.." liveChange=".onSearch" width="100%" />
             </OverflowToolbar>
             <List
                 id="courseList"
-                items="{/Course}"
+                press="onItem"
+                items="{
+                        path: '/Course',
+                        sorter: {
+                            path: 'CourseName'
+                        }
+                    }"
                 headerText="Available Courses">
                 <ObjectListItem
                     title="{CourseName}"
                     type="Active"
-                    press="onListItemPress"
                     >
                     <ObjectAttribute text="{Description}"/>
                 </ObjectListItem>
             </List>
-            
-
-            <l:VerticalLayout>
-                <SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop">
-                    <GenericTile
-                        backgroundImage="test-resources/sap/m/demokit/sample/SlideTile/images/NewsImage2.png"
-                        frameType="TwoByOne" press="pressOnTileOne">
-                        <TileContent footer="August 21, 2016">
-                            <NewsContent
-                                contentText="SAP Unveils Powerful New Player Comparision Tool Exclusively on NFL.com"
-                                subheader="Today, SAP News" />
-                        </TileContent>
-                    </GenericTile>
-                </SlideTile>
-            </l:VerticalLayout>
         </content>
     </Page>
 </mvc:View>
