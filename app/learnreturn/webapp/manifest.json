@@ -1,7 +1,7 @@
 {
     "_version": "1.42.0",
     "sap.app": {
-        "id": "learnandreturn",
+        "id": "learnreturn",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -17,7 +17,7 @@
         },
         "dataSources": {
             "mainService": {
-                "uri": "browse/",
+                "uri": "/browse/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -66,7 +66,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "learnandreturn.i18n.i18n"
+                    "bundleName": "learnreturn.i18n.i18n"
                 }
             },
             "": {
@@ -81,43 +81,34 @@
             }
         },
         "resources": {
-            "css": [
-                {
-                    "uri": "css/style.css"
-                }
-            ]
+            "css": [{
+                "uri": "css/style.css"
+            }]
         },
         "routing": {
             "config": {
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "async": true,
-                "viewPath": "learnandreturn.view",
+                "viewPath": "learnreturn.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
-                "clearControlAggregation": false
+                "clearControlAggregation": false,
+                "path": "learnreturn.view"
             },
-            "routes": [
-                {
-                    "name": "RouteMain",
-                    "pattern": ":?query:",
-                    "target": [
-                        "TargetMain"
-                    ]
+            "routes": [{
+                    "name": "Main",
+                    "pattern": "",
+                    "target": "Main"
                 },
                 {
                     "name": "Logout",
                     "pattern": "logout",
-                    "target": [
-                        "Logout"
-                    ]
+                    "target": "Logout"
                 }
             ],
             "targets": {
-                "TargetMain": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
+                "Main": {
                     "viewId": "Main",
                     "viewName": "Main"
                 },
@@ -128,10 +119,10 @@
             }
         },
         "rootView": {
-            "viewName": "learnandreturn.view.App",
+            "viewName": "learnreturn.view.app",
             "type": "XML",
             "async": true,
-            "id": "App"
+            "id": "app"
         }
     }
 }

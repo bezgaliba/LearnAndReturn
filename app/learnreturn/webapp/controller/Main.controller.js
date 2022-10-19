@@ -16,7 +16,7 @@ sap.ui.define([
         var ButtonType = mobileLibrary.ButtonType;
         var DialogType = mobileLibrary.DialogType;
 
-        return Controller.extend("learnandreturn.controller.Main", {
+        return Controller.extend("learnreturn.controller.Main", {
             onInit: function() {
 
             },

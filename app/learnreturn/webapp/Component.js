@@ -5,12 +5,12 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "learnandreturn/model/models"
+        "learnreturn/model/models"
     ],
-    function(UIComponent, Device, models) {
+    function (UIComponent, Device, models) {
         "use strict";
 
-        return UIComponent.extend("learnandreturn.Component", {
+        return UIComponent.extend("learnreturn.Component", {
             metadata: {
                 manifest: "json"
             },
@@ -20,7 +20,7 @@ sap.ui.define([
              * @public
              * @override
              */
-            init: function() {
+            init: function () {
                 // call the base component's init function
                 UIComponent.prototype.init.apply(this, arguments);
 
@@ -29,8 +29,6 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
-
-                this.setModel(models.createUserModel(), "userModel")
             }
         });
     }

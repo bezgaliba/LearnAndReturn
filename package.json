@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@sap/hdi-deploy": "^4.4.1",
-    "@sap/ux-specification": "^1.102.9",
+    "@sap/ux-specification": "^1.102.10",
     "rimraf": "^3.0.2",
     "sqlite3": "^5.0.4"
   },
@@ -28,7 +28,8 @@
     "undeploy": "cf undeploy LearnAndReturn --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "app": "npm start --prefix app",
-    "watch-learn_and_return": "cds watch --open learn_and_return/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-learn_and_return": "cds watch --open learn_and_return/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-learnreturn": "cds watch --open learnreturn/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -94,6 +95,7 @@
     "app/app_worklist",
     "app/app_worklist",
     "app/app_worklist",
-    "app/learn_and_return"
+    "app/learn_and_return",
+    "app/learnreturn"
   ]
 }
