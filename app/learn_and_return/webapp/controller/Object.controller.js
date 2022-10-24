@@ -3,7 +3,7 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/routing/History",
     "../model/formatter"
-], function (BaseController, JSONModel, History, formatter) {
+], function(BaseController, JSONModel, History, formatter) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.Object", {
@@ -18,14 +18,14 @@ sap.ui.define([
          * Called when the worklist controller is instantiated.
          * @public
          */
-        onInit : function () {
+        onInit: function() {
             // Model used to manipulate control states. The chosen values make sure,
             // detail page shows busy indication immediately so there is no break in
             // between the busy indication for loading the view's meta data
             var oViewModel = new JSONModel({
-                    busy : true,
-                    delay : 0
-                });
+                busy: true,
+                delay: 0
+            });
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
         },
@@ -40,13 +40,14 @@ sap.ui.define([
          * If not, it will replace the current entry of the browser history with the worklist route.
          * @public
          */
-        onNavBack : function() {
-            var sPreviousHash = History.getInstance().getPreviousHash();
+        onNavBack: function() {
+            var oHistory = History.getInstance();
+            var sPreviousHash = oHistory.getPreviousHash();
             if (sPreviousHash !== undefined) {
-                // eslint-disable-next-line sap-no-history-manipulation
-                history.go(-1);
+                window.history.go(-1);
             } else {
-                this.getRouter().navTo("worklist", {}, true);
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("Home", {}, true);
             }
         },
 
@@ -60,8 +61,8 @@ sap.ui.define([
          * @param {sap.ui.base.Event} oEvent pattern match event in route 'object'
          * @private
          */
-        _onObjectMatched : function (oEvent) {
-            var sObjectId =  oEvent.getParameter("arguments").objectId;
+        _onObjectMatched: function(oEvent) {
+            var sObjectId = oEvent.getParameter("arguments").objectId;
             this._bindView("/Course" + sObjectId);
         },
 
@@ -71,24 +72,24 @@ sap.ui.define([
          * @param {string} sObjectPath path to the object to be bound
          * @private
          */
-        _bindView : function (sObjectPath) {
+        _bindView: function(sObjectPath) {
             var oViewModel = this.getModel("objectView");
 
             this.getView().bindElement({
                 path: sObjectPath,
                 events: {
                     change: this._onBindingChange.bind(this),
-                    dataRequested: function () {
+                    dataRequested: function() {
                         oViewModel.setProperty("/busy", true);
                     },
-                    dataReceived: function () {
+                    dataReceived: function() {
                         oViewModel.setProperty("/busy", false);
                     }
                 }
             });
         },
 
-        _onBindingChange : function () {
+        _onBindingChange: function() {
             var oView = this.getView(),
                 oViewModel = this.getModel("objectView"),
                 oElementBinding = oView.getElementBinding();
@@ -104,11 +105,11 @@ sap.ui.define([
                 sObjectId = oObject.CourseName,
                 sObjectName = oObject.Course;
 
-                oViewModel.setProperty("/busy", false);
-                oViewModel.setProperty("/shareSendEmailSubject",
-                    oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
-                oViewModel.setProperty("/shareSendEmailMessage",
-                    oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
+            oViewModel.setProperty("/busy", false);
+            oViewModel.setProperty("/shareSendEmailSubject",
+                oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
+            oViewModel.setProperty("/shareSendEmailMessage",
+                oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
         }
     });
 

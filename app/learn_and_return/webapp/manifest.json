@@ -92,25 +92,23 @@
                         "notFound"
                     ]
                 },
-                "async": true
+                "async": true,
+                "path": "learnandreturn.view"
             },
-            "routes": [{
+            "routes": [
+                {
                     "pattern": "",
-                    "name": "worklist",
-                    "target": [
-                        "worklist"
-                    ]
+                    "name": "Home",
+                    "target": "Home"
                 },
                 {
                     "pattern": "Course/{objectId}",
                     "name": "object",
-                    "target": [
-                        "object"
-                    ]
+                    "target": "object"
                 }
             ],
             "targets": {
-                "worklist": {
+                "Home": {
                     "viewName": "Worklist",
                     "viewId": "worklist",
                     "viewLevel": 1,

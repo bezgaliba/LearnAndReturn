@@ -18,8 +18,11 @@
         </semantic:titleHeading>
 
         <semantic:headerContent>
-            <ObjectNumber
-                unit="{Description}" />
+             <Button
+                text="{i18n>navBackButtonTitle}"
+                press=".onNavBack"></Button>
+            <ObjectAttribute
+                text="{Description}" />
         </semantic:headerContent>
 
     </semantic:SemanticPage>
