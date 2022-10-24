@@ -10,9 +10,15 @@
         toggleHeaderOnTitleClick="false">
 
         <semantic:titleHeading>
-            <Title
-                text="{i18n>worklistTitle}"
-                level="H2"/>
+            <FlexBox
+				alignItems="End"
+				justifyContent="End">
+                <Button
+                    text="Logout"
+                    type="Emphasized"
+                    class="sapUiSmallMarginEnd"
+                    press="onLogoutConfirmation"/>
+            </FlexBox>
         </semantic:titleHeading>
 
         <semantic:content>
@@ -75,10 +81,6 @@
                 </items>
             </Table>
         </semantic:content>
-
-        <semantic:sendEmailAction>
-            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
-        </semantic:sendEmailAction>
 
     </semantic:SemanticPage>
 
