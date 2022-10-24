@@ -57,7 +57,7 @@
                         <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
                     </Column>
                     <Column id="unitNumberColumn" hAlign="End">
-                        <Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+                        <Text text="{i18n>tableDescription}" id="Description"/>
                     </Column>
                 </columns>
 
@@ -68,8 +68,8 @@
                         <cells>
                             <ObjectIdentifier
                                 title="{CourseName}"/>
-                            <ObjectNumber
-                                unit="{Description}" />
+                            <ObjectAttribute
+                                text="{Description}" />
                         </cells>
                     </ColumnListItem>
                 </items>
