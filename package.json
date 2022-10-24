@@ -96,6 +96,7 @@
     "app/app_worklist",
     "app/app_worklist",
     "app/learn_and_return",
-    "app/learnreturn"
+    "app/learnreturn",
+    "app/learn_and_return"
   ]
 }
