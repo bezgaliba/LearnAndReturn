@@ -3,9 +3,16 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "../model/formatter",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function(BaseController, JSONModel, formatter, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/m/Text",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/library"
+], function(BaseController, JSONModel, formatter, Filter, FilterOperator, Text, Dialog, Button, mobileLibrary) {
     "use strict";
+
+    var ButtonType = mobileLibrary.ButtonType;
+    var DialogType = mobileLibrary.DialogType;
 
     return BaseController.extend("learnandreturn.controller.Worklist", {
 
@@ -28,9 +35,7 @@ sap.ui.define([
             // Model used to manipulate control states
             oViewModel = new JSONModel({
                 worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
-                shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailWorklistSubject"),
-                shareSendEmailMessage: this.getResourceBundle().getText("shareSendEmailWorklistMessage", [location.href]),
-                tableNoDataText: this.getResourceBundle().getText("tableNoDataText")
+                tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
             });
             this.setModel(oViewModel, "worklistView");
 
@@ -100,11 +105,38 @@ sap.ui.define([
 
         },
 
-        /**
-         * Event handler for refresh event. Keeps filter, sort
-         * and group settings and refreshes the list binding.
-         * @public
-         */
+        onLogoutConfirmation: function() {
+            if (!this.oDefaultDialog) {
+                this.oDefaultDialog = new Dialog({
+                    title: this.getView().getModel("i18n").getResourceBundle().getText("endSession"),
+
+                    content: new Text({
+                        text: this.getView().getModel("i18n").getResourceBundle().getText("endSessionDesc")
+                    }),
+                    type: DialogType.Message,
+                    beginButton: new Button({
+                        type: ButtonType.Emphasized,
+                        text: this.getView().getModel("i18n").getResourceBundle().getText("cancelAction"),
+                        press: function() {
+                            this.oDefaultDialog.close();
+                        }.bind(this)
+                    }),
+                    endButton: new Button({
+                        type: ButtonType.Emphasized,
+                        text: this.getView().getModel("i18n").getResourceBundle().getText("confirmAction"),
+                        press: function() {
+                            this.oDefaultDialog.close()
+                            var oRouter = this.getOwnerComponent().getRouter();
+                            oRouter.navTo("Logout", {}, true);
+                        }.bind(this)
+                    }),
+                });
+                this.getView().addDependent(this.oDefaultDialog);
+            }
+
+            this.oDefaultDialog.open();
+        },
+
         onRefresh: function() {
             var oTable = this.byId("table");
             oTable.getBinding("items").refresh();
