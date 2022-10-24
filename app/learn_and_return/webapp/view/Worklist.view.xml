@@ -11,8 +11,12 @@
 
         <semantic:titleHeading>
             <FlexBox
-				alignItems="End"
+                height="20px"
+				alignItems="Start"
 				justifyContent="End">
+                <Text
+                    text="yo"
+                />
                 <Button
                     text="Logout"
                     type="Emphasized"
@@ -48,7 +52,8 @@
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
-                            search=".onSearch">
+                            search=".onSearch"
+                            width="200px">
                             <layoutData>
                                 <OverflowToolbarLayoutData
                                     maxWidth="200px"
