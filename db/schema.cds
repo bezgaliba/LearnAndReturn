@@ -7,6 +7,7 @@ entity CourseCategory : cuid, CodeList {
 entity Course : cuid, managed {
     CourseName : String(100);
     Description : String(480);
+    ImageURL : String(2048);
     CourseCategory : Association to one CourseCategory;
     Review : Composition of many Reviews;
     CourseMaterial : Composition of many CourseMaterials;

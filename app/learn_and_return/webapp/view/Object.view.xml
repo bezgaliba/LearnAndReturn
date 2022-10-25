@@ -2,7 +2,8 @@
     controllerName="learnandreturn.controller.Object"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:semantic="sap.f.semantic">
+    xmlns:semantic="sap.f.semantic"
+    xmlns:l="sap.ui.layout">
 
     <semantic:SemanticPage
         id="page"
@@ -18,13 +19,63 @@
         </semantic:titleHeading>
 
         <semantic:headerContent>
-             <Button
+            <Button
                 text="{i18n>navBackButtonTitle}"
-                press=".onNavBack"></Button>
-            <ObjectAttribute
-                text="{Description}" />
+                press=".onNavBack"/>
+            <FlexBox
+                alignItems="Start"
+                justifyContent="Center">
+                <l:VerticalLayout width="100%">
+                    <Image
+                        src="{ImageURL}"
+                        width="50vh"
+                        height="25vh">
+                    </Image>
+                    <Title
+                        text="Created by: {createdBy}"
+                        />
+                    <Title
+                        text="Created at : {createdAt}"
+                        />
+                    <Button
+                        text="{i18n>enrollNowButtonTitle}"
+                        type="Accept"
+                        press=".onNavBack"/>
+                </l:VerticalLayout>
+            </FlexBox>
         </semantic:headerContent>
-
+        <semantic:content>
+            <l:VerticalLayout width="100%">
+            <Panel
+                backgroundDesign="Transparent"
+                headerText="{i18n>objectDescription}">
+                <ObjectAttribute
+                text="{Description}"
+                />
+            </Panel>
+                <Panel
+                    backgroundDesign="Transparent"
+                    headerText="{i18n>objectReview}"
+                    >
+                    <content>
+                        <FeedInput post=".onPost"/>
+                        <List
+                            id="reviewList"
+                            noDataText="{i18n>objectNoData}"
+                            showSeparators="Inner"
+                            items="{
+                                path: '/CourseCategory'
+                            }"
+                            >
+                            <FeedListItem
+                                info="{name}"
+                                text="{descr}"
+                                timestamp="{ID}"/>
+                        </List>
+                    </content>
+                </Panel>
+            </l:VerticalLayout>
+        </semantic:content>
     </semantic:SemanticPage>
 
 </mvc:View>
