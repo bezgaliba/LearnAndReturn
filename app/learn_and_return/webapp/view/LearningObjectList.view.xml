@@ -1,0 +1,38 @@
+<mvc:View
+    controllerName="learnandreturn.controller.LearningObjectList"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Page
+		enableScrolling="true"
+		title="LOs (Admin/Instructor view)"
+		titleLevel="H4">
+        <List
+        id="learningObjectList"
+        items="{
+            path: '/LearningObject',
+                sorter: {
+                    path: 'createdAt'
+                }
+            }">
+			<headerToolbar>
+				<Toolbar>
+					<Title
+                    level="H3"
+                    text=""/>
+					<ToolbarSpacer/>
+                    <SearchField
+                    placeholder="Search for Learning Object..."
+                    liveChange=".onSearch"
+                    width="40%"/>
+					<Button
+                    icon="sap-icon://settings"
+                    press=".handleButtonPress"/>
+				</Toolbar>
+			</headerToolbar>
+			<StandardListItem
+            title="{Name}"
+            description="{Type}"/>
+		</List>
+	</Page>
+</mvc:View>

@@ -28,8 +28,9 @@
                 <l:VerticalLayout width="100%">
                     <Image
                         src="{ImageURL}"
-                        width="50vh"
-                        height="25vh">
+                        width="30%"
+                        max-width="300px"
+                        height="auto">
                     </Image>
                     <Title
                         text="Created by: {createdBy}"

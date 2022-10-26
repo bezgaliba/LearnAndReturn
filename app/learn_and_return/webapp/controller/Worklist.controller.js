@@ -89,6 +89,11 @@ sap.ui.define([
             history.go(-1);
         },
 
+        onNavLO: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("learningObjectList", {});
+        },
+
 
         onSearch: function(oEvent) {
             if (oEvent.getParameters().refreshButtonPressed) {
@@ -168,7 +173,7 @@ sap.ui.define([
             oTable.getBinding("items").filter(aTableSearchState, "Application");
             // changes the noDataText of the list in case there are no filter results
             if (aTableSearchState.length !== 0) {
-                oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
+                oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("noSearchData"));
             }
         }
 

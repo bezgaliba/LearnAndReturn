@@ -11,17 +11,17 @@
 
         <semantic:titleHeading>
             <FlexBox
-                height="20px"
-				alignItems="Start"
+                height="50px"
+				alignItems="Center"
 				justifyContent="End">
-                <Text
-                    text="yo"
-                />
                 <Button
                     text="Logout"
                     type="Emphasized"
                     class="sapUiSmallMarginEnd"
                     press="onLogoutConfirmation"/>
+                <Button
+                    text="Learning Objects"
+                    press="onNavLO"/>
             </FlexBox>
         </semantic:titleHeading>
 
@@ -34,6 +34,9 @@
                     sorter: {
                         path: 'CourseName',
                         descending: false
+                    },
+                    parameters: {
+                        expand: 'CourseCategory'
                     }
                 }"
                 noDataText="{worklistView>/tableNoDataText}"
@@ -64,10 +67,13 @@
                 </headerToolbar>
 
                 <columns>
-                    <Column id="nameColumn">
+                    <Column id="titleColumn">
                         <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
                     </Column>
-                    <Column id="unitNumberColumn" hAlign="End">
+                    <Column id="categoryColumn" hAlign="End">
+                        <Text text="{i18n>tableCategory}" id="Category"/>
+                    </Column>
+                    <Column id="descriptionColumn" hAlign="End">
                         <Text text="{i18n>tableDescription}" id="Description"/>
                     </Column>
                 </columns>
@@ -79,6 +85,8 @@
                         <cells>
                             <ObjectIdentifier
                                 title="{CourseName}"/>
+                            <ObjectAttribute
+                                text="{CourseCategory_ID}" />
                             <ObjectAttribute
                                 text="{Description}" />
                         </cells>

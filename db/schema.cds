@@ -18,7 +18,7 @@ aspect Reviews : cuid, managed {
     Comment : String(960);
 }
 
-entity LearningObject : cuid{
+entity LearningObject : cuid, managed{
     Name : String(200);
     Type : String(20);
     Content : String(3040);
