@@ -8,7 +8,9 @@
 		title="LOs (Admin/Instructor view)"
 		titleLevel="H4">
         <List
+        mode="SingleSelectLeft"
         id="learningObjectList"
+        select="onSelect"
         items="{
             path: '/LearningObject',
                 sorter: {
@@ -25,14 +27,22 @@
                     placeholder="Search for Learning Object..."
                     liveChange=".onSearch"
                     width="40%"/>
+                    <Button
+                    id="deleteUserButton"
+                    icon="sap-icon://delete"
+                    tooltip="{i18n>deleteButtonTip}"
+                    press=".onDeleteConfirmation"/>
 					<Button
                     icon="sap-icon://settings"
                     press=".handleButtonPress"/>
 				</Toolbar>
 			</headerToolbar>
-			<StandardListItem
+			<ObjectListItem
             title="{Name}"
-            description="{Type}"/>
+            type="Active">
+                <ObjectAttribute
+                text="{Type}"/>
+            </ObjectListItem>
 		</List>
 	</Page>
 </mvc:View>
