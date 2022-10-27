@@ -41,7 +41,7 @@
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem
-            press="sayHi"
+            press="onPress"
             title="{Name}"
             type="Active">
                 <ObjectAttribute

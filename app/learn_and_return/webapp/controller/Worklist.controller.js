@@ -75,7 +75,6 @@ sap.ui.define([
          * @public
          */
         onPress: function(oEvent) {
-            // The source is the list item that got pressed
             this._showObject(oEvent.getSource());
         },
 

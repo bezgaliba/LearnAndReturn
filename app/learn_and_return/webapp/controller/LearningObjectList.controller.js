@@ -1,5 +1,7 @@
 sap.ui.define([
     "./BaseController",
+    "sap/ui/model/json/JSONModel",
+    "../model/formatter",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/m/MessageToast",
@@ -8,13 +10,14 @@ sap.ui.define([
     "sap/m/Button",
     "sap/m/library",
     "sap/m/MessageBox"
-], function(BaseController, Filter, FilterOperator, MessageToast, Text, Dialog, Button, mobileLibrary, MessageBox) {
+], function(BaseController, JSONModel, formatter, Filter, FilterOperator, MessageToast, Text, Dialog, Button, mobileLibrary, MessageBox) {
     "use strict";
 
     var ButtonType = mobileLibrary.ButtonType;
     var DialogType = mobileLibrary.DialogType;
 
     return BaseController.extend("learnandreturn.controller.LearningObjectList", {
+        formatter: formatter,
         onInit: function() {},
         onSearch: function(oEvent) {
             var aFilters = [];
@@ -85,8 +88,16 @@ sap.ui.define([
         //             oList.removeSelections(true);
         //     }
         // },
-        sayHi: function() {
-            console.log('hi');
-        }
+        onPress: function(oEvent) {
+            console.log("hi");
+            this._showObject(oEvent.getSource());
+        },
+        _showObject: function(oItem) {
+            console.log("hieyey");
+            this.getRouter().navTo("learningObject", {
+                learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
+            });
+        },
+
     });
 });

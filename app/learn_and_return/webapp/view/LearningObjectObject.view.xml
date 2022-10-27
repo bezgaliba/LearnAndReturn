@@ -1,0 +1,8 @@
+<mvc:View
+    controllerName="learnandreturn.controller.LearningObjectObject"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Text
+        text="LO view"/>
+</mvc:View>
