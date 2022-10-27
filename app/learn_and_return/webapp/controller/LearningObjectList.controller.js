@@ -89,11 +89,9 @@ sap.ui.define([
         //     }
         // },
         onPress: function(oEvent) {
-            console.log("hi");
             this._showObject(oEvent.getSource());
         },
         _showObject: function(oItem) {
-            console.log("hieyey");
             this.getRouter().navTo("learningObject", {
                 learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
             });

@@ -91,28 +91,13 @@ sap.ui.define([
                 }
             });
         },
-
         _onBindingChange: function() {
             var oView = this.getView(),
-                oViewModel = this.getModel("objectView"),
                 oElementBinding = oView.getElementBinding();
-
-            // No data for the binding
             if (!oElementBinding.getBoundContext()) {
                 this.getRouter().getTargets().display("objectNotFound");
                 return;
             }
-
-            var oResourceBundle = this.getResourceBundle(),
-                oObject = oView.getBindingContext().getObject(),
-                sObjectId = oObject.CourseName,
-                sObjectName = oObject.Course;
-
-            oViewModel.setProperty("/busy", false);
-            oViewModel.setProperty("/shareSendEmailSubject",
-                oResourceBundle.getText("shareSendEmailObjectSubject", [sObjectId]));
-            oViewModel.setProperty("/shareSendEmailMessage",
-                oResourceBundle.getText("shareSendEmailObjectMessage", [sObjectName, sObjectId, location.href]));
         }
     });
 
