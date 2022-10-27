@@ -106,7 +106,7 @@
                     "target": "object"
                 },
                 {
-                    "pattern": "LO",
+                    "pattern": "LearningObject",
                     "name": "learningObjectList",
                     "target": "learningObjectList"
                 },

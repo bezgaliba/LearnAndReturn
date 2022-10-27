@@ -84,9 +84,9 @@ sap.ui.define([
          * Navigate back in the browser history
          * @public
          */
-        onNavBack: function() {
-            // eslint-disable-next-line sap-no-history-manipulation
-            history.go(-1);
+        onNavHome: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("Home", {});
         },
 
         onNavLO: function() {

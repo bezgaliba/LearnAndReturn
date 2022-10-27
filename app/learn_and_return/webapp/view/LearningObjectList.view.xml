@@ -23,6 +23,9 @@
                     level="H3"
                     text=""/>
 					<ToolbarSpacer/>
+                    <Button
+                    text="{i18n>navBackButtonTitle}"
+                    press=".onNavHome"/>
                     <SearchField
                     placeholder="Search for Learning Object..."
                     liveChange=".onSearch"
@@ -38,6 +41,7 @@
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem
+            press="sayHi"
             title="{Name}"
             type="Active">
                 <ObjectAttribute

@@ -27,6 +27,10 @@ sap.ui.define([
             var oBinding = oList.getBinding("items");
             oBinding.filter(aFilters, "Application");
         },
+        onNavHome: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("Home", {});
+        },
         deleteLearningObject: function() {
             var oSelected = this.byId("learningObjectList").getSelectedItem();
             if (oSelected) {
@@ -80,6 +84,9 @@ sap.ui.define([
         //     if (oSelected) {
         //             oList.removeSelections(true);
         //     }
-        // }
+        // },
+        sayHi: function() {
+            console.log('hi');
+        }
     });
 });
