@@ -1,0 +1,9 @@
+<mvc:View
+    controllerName="learnandreturn.controller.AddLearningObject"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Text
+        text="Hello Im LO Creation Page :)"
+        level="H2"/>
+</mvc:View>
