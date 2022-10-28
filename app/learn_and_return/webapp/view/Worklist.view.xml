@@ -32,10 +32,6 @@
                 width="auto"
                 items="{
                     path: '/Course',
-                    sorter: {
-                        path: 'CourseName',
-                        descending: false
-                    },
                     parameters: {
                         expand: 'CourseCategory'
                     }

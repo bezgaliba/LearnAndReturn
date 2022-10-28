@@ -2,6 +2,7 @@
     controllerName="learnandreturn.controller.Object"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns:semantic="sap.f.semantic"
     xmlns:l="sap.ui.layout">
 
@@ -59,19 +60,24 @@
                     headerText="{i18n>objectReview}"
                     >
                     <content>
-                        <FeedInput post=".onPost"/>
+                        <FeedInput
+                        post=".onPost"/>
                         <List
                             id="reviewList"
                             noDataText="{i18n>objectNoData}"
                             showSeparators="Inner"
-                            items="{
-                                path: '/CourseCategory'
-                            }"
                             >
                             <FeedListItem
-                                info="{name}"
-                                text="{descr}"
-                                timestamp="{ID}"/>
+                                items="{
+                                    path: '/Review',
+                                    parameters: {
+                                        expand: 'Review'
+                                    }
+                                }"
+                                
+                                info="{Review/Rating}"
+                                text="{Review/Comment}"
+                                timestamp="{Review/ID}"/>
                         </List>
                     </content>
                 </Panel>
