@@ -63,18 +63,17 @@
                         <FeedInput
                         post=".onPost"/>
                         <List
+                            items="{
+                                path: '/Course',
+                                parameters: {
+                                    expand: 'Review'
+                                }
+                            }"
                             id="reviewList"
                             noDataText="{i18n>objectNoData}"
                             showSeparators="Inner"
                             >
                             <FeedListItem
-                                items="{
-                                    path: '/Review',
-                                    parameters: {
-                                        expand: 'Review'
-                                    }
-                                }"
-                                
                                 info="{Review/Rating}"
                                 text="{Review/Comment}"
                                 timestamp="{Review/ID}"/>

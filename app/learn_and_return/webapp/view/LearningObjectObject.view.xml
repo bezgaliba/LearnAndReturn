@@ -1,9 +1,65 @@
 <mvc:View
     controllerName="learnandreturn.controller.LearningObjectObject"
     displayBlock="true"
-    xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc">
-    <Image
-        src="{Content}"
-        level="H2"/>
+    xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+    <Page
+		title="{i18n>learningObjectTitle}"
+		class= "sapUiResponsivePadding--header" >
+		<content>
+			<Button
+			text="{i18n>navBackButtonTitle}"
+			press=".onNavLOList"/>
+			<ObjectHeader
+				title="{Name}"
+				backgroundDesign="Solid">
+				<statuses>
+					<ObjectStatus title="{i18n>learningObjectStatusType}" text="{Type}" state="Success" />
+				</statuses>
+				<attributes>
+					<ObjectAttribute text="{Description}" />
+				</attributes>
+			</ObjectHeader>
+			<IconTabBar
+				expanded="{device>/isNoPhone}"
+				class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter
+						text="{i18n>learningObjectContent}">
+						<f:SimpleForm
+							minWidth="1024"
+							maxContainerCols="2"
+							layout="ResponsiveGridLayout">
+							<f:title>
+								<core:Title text="{i18n>learningObjectMaterialTitle}"/>
+							</f:title>
+							<Text
+							text="{Content}"/>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter
+						text="{i18n>learningObjectLogsTitle}">
+						<f:SimpleForm
+							minWidth="1024"
+							maxContainerCols="2"
+							layout="ResponsiveGridLayout">
+							<f:title>
+								<core:Title text="{i18n>learningObjectHistoryTitle}"/>
+							</f:title>
+							<Label text="{i18n>createdBy}"/>
+							<Text text="{createdBy}"/>
+							<Label text="{i18n>createdAt}"/>
+							<Text text="{createdAt}"/>
+							<Label text="{i18n>modifiedBy}"/>
+							<Text text="{modifiedBy}"/>
+							<Label text="{i18n>modifiedAt}"/>
+							<Text text="{modifiedAt}"/>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
 </mvc:View>
