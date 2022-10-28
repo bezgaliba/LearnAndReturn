@@ -108,7 +108,6 @@ sap.ui.define([
             }
 
         },
-
         onLogoutConfirmation: function() {
             if (!this.oDefaultDialog) {
                 this.oDefaultDialog = new Dialog({
@@ -167,14 +166,22 @@ sap.ui.define([
          * @private
          */
         _applySearch: function(aTableSearchState) {
-            var oTable = this.byId("table"),
-                oViewModel = this.getModel("worklistView");
-            oTable.getBinding("items").filter(aTableSearchState, "Application");
+            var oTable = this.byId("courseTable"),
+                oViewModel = this.getModel("worklistView"),
+                sCourseCat = this.byId('selectedCategory').getSelectedKey();
+            if (sCourseCat) {
+                oTable.getBinding("items").filter(aTableSearchState, "Application");
+            }
             // changes the noDataText of the list in case there are no filter results
             if (aTableSearchState.length !== 0) {
                 oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("noSearchData"));
             }
+        },
+        onLiveChange: function() {
+            let sCourseCat = this.byId('selectedCategory').getSelectedKey(),
+                oTable = this.byId("courseTable"),
+                oFilter = sCourseCat ? new Filter('CourseCategory/ID', FilterOperator.EQ, sCourseCat) : null;
+            oTable.getBinding("items").filter(oFilter);
         }
-
     });
 });

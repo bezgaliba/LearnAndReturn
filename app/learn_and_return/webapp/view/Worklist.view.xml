@@ -2,6 +2,7 @@
     controllerName="learnandreturn.controller.Worklist"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
     xmlns:semantic="sap.f.semantic">
 
     <semantic:SemanticPage
@@ -27,7 +28,7 @@
 
         <semantic:content>
             <Table
-                id="table"
+                id="courseTable"
                 width="auto"
                 items="{
                     path: '/Course',
@@ -52,6 +53,18 @@
                             text="{worklistView>/worklistTableTitle}"
                             level="H3"/>
                         <ToolbarSpacer />
+                        <Select
+                                id="selectedCategory"
+                                change=".onLiveChange"
+                                items="{
+                                    path: '/CourseCategory',
+                                    sorter: {
+                                            path: 'name',
+                                            ascending: true
+                                        }
+                                    }">
+                                <core:Item key="{ID}" text="{name}" />
+                        </Select>
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
@@ -86,7 +99,7 @@
                             <ObjectIdentifier
                                 title="{CourseName}"/>
                             <ObjectAttribute
-                                text="{CourseCategory_ID}" />
+                                text="{CourseCategory/name}" />
                             <ObjectAttribute
                                 text="{Description}" />
                         </cells>
