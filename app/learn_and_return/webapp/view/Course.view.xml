@@ -1,9 +1,9 @@
 <mvc:View
-    controllerName="learnandreturn.controller.LearningObjectObject"
+    controllerName="learnandreturn.controller.App"
     displayBlock="true"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-    <Image
-        src="{Content}"
+    <Text
+        text="{Content}"
         level="H2"/>
 </mvc:View>
