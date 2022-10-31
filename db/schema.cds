@@ -20,9 +20,12 @@ aspect Reviews : cuid, managed {
 
 entity LearningObject : cuid, managed{
     Name : String(200);
-    Type : String(20);
     Content : String(3040);
     Description : String(480);
+    Type : Association to one LearningObjectType;
+}
+
+entity LearningObjectType : cuid, CodeList{
 }
 
 aspect CourseMaterials : cuid, managed {
