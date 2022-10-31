@@ -36,12 +36,12 @@
                         placeholder="Select Type..."
                         maxWidth="300px"
                         items="{
-                            path: '/LearningObject',
+                            path: '/LearningObjectType',
                             sorter: {
-                                path: 'Type'
+                                path: 'name'
                             }
                         }">
-                        <core:Item key="{ID}" text="{Type}" />
+                        <core:Item key="{ID}" text="{name}" />
                     </MultiComboBox>
                     <Button
                     id="createLearningObject"
@@ -64,7 +64,7 @@
             title="{Name}"
             type="Active">
                 <ObjectAttribute
-                text="{Type}"/>
+                text="{Type/name}"/>
             </ObjectListItem>
 		</List>
 	</Page>
