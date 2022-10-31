@@ -116,6 +116,11 @@
                     "target": "learningObjectList"
                 },
                 {
+                    "pattern": "AddLearningObject",
+                    "name": "addLearningObject",
+                    "target": "addLearningObject"
+                },
+                {
                     "pattern": "logout",
                     "name": "Logout",
                     "target": "Logout"
@@ -149,6 +154,10 @@
                 "learningObject": {
                     "viewName": "LearningObjectObject",
                     "viewId": "LearningObjectObject"
+                },
+                "addLearningObject": {
+                    "viewName": "AddLearningObject",
+                    "viewId": "AddLearningObject"
                 },
                 "Logout": {
                     "viewName": "Worklist",

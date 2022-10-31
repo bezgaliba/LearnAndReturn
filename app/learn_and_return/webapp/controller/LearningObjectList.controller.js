@@ -34,6 +34,10 @@ sap.ui.define([
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Home", {});
         },
+        onNavCreate: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("addLearningObject", {});
+        },
         deleteLearningObject: function() {
             var oSelected = this.byId("learningObjectList").getSelectedItem();
             if (oSelected) {
@@ -43,6 +47,7 @@ sap.ui.define([
                     MessageBox.error(oError.message);
                 });
             }
+            s
         },
         onDeleteConfirmation: function() {
             var oSelected = this.byId("learningObjectList").getSelectedItem();

@@ -47,7 +47,7 @@
                     id="createLearningObject"
                     icon="sap-icon://add"
                     tooltip="{i18n>createButtonTip}"
-                    press=".onCreate"
+                    press=".onNavCreate"
                     />
                     <Button
                     id="deleteLearningObject"
