@@ -42,7 +42,7 @@
                     <Button
                         text="{i18n>enrollNowButtonTitle}"
                         type="Accept"
-                        press=".onNavBack"/>
+                        press=".onEnroll"/>
                 </l:VerticalLayout>
             </FlexBox>
         </semantic:headerContent>

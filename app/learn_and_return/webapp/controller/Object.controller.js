@@ -98,7 +98,16 @@ sap.ui.define([
                 this.getRouter().getTargets().display("objectNotFound");
                 return;
             }
-        }
+        },
+        onEnroll: function(oEvent) {
+            console.log('aaa')
+            this._showObject(oEvent.getSource());
+        },
+        _showObject: function(oItem) {
+            this.getRouter().navTo("material", {
+                materialObjectId: oItem.getBindingContext().getPath().substring("/Course".length)
+            });
+        },
     });
 
 });

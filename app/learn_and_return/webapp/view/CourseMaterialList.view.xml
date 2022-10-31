@@ -6,4 +6,7 @@
     <Button
         text="{i18n>navBackButtonTitle}"
         press=".onNavLOObject"/>
+    <Title
+        text="{CourseName}"
+        level="H2"/>
 </mvc:View>

@@ -96,6 +96,7 @@ sap.ui.define([
         onPress: function(oEvent) {
             this._showObject(oEvent.getSource());
         },
+
         _showObject: function(oItem) {
             this.getRouter().navTo("learningObject", {
                 learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
