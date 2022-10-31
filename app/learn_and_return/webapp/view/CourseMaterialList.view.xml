@@ -1,0 +1,9 @@
+<mvc:View
+    controllerName="learnandreturn.controller.CourseMaterialList"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Button
+        text="{i18n>navBackButtonTitle}"
+        press=".onNavLOObject"/>
+</mvc:View>
