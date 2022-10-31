@@ -16,7 +16,7 @@
 				title="{Name}"
 				backgroundDesign="Solid">
 				<statuses>
-					<ObjectStatus title="{i18n>learningObjectStatusType}" text="{Type}" state="Success" />
+					<ObjectStatus title="{i18n>learningObjectStatusType}" text="{Type/name}" state="Success" />
 				</statuses>
 				<attributes>
 					<ObjectAttribute text="{Description}" />

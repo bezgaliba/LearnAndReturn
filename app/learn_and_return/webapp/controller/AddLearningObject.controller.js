@@ -4,8 +4,10 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.AddLearningObject", {
-
-        onInit: function() {}
+        onInit: function() {},
+        onNavLOList: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("learningObjectList", {});
+        }
     });
-
 });
