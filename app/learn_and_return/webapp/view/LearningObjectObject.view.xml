@@ -10,8 +10,14 @@
 		class= "sapUiResponsivePadding--header" >
 		<content>
 			<Button
-			text="{i18n>navBackButtonTitle}"
-			press=".onNavLOList"/>
+				text="{i18n>navBackButtonTitle}"
+				press=".onNavLOList"/>
+			<Button
+				icon="sap-icon://edit"
+				text="{i18n>editAction}"
+				type="Emphasized"
+                class="sapUiSmallMarginEnd"
+				press=".onEdit"/>
 			<ObjectHeader
 				title="{Name}"
 				backgroundDesign="Solid">
@@ -44,7 +50,7 @@
 						<f:SimpleForm
 							minWidth="1024"
 							maxContainerCols="2"
-							layout="ResponsiveGridLayout">
+							layout="ReWsponsiveGridLayout">
 							<f:title>
 								<core:Title text="{i18n>learningObjectHistoryTitle}"/>
 							</f:title>

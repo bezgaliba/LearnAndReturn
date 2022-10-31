@@ -101,8 +101,5 @@ sap.ui.define([
                 learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
             });
         },
-        onCreate: function() {
-
-        }
     });
 });

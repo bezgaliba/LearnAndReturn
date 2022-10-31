@@ -12,7 +12,7 @@
         <List
         mode="SingleSelectLeft"
         id="learningObjectList"
-        select="onSelect"
+        select=".onSelect"
         items="{
             path: '/LearningObject',
                 sorter: {
