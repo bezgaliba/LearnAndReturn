@@ -2,8 +2,39 @@
     controllerName="learnandreturn.controller.AddLearningObject"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
-    <Text
-        text="Hello Im LO Creation Page :)"
-        level="H2"/>
+    <Button text="{i18n>navBackButtonTitle}" press=".onNavBack"></Button>
+     <f:SimpleForm id="simpleForm" title="{i18n>addLearningObjectHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+      <f:content>
+       <Label text="{i18n>addLearningObjectName}"/>
+       <Input
+            id="formLearningObjectName"
+            required="true"
+            placeholder="..."/>
+       <Label text="{i18n>addLearningObjectType}"/>
+       <Select
+            id="formLearningObjectType"
+            required="true"
+            placeholder="{i18n>selectAction}"
+            items="{
+                path: '---HERE GOES TYPE---'
+                }">
+			<core:Item key="{ID}" text="{Name}" />
+       </Select>
+       <Label text="{i18n>addLearningObjectContent}"/>
+       <Input
+            id="formLearningObjectContent"
+            required="true"
+            placeholder="..."/>
+       <Label text="{i18n>formLearningObjectDescription}"/>
+       <Input
+            id="formLearningObjectDescription"
+            required="true"
+            placeholder="..." />
+      </f:content>
+     </f:SimpleForm>
+     <Button text="{i18n>createAction}" press=".onSubmitCreate"></Button>
+     <Button text="Validate" press=".checkValidation"></Button>
 </mvc:View>
