@@ -47,7 +47,6 @@ sap.ui.define([
                     MessageBox.error(oError.message);
                 });
             }
-            s
         },
         onDeleteConfirmation: function() {
             var oSelected = this.byId("learningObjectList").getSelectedItem();

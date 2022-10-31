@@ -1,9 +1,0 @@
-<mvc:View
-    controllerName="learnandreturn.controller.App"
-    displayBlock="true"
-    xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc">
-    <Text
-        text="{Content}"
-        level="H2"/>
-</mvc:View>

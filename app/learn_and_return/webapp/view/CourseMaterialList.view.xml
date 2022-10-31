@@ -1,7 +1,9 @@
 <mvc:View
     controllerName="learnandreturn.controller.CourseMaterialList"
     displayBlock="true"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m"
+    xmlns:smartList="sap.ui.comp.smartlist"
     xmlns:mvc="sap.ui.core.mvc">
     <Button
         text="{i18n>navBackButtonTitle}"
@@ -9,4 +11,26 @@
     <Title
         text="{CourseName}"
         level="H2"/>
+    <List
+        mode="SingleSelectLeft"
+        id="learningObjectList"
+        select=".onSelect"
+        items="{
+                path: 'CourseMaterial'
+            }"
+        >
+			<headerToolbar>
+				<Toolbar>
+					<Title
+                    level="H3"
+                    text=""/>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</headerToolbar>
+			<ObjectListItem
+            press="onPress"
+            title="{LearningObject_ID}"
+            type="Active">
+            </ObjectListItem>
+		</List>
 </mvc:View>

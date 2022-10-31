@@ -10,11 +10,11 @@ sap.ui.define([
                 busy: true,
                 delay: 0
             });
-            this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+            this.getRouter().getRoute("material").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "materialView");
         },
         _onObjectMatched: function(oEvent) {
-            var sObjectId = oEvent.getParameter("arguments").objectId;
+            var sObjectId = oEvent.getParameter("arguments").materialObjectId;
             this._bindView("/Course" + sObjectId);
         },
         _bindView: function(sMaterialPath) {

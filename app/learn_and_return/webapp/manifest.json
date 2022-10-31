@@ -154,7 +154,7 @@
                 },
                 "material": {
                     "viewName": "CourseMaterialList",
-                    "viewId": "CourseMaterialList",
+                    "viewId": "material",
                     "viewLevel": 2
                 },
                 "learningObjectList": {

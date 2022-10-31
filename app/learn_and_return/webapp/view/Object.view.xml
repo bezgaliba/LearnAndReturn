@@ -30,7 +30,7 @@
                     <Image
                         src="{ImageURL}"
                         width="30%"
-                        max-width="300px"
+
                         height="auto">
                     </Image>
                     <Title
@@ -64,19 +64,18 @@
                         post=".onPost"/>
                         <List
                             items="{
-                                path: '/Course',
-                                parameters: {
-                                    expand: 'Review'
-                                }
+                                path: 'Review'
                             }"
                             id="reviewList"
                             noDataText="{i18n>objectNoData}"
                             showSeparators="Inner"
                             >
                             <FeedListItem
-                                info="{Review/Rating}"
-                                text="{Review/Comment}"
-                                timestamp="{Review/ID}"/>
+                                sender="{createdBy}"
+                                info="{Rating}"
+                                text="{Comment}"
+                                timestamp="{createdAt}"
+                                />
                         </List>
                     </content>
                 </Panel>
