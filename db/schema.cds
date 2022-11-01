@@ -23,6 +23,7 @@ entity LearningObject : cuid, managed{
     Content : String(3040);
     Description : String(480);
     Type : Association to one LearningObjectType;
+    CompletionList : Composition of many CompletionEntry;
 }
 
 entity LearningObjectType : cuid, CodeList{
@@ -30,4 +31,8 @@ entity LearningObjectType : cuid, CodeList{
 
 aspect CourseMaterials : cuid, managed {
     LearningObject : Association to one LearningObject;
+}
+
+aspect CompletionEntry : cuid {
+    CompletedAt : DateTime;
 }

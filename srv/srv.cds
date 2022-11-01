@@ -1,5 +1,6 @@
 using my.LandR from '../db/schema';
-service LMSService @(path: '/browse'){
+
+service LMSService @(path: '/browse', impl: './srv.js'){
     entity CourseCategory
         as projection on LandR.CourseCategory;
 
@@ -15,4 +16,5 @@ service LMSService @(path: '/browse'){
 
     //@requires: ['Student', 'Instructor', 'Admin']
 
+    action Test();
 }

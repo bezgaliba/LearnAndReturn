@@ -61,7 +61,6 @@ sap.ui.define([
         },
 
         _showObject: function(oItem) {
-            console.log(oItem)
             this.getRouter().navTo("learningObject", {
                 learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
             });
