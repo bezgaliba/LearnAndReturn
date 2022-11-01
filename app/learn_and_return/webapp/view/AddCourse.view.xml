@@ -1,8 +1,8 @@
 <mvc:View
-    controllerName="learnandreturn.controller.CategoryList"
+    controllerName="learnandreturn.controller.AddCourse"
     displayBlock="true"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
         <Text
-            text="Welcome to creation of cats"/>
+            text="Welcome to creation of courses"/>
 </mvc:View>

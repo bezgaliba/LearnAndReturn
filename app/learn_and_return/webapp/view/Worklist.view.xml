@@ -52,6 +52,12 @@
                             text="{worklistView>/worklistTableTitle}"
                             level="H3"/>
                         <ToolbarSpacer />
+                        <Button
+                            id="createCourse"
+                            icon="sap-icon://add"
+                            tooltip="{i18n>createAction}"
+                            press=".onNavCreate"
+                        />
                         <Select
                                 id="selectedCategory"
                                 change=".onLiveChange"

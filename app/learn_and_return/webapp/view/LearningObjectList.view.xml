@@ -41,22 +41,24 @@
                                 path: 'name'
                             }
                         }">
-                        <core:Item key="{ID}" text="{name}" />
+                        <core:Item key="{ID}" text="{name}"/>
                     </MultiComboBox>
                     <Button
-                    id="createLearningObject"
-                    icon="sap-icon://add"
-                    tooltip="{i18n>createAction}"
-                    press=".onNavCreate"
+                        id="createLearningObject"
+                        icon="sap-icon://add"
+                        tooltip="{i18n>createAction}"
+                        press=".onNavCreate"
                     />
                     <Button
-                    id="deleteLearningObject"
-                    icon="sap-icon://delete"
-                    tooltip="{i18n>deleteAction}"
-                    press=".onDeleteConfirmation"/>
+                        id="deleteLearningObject"
+                        icon="sap-icon://delete"
+                        tooltip="{i18n>deleteAction}"
+                        press=".onDeleteConfirmation"
+                    />
 					<Button
-                    icon="sap-icon://settings"
-                    press=".handleButtonPress"/>
+                        icon="sap-icon://settings"
+                        press=".handleButtonPress"
+                    />
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem

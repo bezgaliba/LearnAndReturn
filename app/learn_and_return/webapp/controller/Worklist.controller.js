@@ -93,6 +93,11 @@ sap.ui.define([
             oRouter.navTo("learningObjectList", {});
         },
 
+        onNavCreate: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("addCourse", {});
+        },
+
         onNavCat: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("category", {});

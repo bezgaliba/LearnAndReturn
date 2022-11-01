@@ -126,6 +126,11 @@
                     "target": "addLearningObject"
                 },
                 {
+                    "pattern": "AddCourse",
+                    "name": "addCourse",
+                    "target": "addCourse"
+                },
+                {
                     "pattern": "Category",
                     "name": "category",
                     "target": "category"
@@ -173,6 +178,10 @@
                 "addLearningObject": {
                     "viewName": "AddLearningObject",
                     "viewId": "AddLearningObject"
+                },
+                "addCourse": {
+                    "viewName": "AddCourse",
+                    "viewId": "AddCourse"
                 },
                 "category": {
                     "viewName": "CategoryList",
