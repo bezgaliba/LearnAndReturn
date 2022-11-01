@@ -1,7 +1,8 @@
 sap.ui.define([
     "./BaseController",
-    "sap/ui/model/json/JSONModel"
-], function(BaseController, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/routing/History"
+], function(BaseController, JSONModel, History) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.CourseMaterialList", {
@@ -13,10 +14,12 @@ sap.ui.define([
             this.getRouter().getRoute("material").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "materialView");
         },
+
         _onObjectMatched: function(oEvent) {
             var sObjectId = oEvent.getParameter("arguments").materialObjectId;
             this._bindView("/Course" + sObjectId);
         },
+
         _bindView: function(sMaterialPath) {
             var oViewModel = this.getModel("materialView");
             this.getView().bindElement({
@@ -32,6 +35,7 @@ sap.ui.define([
                 }
             });
         },
+
         _onBindingChange: function() {
             var oView = this.getView(),
                 oElementBinding = oView.getElementBinding();
@@ -40,9 +44,16 @@ sap.ui.define([
                 return;
             }
         },
-        onNavLOObject: function() {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("Home", {});
+
+        onNavBack: function() {
+            var oHistory = History.getInstance();
+            var sPreviousHash = oHistory.getPreviousHash();
+            if (sPreviousHash !== undefined) {
+                window.history.go(-1);
+            } else {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("Home", {}, true);
+            }
         },
 
         onPress: function(oEvent) {

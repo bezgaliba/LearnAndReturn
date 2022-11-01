@@ -7,15 +7,18 @@
     xmlns:mvc="sap.ui.core.mvc">
     <Button
         text="{i18n>navBackButtonTitle}"
-        press=".onNavLOObject"/>
+        press=".onNavBack"/>
     <Title
-        text="{CourseName}"
+        text="{i18n>materialTitle} {CourseName}"
         level="H2"/>
     <List
         id="learningObjectList"
         select=".onSelect"
         items="{
-                path: 'CourseMaterial'
+                path: 'CourseMaterial',
+                parameters: {
+                    expand: 'LearningObject'
+                }
             }"
         >
 			<headerToolbar>
@@ -27,9 +30,26 @@
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem
-            press=".onPress"
-            title="{LearningObject_ID}"
-            type="Active">
+                press=".onPress"
+                title="{LearningObject/Name}"
+                type="Active"
+                showMarkers="true"
+                number="Status:">
+                <firstStatus>
+                    <ObjectStatus
+                        text="{i18n>materialTrainingCompleted}"
+                        state="Success"
+                    />
+			    </firstStatus>
+                <secondStatus>
+                    <ObjectStatus
+                        text="{i18n>materialTrainingPending}"
+                        state="Warning"
+                    />
+                </secondStatus>
+                <markers>
+                        <ObjectMarker type="Favorite"/>
+                </markers>
             </ObjectListItem>
 		</List>
 </mvc:View>
