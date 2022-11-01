@@ -43,6 +43,17 @@ sap.ui.define([
         onNavLOObject: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Home", {});
-        }
+        },
+
+        onPress: function(oEvent) {
+            this._showObject(oEvent.getSource());
+        },
+
+        _showObject: function(oItem) {
+            console.log(oItem)
+            this.getRouter().navTo("learningObject", {
+                learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
+            });
+        },
     });
 });

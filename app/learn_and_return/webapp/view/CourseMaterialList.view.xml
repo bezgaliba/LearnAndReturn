@@ -12,7 +12,6 @@
         text="{CourseName}"
         level="H2"/>
     <List
-        mode="SingleSelectLeft"
         id="learningObjectList"
         select=".onSelect"
         items="{
@@ -28,7 +27,7 @@
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem
-            press="onPress"
+            press=".onPress"
             title="{LearningObject_ID}"
             type="Active">
             </ObjectListItem>

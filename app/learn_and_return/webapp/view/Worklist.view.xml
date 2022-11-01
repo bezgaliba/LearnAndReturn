@@ -23,6 +23,9 @@
                 <Button
                     text="Learning Objects"
                     press="onNavLO"/>
+                <Button
+                    text="Course Category"
+                    press="onNavCat"/>
             </FlexBox>
         </semantic:titleHeading>
 
