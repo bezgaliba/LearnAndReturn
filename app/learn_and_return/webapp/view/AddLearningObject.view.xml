@@ -17,7 +17,6 @@
        <Select
             id="formTrainingType"
             required="true"
-            placeholder="{i18n>selectAction}"
             items="{
                 path: '/LearningObjectType'
                 }">
@@ -34,6 +33,6 @@
             placeholder="..." />
       </f:content>
      </f:SimpleForm>
-     <Button text="{i18n>createAction}" press=".onSubmitCreate"></Button>
+     <Button text="{i18n>createAction}" press="onCreate"></Button>
      <Button text="Validate" press=".checkValidation"></Button>
 </mvc:View>

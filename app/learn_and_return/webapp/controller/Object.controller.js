@@ -61,6 +61,29 @@ sap.ui.define([
                 this.getRouter().getTargets().display("objectNotFound");
                 return;
             }
+            var oList = this.byId("reviewList");
+            var oBinding = oList.getBinding("items");
+            oBinding.filter(new Filter("ReviewID", FilterOperator.EQ, sObjectId));
+        },
+
+
+        onPost: function() {
+            var oFormat = DateFormat.getDateTimeInstance({ style: "medium" });
+            var sDate = oFormat.format(new Date());
+            var oObject = this.getView().getBindingContext().getObject();
+            var sValue = oEvent.getParameter("value");
+            var oEntry = {
+                ReviewID: oObject.ReviewID,
+                type: "Comment",
+                date: sDate,
+                comment: sValue
+            };
+            var oModel = this.getModel("review");
+            var aEntries = oModel.getData().review;
+            aEntries.push(oEntry);
+            oModel.setData({
+                review: aEntries
+            });
         },
 
         onEnroll: function(oEvent) {

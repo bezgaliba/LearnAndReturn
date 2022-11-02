@@ -61,7 +61,7 @@
                     >
                     <content>
                         <FeedInput
-                        post=".onPost"/>
+                            post=".onPost"/>
                         <List
                             items="{
                                 path: 'Review'

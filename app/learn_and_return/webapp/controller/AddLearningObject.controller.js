@@ -6,8 +6,17 @@ sap.ui.define([
     return BaseController.extend("learnandreturn.controller.AddLearningObject", {
         onInit: function() {},
         onNavLOList: function() {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("learningObjectList", {});
+            debugger;
+        },
+        onCreate: function() {
+            let oListBinding = this.getView().getModel().bindList('/LearningObject');
+            oListBinding.attachCreateCompleted((response) => {
+                debugger
+            });
+            oListBinding.create({
+                Name: this.getView().byId("formLearningObjectName").getValue(),
+                Content: "wwww"
+            });
         }
     });
 });
