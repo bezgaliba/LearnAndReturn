@@ -15,11 +15,13 @@ sap.ui.define([
             });
             oListBinding.create({
                 Name: this.getView().byId("formLearningObjectName").getValue(),
-                Content: "wwwdsw"
+                Type_ID: this.getView().byId("formLearningObjectType").getSelectedKey(),
+                Content: this.getView().byId("formLearningObjectContent").getValue(),
+                Description: this.getView().byId("formLearningObjectDescription").getValue()
             });
         },
-        debugger: function() {
-            debugger;
-        },
+        // debugger: function() {
+        //     debugger;
+        // },
     });
 });

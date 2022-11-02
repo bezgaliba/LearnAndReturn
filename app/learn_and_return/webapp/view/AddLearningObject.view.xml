@@ -15,7 +15,7 @@
             placeholder="..."/>
        <Label text="{i18n>addLearningObjectType}"/>
        <Select
-            id="formTrainingType"
+            id="formLearningObjectType"
             required="true"
             items="{
                 path: '/LearningObjectType'
