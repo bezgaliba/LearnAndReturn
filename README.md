@@ -2,8 +2,8 @@
 
 A simple web based application for qualification work.
 This system allows user to use e-learning platform concepts.
-Implemented with SAP technology - SAPUI5, CAP, oData, HANA, Cloud Foundry env.
-3 month hours have been put into it, 1 creator.
+Implemented with SAP technology.
+3 month of work have been put into it, 1 creator.
 
 ## Credits
 
