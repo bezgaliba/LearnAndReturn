@@ -68,6 +68,7 @@ sap.ui.define([
 
 
         onPost: function() {
+            z
             var oFormat = DateFormat.getDateTimeInstance({ style: "medium" });
             var sDate = oFormat.format(new Date());
             var oObject = this.getView().getBindingContext().getObject();

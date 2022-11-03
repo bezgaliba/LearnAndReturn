@@ -1,27 +1,39 @@
 sap.ui.define([
-    "./BaseController"
+    "./BaseController",
 ], function(BaseController) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.AddLearningObject", {
         onInit: function() {},
         onNavLOList: function() {
-            debugger;
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("learningObjectList", {}, true);
         },
         onCreate: function() {
-            let oListBinding = this.getView().getModel().bindList('/LearningObject');
-            oListBinding.attachCreateCompleted((response) => {
-                debugger
-            });
+            let oListBinding = this.getView().getModel().bindList('/LearningObject'),
+                oObjectNameField = this.getView().byId("formLearningObjectName"),
+                oType_IDField = this.getView().byId("formLearningObjectType"),
+                oContentField = this.getView().byId("formLearningObjectContent"),
+                oDescriptionField = this.getView().byId("formLearningObjectDescription");
             oListBinding.create({
-                Name: this.getView().byId("formLearningObjectName").getValue(),
-                Type_ID: this.getView().byId("formLearningObjectType").getSelectedKey(),
-                Content: this.getView().byId("formLearningObjectContent").getValue(),
-                Description: this.getView().byId("formLearningObjectDescription").getValue()
+                Name: oObjectNameField.getValue(),
+                Type_ID: oType_IDField.getSelectedKey(),
+                Content: oContentField.getValue(),
+                Description: oDescriptionField.getValue()
             });
+            var self = this;
+            this.onNavLOList();
+            this.clearFields();
         },
-        // debugger: function() {
-        //     debugger;
-        // },
+        clearFields: function() {
+            let oObjectNameField = this.getView().byId("formLearningObjectName"),
+                oType_IDField = this.getView().byId("formLearningObjectType"),
+                oContentField = this.getView().byId("formLearningObjectContent"),
+                oDescriptionField = this.getView().byId("formLearningObjectDescription");
+            oObjectNameField.setValue("");
+            oType_IDField.setValue("");
+            oContentField.setValue("");
+            oDescriptionField.setValue("");
+        }
     });
 });

@@ -50,7 +50,7 @@
 						<f:SimpleForm
 							minWidth="1024"
 							maxContainerCols="2"
-							layout="ReWsponsiveGridLayout">
+							layout="ResponsiveGridLayout">
 							<f:title>
 								<core:Title text="{i18n>learningObjectHistoryTitle}"/>
 							</f:title>
