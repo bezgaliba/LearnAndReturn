@@ -44,6 +44,7 @@ sap.ui.define([
                 return;
             }
         },
+
         onNavBack: function() {
             var oHistory = History.getInstance();
             var sPreviousHash = oHistory.getPreviousHash();

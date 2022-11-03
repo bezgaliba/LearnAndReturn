@@ -1,47 +1,44 @@
 <mvc:View
-    controllerName="learnandreturn.controller.EditLearningObject"
-    displayBlock="true"
-    xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc">
-        <mvc:View
-    controllerName="learnandreturn.controller.AddLearningObject"
-    displayBlock="true"
-    xmlns="sap.m"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc">
-    <Button text="{i18n>navBackButtonTitle}" press=".onNavBack"></Button>
+   controllerName="learnandreturn.controller.EditLearningObject"
+   displayBlock="true"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:f="sap.ui.layout.form"
+   xmlns:main="sap.ui.webc.main"
+   xmlns:core="sap.ui.core">
      <f:SimpleForm id="simpleForm" title="{i18n>editAction} ''{Name}'' {i18n>learningObjectTitle}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
       <f:content>
-       <Label text="{i18n>addLearningObjectName}"/>
-       <Input
-         value="{Name}"
-         id="formLearningObjectName"
-         required="true"
-         placeholder="..."/>
-       <Label text="{i18n>addLearningObjectType}"/>
-       <Select
-            id="formLearningObjectType"
+      <Text 
+         text="Note that changes are saved automatically."/>
+         <Label text="{i18n>addLearningObjectName}"/>
+         <Input
+            value="{Name}"
+            id="formLearningObjectName"
             required="true"
-            items="{
-               path: '/LearningObjectType'
-               }">
-          <core:Item key="{ID}" text="{name}" />
-       </Select>
-       <Label text="{i18n>addLearningObjectContent}"/>
-       <Input
-         value="{Content}"
-         id="formLearningObjectContent"
-         required="true"
-         placeholder="..."/>
-       <Label text="{i18n>formLearningObjectDescription}"/>
-       <Input 
-         value="{Description}"
-         height="500px"
-         id="formLearningObjectDescription"
-         placeholder="..." />
-      </f:content>
-     </f:SimpleForm>
-     <Button text="{i18n>editAction}" press="onEdit"></Button>
-</mvc:View>
+            placeholder="..."/>
+         <Label text="{i18n>addLearningObjectType}"/>
+         <main:Select
+               editable="true"
+               id="formLearningObjectType"
+               required="true"
+               items="{
+                  path: '/LearningObjectType'
+                  }">
+            <core:Item key="{ID}" text="{name}" />
+         </main:Select>
+         <Label text="{i18n>addLearningObjectContent}"/>
+         <Input
+            value="{Content}"
+            id="formLearningObjectContent"
+            required="true"
+            placeholder="..."/>
+         <Label text="{i18n>formLearningObjectDescription}"/>
+         <Input 
+            value="{Description}"
+            height="500px"
+            id="formLearningObjectDescription"
+            placeholder="..." />
+         </f:content>
+      </f:SimpleForm>
+     <Button text="{i18n>navBackButtonTitle}" press=".onNavBack"></Button>
 </mvc:View>
