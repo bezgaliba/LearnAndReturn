@@ -1,11 +1,16 @@
 <mvc:View
+    controllerName="learnandreturn.controller.EditLearningObject"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+        <mvc:View
     controllerName="learnandreturn.controller.AddLearningObject"
     displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
-    <Button text="{i18n>navBackButtonTitle}" press=".onNavLOList"></Button>
+    <Button text="{i18n>navBackButtonTitle}" press=".onNavBack"></Button>
      <f:SimpleForm id="simpleForm" title="{i18n>addLearningObjectHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
       <f:content>
        <Label text="{i18n>addLearningObjectName}"/>
@@ -34,6 +39,6 @@
           placeholder="..." />
       </f:content>
      </f:SimpleForm>
-     <Button text="{i18n>createAction}" press="onCreate"></Button>
-     <Button text="Validate" press=".checkValidation"></Button>
+     <Button text="{i18n>editAction}" press="onEdit"></Button>
+</mvc:View>
 </mvc:View>
