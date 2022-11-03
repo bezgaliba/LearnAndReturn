@@ -11,13 +11,14 @@
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
     <Button text="{i18n>navBackButtonTitle}" press=".onNavBack"></Button>
-     <f:SimpleForm id="simpleForm" title="{i18n>addLearningObjectHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+     <f:SimpleForm id="simpleForm" title="{i18n>editAction} ''{Name}'' {i18n>learningObjectTitle}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
       <f:content>
        <Label text="{i18n>addLearningObjectName}"/>
        <Input
-          id="formLearningObjectName"
-          required="true"
-          placeholder="..."/>
+         value="{Name}"
+         id="formLearningObjectName"
+         required="true"
+         placeholder="..."/>
        <Label text="{i18n>addLearningObjectType}"/>
        <Select
             id="formLearningObjectType"
@@ -29,14 +30,16 @@
        </Select>
        <Label text="{i18n>addLearningObjectContent}"/>
        <Input
-          id="formLearningObjectContent"
-          required="true"
-          placeholder="..."/>
+         value="{Content}"
+         id="formLearningObjectContent"
+         required="true"
+         placeholder="..."/>
        <Label text="{i18n>formLearningObjectDescription}"/>
        <Input 
-          height="500px"
-          id="formLearningObjectDescription"
-          placeholder="..." />
+         value="{Description}"
+         height="500px"
+         id="formLearningObjectDescription"
+         placeholder="..." />
       </f:content>
      </f:SimpleForm>
      <Button text="{i18n>editAction}" press="onEdit"></Button>

@@ -22,7 +22,6 @@ sap.ui.define([
 
         _bindView: function(sObjectPath) {
             var oViewModel = this.getModel("learningObjectView");
-
             this.getView().bindElement({
                 path: sObjectPath,
                 events: {
@@ -36,6 +35,7 @@ sap.ui.define([
                 }
             });
         },
+
         _onBindingChange: function() {
             var oView = this.getView(),
                 oElementBinding = oView.getElementBinding();
@@ -48,9 +48,21 @@ sap.ui.define([
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("learningObjectList", {});
         },
-        onEdit: function() {
+
+        onEdit: function(oEvent) {
+            this._showObject(oEvent.getSource())
+        },
+
+
+        _showObject: function(oItem) {
+            this.getRouter().navTo("editLearningObject", {
+                editLearningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
+            });
+        },
+
+        onEditv2: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("editLearningObject", {});
-        }
+        },
     });
 });

@@ -126,7 +126,7 @@
                     "target": "addLearningObject"
                 },
                 {
-                    "pattern": "EditLearningObject",
+                    "pattern": "EditLearningObject/{editLearningObjectId}",
                     "name": "editLearningObject",
                     "target": "editLearningObject"
                 },
