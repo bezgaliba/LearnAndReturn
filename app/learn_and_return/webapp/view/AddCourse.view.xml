@@ -23,13 +23,27 @@
             <Label text="{i18n>addCourseImageURL}"/>
             <Input
                 width="600px"
-                id="formImageURL"
+                id="formCourseImageURL"
                 placeholder="..." />
+            <Label text="{i18n>addCourseCategory}"/>
+            <Select
+                width="300px"
+                id="formCourseCategory"
+                required="true"
+                items="{
+                    path: '/CourseCategory',
+                    sorter: {
+                            path: 'name'
+                        }
+                    }">
+                <core:Item key="{ID}" text="{name}" />
+            </Select>
             <Label text="{i18n>addCourseMaterial}"/>
             <MultiComboBox
+                width="600px"
+                id="formCourseMaterial"
                 required="true"
                 placeholder="{i18n>selectAction}"
-                width="600px"
                 items="{
                     path: '/LearningObject',
                     sorter: {
@@ -41,5 +55,5 @@
         </f:content>
      </f:SimpleForm>
      <Button text="{i18n>createAction}" press="onCreate"></Button>
-     <Button text="Validate" press=".checkValidation"></Button>
+     <Button text="Testing" press=".onTest"></Button>
 </mvc:View>

@@ -5,35 +5,46 @@ sap.ui.define([
 
     return BaseController.extend("learnandreturn.controller.AddCourse", {
         onInit: function() {},
-        onNavLOList: function() {
+        onNavWorklist: function() {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("learningObjectList", {}, true);
+            oRouter.navTo("Worklist", {}, true);
         },
+
         onCreate: function() {
-            let oListBinding = this.getView().getModel().bindList('/LearningObject'),
-                oObjectNameField = this.getView().byId("formLearningObjectName"),
-                oType_IDField = this.getView().byId("formLearningObjectType"),
-                oContentField = this.getView().byId("formLearningObjectContent"),
-                oDescriptionField = this.getView().byId("formLearningObjectDescription");
+            let oListBinding = this.getView().getModel().bindList('/Course'),
+                oCourseTitleField = this.getView().byId("formCourseTitle"),
+                oCourseDescriptionField = this.getView().byId("formCourseDescription"),
+                oCourseImageURLField = this.getView().byId("formCourseImageURL"),
+                oCourseCategoryField = this.getView().byId("formCourseCategory"),
+                oCourseMaterialField = this.getView().byId("formCourseMaterial")
             oListBinding.create({
-                Name: oObjectNameField.getValue(),
-                Type_ID: oType_IDField.getSelectedKey(),
-                Content: oContentField.getValue(),
-                Description: oDescriptionField.getValue()
+                CourseName: oCourseTitleField.getValue(),
+                Description: oCourseDescriptionField.getValue(),
+                ImageURL: oCourseImageURLField.getValue(),
+                CourseCategory_ID: oCourseCategoryField.getSelectedKey(),
+                CourseMaterial: oCourseMaterialField.getSelectedKeys().map((sKey) => {
+                    return { LearningObject_ID: sKey };
+                })
             });
-            var self = this;
-            this.onNavLOList();
+            this.onNavWorklist();
             this.clearFields();
         },
+
+        onTest: function() {
+            let formCourseMaterial = this.getView().byId("formCourseMaterial").getSelectedKeys().getText();
+            console.log(formCourseMaterial);
+            debugger;
+        },
+
         clearFields: function() {
-            let oObjectNameField = this.getView().byId("formLearningObjectName"),
-                oType_IDField = this.getView().byId("formLearningObjectType"),
-                oContentField = this.getView().byId("formLearningObjectContent"),
-                oDescriptionField = this.getView().byId("formLearningObjectDescription");
-            oObjectNameField.setValue("");
-            oType_IDField.setValue("");
-            oContentField.setValue("");
-            oDescriptionField.setValue("");
+            let oCourseTitleField = this.getView().byId("formCourseTitle"),
+                oCourseDescriptionField = this.getView().byId("formCourseDescription"),
+                oCourseImageURLField = this.getView().byId("formCourseImageURL"),
+                oCourseCategoryField = this.getView().byId("formCourseCategory")
+            oCourseTitleField.setValue("");
+            oCourseDescriptionField.setValue("");
+            oCourseImageURLField.setValue("");
+            oCourseCategoryField.setValue("");
         }
     });
 });
