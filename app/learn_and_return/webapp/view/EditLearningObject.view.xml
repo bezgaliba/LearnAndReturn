@@ -17,7 +17,7 @@
             required="true"
             placeholder="..."/>
          <Label text="{i18n>addLearningObjectType}"/>
-         <main:Select
+         <Select
                editable="true"
                id="formLearningObjectType"
                required="true"
@@ -25,7 +25,7 @@
                   path: '/LearningObjectType'
                   }">
             <core:Item key="{ID}" text="{name}" />
-         </main:Select>
+         </Select>
          <Label text="{i18n>addLearningObjectContent}"/>
          <Input
             value="{Content}"
