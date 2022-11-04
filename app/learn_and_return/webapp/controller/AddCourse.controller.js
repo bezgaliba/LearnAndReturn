@@ -7,7 +7,7 @@ sap.ui.define([
         onInit: function() {},
         onNavWorklist: function() {
             var oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("Worklist", {}, true);
+            oRouter.navTo("Home", {}, true);
         },
 
         onCreate: function() {

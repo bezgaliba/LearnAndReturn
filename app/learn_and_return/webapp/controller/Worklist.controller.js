@@ -26,6 +26,15 @@ sap.ui.define([
                 tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
             });
             this.setModel(oViewModel, "worklistView");
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.attachRoutePatternMatched(this.onRefresh, this);
+        },
+
+        onRefresh: function() {
+            var oList = this.byId("courseTable");
+            var oBinding = oList.getBinding("items");
+            console.log(oBinding);
+            oBinding.refresh();
         },
 
         onUpdateFinished: function(oEvent) {
