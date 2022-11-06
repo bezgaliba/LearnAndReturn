@@ -120,11 +120,6 @@ sap.ui.define([
             this.oDefaultDialog.open();
         },
 
-        onRefresh: function() {
-            var oTable = this.byId("table");
-            oTable.getBinding("items").refresh();
-        },
-
         _showObject: function(oItem) {
             this.getRouter().navTo("object", {
                 objectId: oItem.getBindingContext().getPath().substring("/Course".length)

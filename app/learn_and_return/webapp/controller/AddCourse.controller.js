@@ -30,12 +30,6 @@ sap.ui.define([
             this.clearFields();
         },
 
-        onTest: function() {
-            let formCourseMaterial = this.getView().byId("formCourseMaterial").getSelectedKeys().getText();
-            console.log(formCourseMaterial);
-            debugger;
-        },
-
         clearFields: function() {
             let oCourseTitleField = this.getView().byId("formCourseTitle"),
                 oCourseDescriptionField = this.getView().byId("formCourseDescription"),
@@ -44,7 +38,8 @@ sap.ui.define([
             oCourseTitleField.setValue("");
             oCourseDescriptionField.setValue("");
             oCourseImageURLField.setValue("");
-            oCourseCategoryField.setValue("");
+            oCourseCategoryField.removeItem("");
+            oCourseMaterialField.clearSelection();
         }
     });
 });

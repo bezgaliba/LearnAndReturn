@@ -21,11 +21,16 @@
                     class="sapUiSmallMarginEnd"
                     press="onLogoutConfirmation"/>
                 <Button
+                    class="sapUiSmallMargin"
                     text="Learning Objects"
                     press="onNavLO"/>
                 <Button
+                    class="sapUiSmallMarginEnd"
                     text="Course Category"
                     press="onNavCat"/>
+                <Title
+                    class="sapUiSmallMargin"
+                    text="Learn ＆ Return"/>
             </FlexBox>
         </semantic:titleHeading>
 
@@ -59,16 +64,17 @@
                             press=".onNavCreate"
                         />
                         <Select
-                                id="selectedCategory"
-                                change=".onLiveChange"
-                                items="{
-                                    path: '/CourseCategory',
-                                    sorter: {
-                                            path: 'name',
-                                            ascending: true
-                                        }
-                                    }">
-                                <core:Item key="{ID}" text="{name}" />
+                            id="selectedCategory"
+                            change=".onLiveChange"
+                            items="{
+                                path: '/CourseCategory',
+                                sorter: {
+                                        path: 'name',
+                                        ascending: true
+                                    }
+                                }">
+                            <core:Item key="" text="All" />
+                            <core:Item key="{ID}" text="{name}" />
                         </Select>
                         <SearchField
                             id="searchField"
