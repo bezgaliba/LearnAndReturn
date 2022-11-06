@@ -126,6 +126,11 @@
                     "target": "addLearningObject"
                 },
                 {
+                    "pattern": "AddCategory",
+                    "name": "AddCategory",
+                    "target": "AddCategory"
+                },
+                {
                     "pattern": "EditLearningObject/{editLearningObjectId}",
                     "name": "editLearningObject",
                     "target": "editLearningObject"
@@ -183,6 +188,10 @@
                 "addLearningObject": {
                     "viewName": "AddLearningObject",
                     "viewId": "AddLearningObject"
+                },
+                "AddCategory": {
+                    "viewName": "AddCategory",
+                    "viewId": "AddCategory"
                 },
                 "editLearningObject": {
                     "viewName": "EditLearningObject",
