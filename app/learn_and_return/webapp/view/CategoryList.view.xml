@@ -1,8 +1,73 @@
 <mvc:View
     controllerName="learnandreturn.controller.CategoryList"
+    xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
     displayBlock="true"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-        <Text
-            text="Welcome to creation of cats"/>
+    <Page
+		enableScrolling="true"
+		title="Categories (Admin/Instructor view)"
+		titleLevel="H4">
+        <List
+        mode="SingleSelectLeft"
+        id="learningObjectList"
+        select=".onSelect"
+        items="{
+            path: '/CourseCategory',
+                sorter: {
+                    path: 'name'
+                }
+            }">
+			<headerToolbar>
+				<Toolbar>
+					<Title
+                    level="H3"
+                    text=""/>
+					<ToolbarSpacer/>
+                    <Button
+                    text="{i18n>navBackButtonTitle}"
+                    press=".onNavHome"/>
+                    <SearchField
+                    placeholder="Search for Learning Object..."
+                    liveChange=".onSearch"
+                    width="40%"/>
+                    <MultiComboBox
+                        placeholder="Select Type..."
+                        maxWidth="300px"
+                        items="{
+                            path: '/LearningObjectType',
+                            sorter: {
+                                path: 'name'
+                            }
+                        }">
+                        <core:Item key="{ID}" text="{name}"/>
+                    </MultiComboBox>
+                    <Button
+                        id="createLearningObject"
+                        icon="sap-icon://add"
+                        tooltip="{i18n>createAction}"
+                        press=".onNavCreate"
+                    />
+                    <Button
+                        id="deleteLearningObject"
+                        icon="sap-icon://delete"
+                        tooltip="{i18n>deleteAction}"
+                        press=".onDeleteConfirmation"
+                    />
+					<Button
+                        icon="sap-icon://settings"
+                        press=".handleButtonPress"
+                    />
+				</Toolbar>
+			</headerToolbar>
+			<ObjectListItem
+            press="onPress"
+            title="{name}"
+            type="Active">
+                <ObjectAttribute
+                text="{descr}"/>
+            </ObjectListItem>
+		</List>
+	</Page>
 </mvc:View>
