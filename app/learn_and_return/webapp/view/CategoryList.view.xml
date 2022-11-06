@@ -11,7 +11,7 @@
 		titleLevel="H4">
         <List
         mode="SingleSelectLeft"
-        id="learningObjectList"
+        id="categoryList"
         select=".onSelect"
         items="{
             path: '/CourseCategory',
@@ -29,28 +29,17 @@
                     text="{i18n>navBackButtonTitle}"
                     press=".onNavHome"/>
                     <SearchField
-                    placeholder="Search for Learning Object..."
+                    placeholder="Search for Category..."
                     liveChange=".onSearch"
                     width="40%"/>
-                    <MultiComboBox
-                        placeholder="Select Type..."
-                        maxWidth="300px"
-                        items="{
-                            path: '/LearningObjectType',
-                            sorter: {
-                                path: 'name'
-                            }
-                        }">
-                        <core:Item key="{ID}" text="{name}"/>
-                    </MultiComboBox>
                     <Button
-                        id="createLearningObject"
+                        id="createCategory"
                         icon="sap-icon://add"
                         tooltip="{i18n>createAction}"
                         press=".onNavCreate"
                     />
                     <Button
-                        id="deleteLearningObject"
+                        id="deleteCategory"
                         icon="sap-icon://delete"
                         tooltip="{i18n>deleteAction}"
                         press=".onDeleteConfirmation"
