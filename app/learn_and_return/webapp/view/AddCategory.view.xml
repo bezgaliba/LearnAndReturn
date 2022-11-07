@@ -1,8 +1,27 @@
 <mvc:View
-    controllerName="learnandreturn.controller.App"
+    controllerName="learnandreturn.controller.AddCategory"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
-        <Title
-            text="Cat creation page :)"/>
+    <Button text="{i18n>navBackButtonTitle}" press=".onNavWorklist"></Button>
+        <f:SimpleForm id="simpleForm" title="{i18n>addCourseHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+            <f:content>
+            <Label text="{i18n>addCategoryTitle}"/>
+            <Input
+                width="600px"
+                id="formCategoryTitle"
+                required="true"
+                placeholder="..."/>
+            <Label text="{i18n>addCategoryDescription}"/>
+            <Input
+                width="600px"
+                id="formCategoryDescription"
+                required="true"
+                placeholder="..."/>
+        </f:content>
+     </f:SimpleForm>
+     <Button text="{i18n>createAction}" press="onCreate"></Button>
+     <Button text="Testing" press=".onTest"></Button>
 </mvc:View>
