@@ -14,7 +14,17 @@ sap.ui.define([
     var DialogType = mobileLibrary.DialogType;
 
     return BaseController.extend("learnandreturn.controller.CategoryList", {
-        onInit: function() {},
+        onInit: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.attachRoutePatternMatched(this.onRefresh, this);
+        },
+
+        onRefresh: function() {
+            var oList = this.byId("categoryList"),
+                oBindingList = oList.getBinding("items")
+            oBindingList.refresh();
+        },
+
         onSearch: function(oEvent) {
             var aFilters = [];
             var sQuery = oEvent.getSource().getValue();

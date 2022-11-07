@@ -31,10 +31,12 @@ sap.ui.define([
         },
 
         onRefresh: function() {
-            var oList = this.byId("courseTable");
-            var oBinding = oList.getBinding("items");
-            console.log(oBinding);
-            oBinding.refresh();
+            var oList = this.byId("courseTable"),
+                oBindingList = oList.getBinding("items"),
+                oSelect = this.byId("selectedCategory"),
+                oBindingSelect = oSelect.getBinding("items")
+            oBindingList.refresh();
+            oBindingSelect.refresh()
         },
 
         onUpdateFinished: function(oEvent) {

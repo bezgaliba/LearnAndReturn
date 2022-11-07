@@ -4,7 +4,20 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.AddCourse", {
-        onInit: function() {},
+        onInit: function() {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.attachRoutePatternMatched(this.onRefresh, this);
+        },
+
+        onRefresh: function() {
+            var oSelect = this.byId("formCourseCategory"),
+                oMultiComboBox = this.byId("formCourseMaterial"),
+                oBindingSelect = oSelect.getBinding("items"),
+                oBindingMultiComboBox = oMultiComboBox.getBinding("items")
+            oBindingSelect.refresh();
+            oBindingMultiComboBox.refresh();
+        },
+
         onNavWorklist: function() {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("Home", {}, true);
