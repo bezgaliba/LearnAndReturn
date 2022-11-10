@@ -1,0 +1,71 @@
+<mvc:View
+   controllerName="learnandreturn.controller.EditCourseObject"
+   displayBlock="true"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:f="sap.ui.layout.form"
+   xmlns:main="sap.ui.webc.main"
+   xmlns:core="sap.ui.core">
+   <f:SimpleForm id="simpleForm" title="{i18n>editAction} ''{CourseName}'' {i18n>CourseObject}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+       <f:content>
+      <Text 
+         text="Don't forget to hit save!"/>
+         <Label text="{i18n>addCourseTitle}"/>
+            <Input
+               value="{CourseName}"
+               width="600px"
+               id="formCourseTitle"
+               required="true"
+               placeholder="..."/>
+            <Label text="{i18n>addCourseDescription}"/>
+            <Input
+               value="{Description}"
+               width="600px"
+               id="formCourseShortDescription"
+               required="true"
+               placeholder="..."/>
+            <Label text="{i18n>addCourseShortDescription}"/>
+            <Input
+               value="{ShortDescription}"
+               width="600px"
+               id="formCourseDescription"
+               required="true"
+               placeholder="..."/>
+            <Label text="{i18n>addCourseImageURL}"/>
+            <Input
+               value="{ImageURL}"
+               width="600px"
+               id="formCourseImageURL"
+               placeholder="..." />
+            <Label text="{i18n>addCourseCategory}"/>
+            <Select
+               forceSelection="false"
+               width="300px"
+               id="formCourseCategory"
+               required="true"
+               items="{
+                  path: '/CourseCategory',
+                  sorter: {
+                           path: 'name'
+                        }
+                  }">
+               <core:Item key="{ID}" text="{name}" />
+            </Select>
+            <Label text="{i18n>addCourseMaterial}"/>
+            <MultiComboBox
+               width="600px"
+               id="formCourseMaterial"
+               required="true"
+               placeholder="{i18n>selectAction}"
+               items="{
+                  path: '/LearningObject',
+                  sorter: {
+                        path: 'Name'
+                  }
+               }">
+               <core:Item key="{ID}" text="{Name}"/>
+            </MultiComboBox>
+         </f:content>
+      </f:SimpleForm>
+     <Button text="{i18n>saveAction}" press=".onSave"></Button>
+</mvc:View>
