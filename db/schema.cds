@@ -22,7 +22,8 @@ aspect Reviews : cuid, managed {
 entity LearningObject : cuid, managed{
     Name : String(200);
     Content : String(3040);
-    Description : String(420);
+    Description : String(1240);
+    Guide : String(1240);
     Type : Association to one LearningObjectType;
     CompletionList : Composition of many CompletionEntry;
 }

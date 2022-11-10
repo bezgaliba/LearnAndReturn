@@ -33,20 +33,22 @@
 				class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
 				<items>
 					<IconTabFilter
-						text="{i18n>learningObjectContent}">
+						text="{i18n>learningObjectContentTabTitle}">
 						<f:SimpleForm
 							minWidth="1024"
 							maxContainerCols="2"
 							layout="ResponsiveGridLayout">
-							<f:title>
-								<core:Title text="{i18n>learningObjectMaterialTitle}"/>
-							</f:title>
-							<Text
-							text="{Content}"/>
+							<core:Title text="{i18n>learningObjectContentHeaderTitle}"/>
+							<Label text="{i18n>learningObjectContentTitle}"/>
+							<!-- <core:HTML content='&lt;iframe src=&quot;{Content}&quot;/iframe&gt;'/> -->
+							<Text text="{Content}"/>
+							<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
+							<Label text="{i18n>learningObjectGuideTitle}" />
+							<Text text="{Guide}"/>
 						</f:SimpleForm>
 					</IconTabFilter>
 					<IconTabFilter
-						text="{i18n>learningObjectLogsTitle}">
+						text="{i18n>learningObjectLogsTabTitle}">
 						<f:SimpleForm
 							minWidth="1024"
 							maxContainerCols="2"

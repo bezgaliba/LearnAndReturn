@@ -5,35 +5,40 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
-    <Button text="{i18n>navBackButtonTitle}" press=".onNavLOList"></Button>
-     <f:SimpleForm id="simpleForm" title="{i18n>addLearningObjectHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
-      <f:content>
-       <Label text="{i18n>addLearningObjectName}"/>
-       <Input
-          id="formLearningObjectName"
-          required="true"
-          placeholder="..."/>
-       <Label text="{i18n>addLearningObjectType}"/>
-       <Select
-            id="formLearningObjectType"
+      <Button text="{i18n>navBackButtonTitle}" press=".onNavLOList"></Button>
+      <f:SimpleForm id="simpleForm" title="{i18n>addLearningObjectHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+         <f:content>
+         <Label text="{i18n>addLearningObjectName}"/>
+         <Input
+            id="formLearningObjectName"
             required="true"
-            items="{
-               path: '/LearningObjectType'
-               }">
-          <core:Item key="{ID}" text="{name}" />
-       </Select>
-       <Label text="{i18n>addLearningObjectContent}"/>
-       <Input
-          id="formLearningObjectContent"
-          required="true"
-          placeholder="..."/>
-       <Label text="{i18n>formLearningObjectDescription}"/>
-       <Input 
-          height="500px"
-          id="formLearningObjectDescription"
-          placeholder="..." />
-      </f:content>
-     </f:SimpleForm>
-     <Button text="{i18n>createAction}" press="onCreate"></Button>
-     <Button text="Validate" press=".checkValidation"></Button>
+            placeholder="..."/>
+         <Label text="{i18n>addLearningObjectType}"/>
+         <Select
+               id="formLearningObjectType"
+               required="true"
+               items="{
+                  path: '/LearningObjectType'
+                  }">
+            <core:Item key="{ID}" text="{name}" />
+         </Select>
+         <Label text="{i18n>addLearningObjectContent}"/>
+         <Input
+            id="formLearningObjectContent"
+            required="true"
+            placeholder="..."/>
+         <Label text="{i18n>addLearningObjectGuide}"/>
+         <Input
+            id="formLearningObjectGuide"
+            required="true"
+            placeholder="..."/>
+         <Label text="{i18n>addLearningObjectDescription}"/>
+         <Input 
+            height="500px"
+            id="formLearningObjectDescription"
+            placeholder="..." />
+         </f:content>
+      </f:SimpleForm>
+   <Button text="{i18n>createAction}" press="onCreate"></Button>
+   <Button text="Validate" press=".checkValidation"></Button>
 </mvc:View>

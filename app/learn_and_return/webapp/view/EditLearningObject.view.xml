@@ -32,7 +32,14 @@
             id="formLearningObjectContent"
             required="true"
             placeholder="..."/>
-         <Label text="{i18n>formLearningObjectDescription}"/>
+         <Label text="{i18n>addLearningObjectGuide}"/>
+         <Input 
+            value="{Guide}"
+            height="500px"
+            required="true"
+            id="formLearningObjectGuide"
+            placeholder="..." />
+         <Label text="{i18n>addLearningObjectDescription}"/>
          <Input 
             value="{Description}"
             height="500px"
