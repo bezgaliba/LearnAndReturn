@@ -59,10 +59,5 @@ sap.ui.define([
                 editLearningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
             });
         },
-
-        onEditv2: function() {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("editLearningObject", {});
-        },
     });
 });

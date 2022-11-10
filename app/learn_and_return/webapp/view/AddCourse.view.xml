@@ -60,7 +60,7 @@
                 <core:Item key="{ID}" text="{Name}"/>
             </MultiComboBox>
         </f:content>
-     </f:SimpleForm>
-     <Button text="{i18n>createAction}" press="onCreate"></Button>
-     <Button text="Testing" press=".onTest"></Button>
+    </f:SimpleForm>
+    <Button text="{i18n>createAction}" press="onCreate"></Button>
+    <Button text="Testing" press=".onTest"></Button>
 </mvc:View>

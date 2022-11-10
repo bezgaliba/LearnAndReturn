@@ -2,7 +2,7 @@
     "authenticationMethod": "route",
     "logout": {
         "logoutEndpoint": "/learn_and_return/webapp/index.html#/logout",
-        "logoutPage": "/"
+        "logoutPage": "learn_and_return/webapp/index.html"
     },
     "routes": [{
             "source": "^/app/(.*)$",

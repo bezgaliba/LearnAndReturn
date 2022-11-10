@@ -14,11 +14,13 @@ sap.ui.define([
                 oObjectNameField = this.getView().byId("formLearningObjectName"),
                 oType_IDField = this.getView().byId("formLearningObjectType"),
                 oContentField = this.getView().byId("formLearningObjectContent"),
+                oGuideField = this.getView().byId("formLearningObjectGuide"),
                 oDescriptionField = this.getView().byId("formLearningObjectDescription");
             oListBinding.create({
                 Name: oObjectNameField.getValue(),
                 Type_ID: oType_IDField.getSelectedKey(),
                 Content: oContentField.getValue(),
+                Guide: oGuideField.getValue(),
                 Description: oDescriptionField.getValue()
             });
             var self = this;
@@ -29,10 +31,12 @@ sap.ui.define([
             let oObjectNameField = this.getView().byId("formLearningObjectName"),
                 oType_IDField = this.getView().byId("formLearningObjectType"),
                 oContentField = this.getView().byId("formLearningObjectContent"),
+                oGuideField = this.getView().byId("formLearningObjectGuide"),
                 oDescriptionField = this.getView().byId("formLearningObjectDescription");
             oObjectNameField.setValue("");
             oType_IDField.setValue("");
             oContentField.setValue("");
+            oGuideField.setValue("");
             oDescriptionField.setValue("");
         }
     });

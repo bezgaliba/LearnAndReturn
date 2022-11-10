@@ -61,9 +61,9 @@ sap.ui.define([
                 this.getRouter().getTargets().display("objectNotFound");
                 return;
             }
-            var oList = this.byId("reviewList");
-            var oBinding = oList.getBinding("items");
-            oBinding.filter(new Filter("ReviewID", FilterOperator.EQ, sObjectId));
+            // var oList = this.byId("reviewList");
+            // var oBinding = oList.getBinding("items");
+            // oBinding.filter(new Filter("ReviewID", FilterOperator.EQ, sObjectId));
         },
 
 
@@ -87,9 +87,18 @@ sap.ui.define([
             });
         },
 
+        onEdit: function(oEvent) {
+            this._showEditableObject(oEvent.getSource())
+        },
+
         onEnroll: function(oEvent) {
-            console.log('aaa')
             this._showObject(oEvent.getSource());
+        },
+
+        _showEditableObject: function(oItem) {
+            this.getRouter().navTo("editCourseObject", {
+                editCourseObjectId: oItem.getBindingContext().getPath().substring("/Course".length)
+            });
         },
 
         _showObject: function(oItem) {
@@ -97,6 +106,7 @@ sap.ui.define([
                 materialObjectId: oItem.getBindingContext().getPath().substring("/Course".length)
             });
         },
+
     });
 
 });
