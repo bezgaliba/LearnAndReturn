@@ -37,6 +37,7 @@
         <semantic:content>
             <Table
                 id="courseTable"
+                mode="SingleSelectLeft"
                 width="auto"
                 items="{
                     path: '/Course',
@@ -62,6 +63,12 @@
                             icon="sap-icon://add"
                             tooltip="{i18n>createAction}"
                             press=".onNavCreate"
+                        />
+                        <Button
+                        id="deleteCourse"
+                        icon="sap-icon://delete"
+                        tooltip="{i18n>deleteAction}"
+                        press=".onDeleteConfirmation"
                         />
                         <Select
                             id="selectedCategory"

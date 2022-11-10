@@ -7,8 +7,9 @@ sap.ui.define([
     "sap/m/Text",
     "sap/m/Dialog",
     "sap/m/Button",
+    "sap/m/MessageToast",
     "sap/m/library"
-], function(BaseController, JSONModel, formatter, Filter, FilterOperator, Text, Dialog, Button, mobileLibrary) {
+], function(BaseController, JSONModel, formatter, Filter, FilterOperator, Text, Dialog, Button, MessageToast, mobileLibrary) {
     "use strict";
 
     var ButtonType = mobileLibrary.ButtonType;
@@ -120,6 +121,55 @@ sap.ui.define([
             }
 
             this.oDefaultDialog.open();
+        },
+
+        deleteCourse: function() {
+            var oSelected = this.byId("courseTable").getSelectedItem();
+            if (oSelected) {
+                oSelected.getBindingContext().delete("$auto").then(function() {
+                    MessageToast.show(this._getText("deletemsg"));
+                }.bind(this), function(oError) {
+                    MessageBox.error(oError.message);
+                });
+            }
+        },
+
+        onDeleteConfirmation: function() {
+            var oSelected = this.byId("courseTable").getSelectedItem();
+            if (oSelected) {
+                if (!this.oDefaultDialog) {
+                    this.oDefaultDialog = new Dialog({
+                        title: this.getView().getModel("i18n").getResourceBundle().getText("deleteConf"),
+
+                        content: new Text({
+                            text: this.getView().getModel("i18n").getResourceBundle().getText("deleteDesc")
+                        }),
+                        type: DialogType.Message,
+                        beginButton: new Button({
+                            type: ButtonType.Emphasized,
+                            text: this.getView().getModel("i18n").getResourceBundle().getText("cancelAction"),
+                            press: function() {
+                                this.byId("courseTable").removeSelections(true);
+                                this.oDefaultDialog.close();
+                            }.bind(this)
+                        }),
+                        endButton: new Button({
+                            type: ButtonType.Emphasized,
+                            text: this.getView().getModel("i18n").getResourceBundle().getText("confirmAction"),
+                            press: function() {
+                                this.oDefaultDialog.close()
+                                var self = this;
+                                self.deleteCourse();
+                            }.bind(this)
+                        }),
+                    });
+                    this.getView().addDependent(this.oDefaultDialog);
+                }
+                this.oDefaultDialog.open();
+            } else {
+                var oText = this.getView().getModel("i18n").getResourceBundle().getText("noItemSelected");
+                MessageToast.show(oText);
+            }
         },
 
         _showObject: function(oItem) {
