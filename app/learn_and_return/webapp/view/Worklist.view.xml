@@ -119,7 +119,7 @@
                             <ObjectAttribute
                                 text="{CourseCategory/name}" />
                             <ObjectAttribute
-                                text="{Description}" />
+                                text="{ShortDescription}" />
                         </cells>
                     </ColumnListItem>
                 </items>

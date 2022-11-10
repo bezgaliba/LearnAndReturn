@@ -6,7 +6,8 @@ entity CourseCategory : cuid, CodeList {
 
 entity Course : cuid, managed {
     CourseName : String(100);
-    Description : String(480);
+    ShortDescription : String(420);
+    Description : String(1240);
     ImageURL : String(2048);
     CourseCategory : Association to one CourseCategory;
     Review : Composition of many Reviews;
@@ -21,7 +22,7 @@ aspect Reviews : cuid, managed {
 entity LearningObject : cuid, managed{
     Name : String(200);
     Content : String(3040);
-    Description : String(480);
+    Description : String(420);
     Type : Association to one LearningObjectType;
     CompletionList : Composition of many CompletionEntry;
 }
