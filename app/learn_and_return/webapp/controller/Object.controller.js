@@ -70,11 +70,12 @@ sap.ui.define([
 
 
         onPost: function(oEvent) {
-            var oListBinding = this.byId("reviewList").getBinding("items")
+            var oListBinding = this.byId("reviewList").getBinding("items"),
+                oRatingField = this.getView().byId("reviewStarSelection")
             oListBinding.create({
                 up__ID: this.sModifiedObjectId,
                 Comment: oEvent.getParameter("value"),
-                Rating: '★★★'
+                Rating: oRatingField.getSelectedKey(),
             }, false);
         },
 

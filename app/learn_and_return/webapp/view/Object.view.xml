@@ -67,6 +67,14 @@
                     headerText="{i18n>objectReview}"
                     >
                     <content>
+                        <Select
+                            id="reviewStarSelection">
+                            <core:Item key="★" text="★" />
+                            <core:Item key="★★" text="★★" />
+                            <core:Item key="★★★" text="★★★" />
+                            <core:Item key="★★★★" text="★★★★" />
+                            <core:Item key="★★★★★" text="★★★★★" />
+                        </Select>
                         <FeedInput
                             id="commentItem"
                             post=".onPost"/>
