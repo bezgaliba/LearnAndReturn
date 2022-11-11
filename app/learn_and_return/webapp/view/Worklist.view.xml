@@ -70,8 +70,9 @@
                         tooltip="{i18n>deleteAction}"
                         press=".onDeleteConfirmation"
                         />
-                        <Select
+                        <ComboBox
                             id="selectedCategory"
+                            showClearIcon="true"
                             change=".onLiveChange"
                             items="{
                                 path: '/CourseCategory',
@@ -82,7 +83,7 @@
                                 }">
                             <core:Item key="" text="All" />
                             <core:Item key="{ID}" text="{name}" />
-                        </Select>
+                        </ComboBox>
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"

@@ -68,6 +68,7 @@
                     >
                     <content>
                         <FeedInput
+                            id="commentItem"
                             post=".onPost"/>
                         <List
                             items="{

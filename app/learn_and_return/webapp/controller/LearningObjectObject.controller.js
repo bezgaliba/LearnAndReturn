@@ -1,7 +1,8 @@
 sap.ui.define([
     "./BaseController",
-    "sap/ui/model/json/JSONModel"
-], function(BaseController, JSONModel) {
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/routing/History"
+], function(BaseController, JSONModel, History) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.LearningObjectObject", {
@@ -44,9 +45,16 @@ sap.ui.define([
                 return;
             }
         },
-        onNavLOList: function() {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("learningObjectList", {});
+
+        onNavBack: function() {
+            var oHistory = History.getInstance();
+            var sPreviousHash = oHistory.getPreviousHash();
+            if (sPreviousHash !== undefined) {
+                window.history.go(-1);
+            } else {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("learningObjectList", {}, true);
+            }
         },
 
         onEdit: function(oEvent) {

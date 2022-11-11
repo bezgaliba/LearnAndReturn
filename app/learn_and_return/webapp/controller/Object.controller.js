@@ -34,6 +34,8 @@ sap.ui.define([
 
         _onObjectMatched: function(oEvent) {
             var sObjectId = oEvent.getParameter("arguments").objectId;
+            var sTempObjectId = sObjectId.replace('(', '');
+            this.sModifiedObjectId = sTempObjectId.replace(')', '');
             this._bindView("/Course" + sObjectId);
         },
 
@@ -67,24 +69,19 @@ sap.ui.define([
         },
 
 
-        onPost: function() {
-            z
-            var oFormat = DateFormat.getDateTimeInstance({ style: "medium" });
-            var sDate = oFormat.format(new Date());
-            var oObject = this.getView().getBindingContext().getObject();
-            var sValue = oEvent.getParameter("value");
-            var oEntry = {
-                ReviewID: oObject.ReviewID,
-                type: "Comment",
-                date: sDate,
-                comment: sValue
-            };
-            var oModel = this.getModel("review");
-            var aEntries = oModel.getData().review;
-            aEntries.push(oEntry);
-            oModel.setData({
-                review: aEntries
-            });
+        onPost: function(oEvent) {
+            var oListBinding = this.byId("reviewList").getBinding("items")
+            oListBinding.create({
+                up__ID: this.sModifiedObjectId,
+                Comment: oEvent.getParameter("value"),
+                Rating: '★★★'
+            }, false);
+        },
+
+        onRefresh: function() {
+            var oCommentsList = this.byId("reviewList"),
+                oBindingCommentsList = oCommentsList.getBinding("items")
+            oBindingCommentsList.requestRefresh();
         },
 
         onEdit: function(oEvent) {

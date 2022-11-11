@@ -57,12 +57,14 @@ sap.ui.define([
         },
 
         onPress: function(oEvent) {
-            this._showObject(oEvent.getSource());
+            var sPath = "(" + oEvent.getSource().getBindingContext().getValue().LearningObject.ID + ")";
+            this.routeLO(sPath);
         },
 
-        _showObject: function(oItem) {
+        routeLO: function(sPath) {
+            console.log(sPath);
             this.getRouter().navTo("learningObject", {
-                learningObjectId: oItem.getBindingContext().getPath().substring("/LearningObject".length)
+                learningObjectId: sPath
             });
         },
     });
