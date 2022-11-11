@@ -9,4 +9,7 @@ service LMSService @(path: '/browse', impl: './srv.js'){
         as projection on LandR.LearningObject;
     entity LearningObjectType
         as projection on LandR.LearningObjectType;
+
+    entity ReviewIndicator
+        as projection on LandR.ReviewIndicator;   
 }
