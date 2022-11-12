@@ -45,6 +45,12 @@
 							<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
 							<Label text="{i18n>learningObjectGuideTitle}" />
 							<Text text="{Guide}"/>
+							<core:Title text="{i18n>learningObjectGuideCompletionTitle}"/>
+							<Button
+								type="Accept"
+								width="200px"
+								text="{i18n>learningObjectGuideCompletionBtn}"
+								press=".onCompletion"/>
 						</f:SimpleForm>
 					</IconTabFilter>
 					<IconTabFilter

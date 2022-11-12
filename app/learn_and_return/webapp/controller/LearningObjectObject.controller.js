@@ -57,6 +57,10 @@ sap.ui.define([
             }
         },
 
+        onCompletion: function() {
+
+        },
+
         onEdit: function(oEvent) {
             this._showObject(oEvent.getSource())
         },
