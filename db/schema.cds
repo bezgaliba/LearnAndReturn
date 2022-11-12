@@ -35,6 +35,5 @@ aspect CourseMaterials : cuid, managed {
     LearningObject : Association to one LearningObject;
 }
 
-aspect CompletionEntry : cuid {
-    CompletedAt : DateTime;
+aspect CompletionEntry : cuid, managed {
 }
