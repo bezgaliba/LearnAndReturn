@@ -13,6 +13,7 @@ sap.ui.define([
 
         formatter: formatter,
         onInit: function() {
+            this.iRating = 5;
             var oViewModel = new JSONModel({
                 busy: true,
                 delay: 0
@@ -70,12 +71,11 @@ sap.ui.define([
 
 
         onPost: function(oEvent) {
-            var oListBinding = this.byId("reviewList").getBinding("items"),
-                oRatingField = this.getView().byId("reviewStarSelection")
+            var oListBinding = this.byId("reviewList").getBinding("items")
             oListBinding.create({
                 up__ID: this.sModifiedObjectId,
                 Comment: oEvent.getParameter("value"),
-                Rating: oRatingField.getSelectedKey(),
+                ReviewIndicator: this.iRating,
             }, false);
         },
 
@@ -83,6 +83,10 @@ sap.ui.define([
             var oCommentsList = this.byId("reviewList"),
                 oBindingCommentsList = oCommentsList.getBinding("items")
             oBindingCommentsList.requestRefresh();
+        },
+
+        setIndicator: function() {
+            this.iRating = this.byId("ratingIndicator").getValue();
         },
 
         onEdit: function(oEvent) {

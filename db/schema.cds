@@ -16,7 +16,7 @@ entity Course : cuid, managed {
 
 aspect Reviews : cuid, managed {
     Comment : String(960);
-    ReviewIndicator : Association to one ReviewIndicator;
+    ReviewIndicator : Integer;
 }
 
 entity LearningObject : cuid, managed{
@@ -29,10 +29,6 @@ entity LearningObject : cuid, managed{
 }
 
 entity LearningObjectType : cuid, CodeList{
-}
-
-entity ReviewIndicator : cuid {
-    Score : Integer;
 }
 
 aspect CourseMaterials : cuid, managed {

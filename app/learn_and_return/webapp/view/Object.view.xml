@@ -67,14 +67,21 @@
                     headerText="{i18n>objectReview}"
                     >
                     <content>
-                        <Select
-                            id="reviewStarSelection">
-                            <core:Item key="★" text="★" />
-                            <core:Item key="★★" text="★★" />
-                            <core:Item key="★★★" text="★★★" />
-                            <core:Item key="★★★★" text="★★★★" />
-                            <core:Item key="★★★★★" text="★★★★★" />
-                        </Select>
+                        <FlexBox
+                                direction="Column"
+                                alignItems="Start">
+                            <Text
+                                class="sapUiSmallMarginTop"
+                                text="Choose stars + write a comment"/>
+                            <RatingIndicator
+                                id="ratingIndicator"
+                                maxValue="5"
+                                class="sapUiSmallMarginTop"
+                                value="5"
+                                change=".setIndicator"
+                                iconSize="16px"
+                                tooltip="Rating Tooltip"/>
+                        </FlexBox>
                         <FeedInput
                             id="commentItem"
                             post=".onPost"/>
@@ -88,7 +95,10 @@
                             >
                             <FeedListItem
                                 sender="{createdBy}"
-                                info="{Rating}"
+                                info="{
+                                    path: 'ReviewIndicator',
+                                    formatter: '.formatter.intToStars'
+                                }"
                                 text="{Comment}"
                                 timestamp="{createdAt}"
                                 />

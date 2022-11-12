@@ -43,7 +43,6 @@ sap.ui.define([
         onNavCreate: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("AddCategory", {});
-            debugger;
         },
         deleteCategory: function() {
             var oSelected = this.byId("categoryList").getSelectedItem();
