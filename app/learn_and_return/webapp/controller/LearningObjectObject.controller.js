@@ -58,7 +58,10 @@ sap.ui.define([
         },
 
         onCompletion: function() {
-
+            var oListBinding = this.byId("completionList").getBinding("items")
+            oListBinding.create({
+                up__ID: this.sModifiedObjectId
+            }, false);
         },
 
         onEdit: function(oEvent) {

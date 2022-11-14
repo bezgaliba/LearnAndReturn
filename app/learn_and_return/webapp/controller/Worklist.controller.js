@@ -33,11 +33,8 @@ sap.ui.define([
 
         onRefresh: function() {
             var oList = this.byId("courseTable"),
-                oBindingList = oList.getBinding("items"),
-                oSelect = this.byId("selectedCategory"),
-                oBindingSelect = oSelect.getBinding("items")
+                oBindingList = oList.getBinding("items")
             oBindingList.refresh();
-            oBindingSelect.refresh()
         },
 
         onUpdateFinished: function(oEvent) {
@@ -179,13 +176,7 @@ sap.ui.define([
         },
 
         _applySearch: function(aTableSearchState) {
-            var oTable = this.byId("courseTable"),
-                oViewModel = this.getModel("worklistView"),
-                sCourseCat = this.byId('selectedCategory').getSelectedKey();
-            if (sCourseCat) {
-                oTable.getBinding("items").filter(aTableSearchState, "Application");
-            }
-            // changes the noDataText of the list in case there are no filter results
+            var oViewModel = this.getModel("worklistView")
             if (aTableSearchState.length !== 0) {
                 oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("noSearchData"));
             }

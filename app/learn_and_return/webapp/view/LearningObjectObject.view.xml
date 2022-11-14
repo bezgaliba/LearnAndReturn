@@ -72,6 +72,31 @@
 							<Text text="{modifiedAt}"/>
 						</f:SimpleForm>
 					</IconTabFilter>
+					<IconTabFilter
+						text="{i18n>Completion}">
+						<f:SimpleForm
+							minWidth="1024"
+							maxContainerCols="2"
+							layout="ResponsiveGridLayout">
+							<f:title>
+								<core:Title text="{i18n>learningObjectCompletionTitle}"/>
+							</f:title>
+							<List
+								items="{
+									path: 'CompletionList'
+								}"
+								id="completionList"
+								noDataText="{i18n>learningObjectNoCompletion}"
+							>
+							<ObjectListItem
+							press=""
+							title="{createdBy}"
+							unit="{createdAt}"
+							>
+							</ObjectListItem>
+						</List>
+						</f:SimpleForm>
+					</IconTabFilter>
 				</items>
 			</IconTabBar>
 		</content>
