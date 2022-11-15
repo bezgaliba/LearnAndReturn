@@ -10,24 +10,28 @@
             <f:content>
             <Label text="{i18n>addCourseTitle}"/>
             <Input
+                maxLength="100"
                 width="600px"
                 id="formCourseTitle"
                 required="true"
                 placeholder="..."/>
             <Label text="{i18n>addCourseDescription}"/>
             <Input
+                maxLength="1240"
                 width="600px"
                 id="formCourseShortDescription"
                 required="true"
                 placeholder="..."/>
             <Label text="{i18n>addCourseShortDescription}"/>
             <Input
+                maxLength="420"
                 width="600px"
                 id="formCourseDescription"
                 required="true"
                 placeholder="..."/>
             <Label text="{i18n>addCourseImageURL}"/>
             <Input
+                maxLength="2048"
                 width="600px"
                 id="formCourseImageURL"
                 placeholder="..." />
