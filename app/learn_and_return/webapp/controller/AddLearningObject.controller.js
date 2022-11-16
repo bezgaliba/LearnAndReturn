@@ -10,18 +10,18 @@ sap.ui.define([
             oRouter.navTo("learningObjectList", {}, true);
         },
         onCreate: function() {
-            this.oListBinding = this.getView().getModel().bindList('/LearningObject');
+            var oListBinding = this.getView().getModel().bindList('/LearningObject');
             this.oObjectNameField = this.getView().byId("formLearningObjectName");
             this.oType_IDField = this.getView().byId("formLearningObjectType");
             this.oContentField = this.getView().byId("formLearningObjectContent");
             this.oGuideField = this.getView().byId("formLearningObjectGuide");
             this.oDescriptionField = this.getView().byId("formLearningObjectDescription");
             oListBinding.create({
-                Name: oObjectNameField.getValue(),
-                Type_ID: oType_IDField.getSelectedKey(),
-                Content: oContentField.getValue(),
-                Guide: oGuideField.getValue(),
-                Description: oDescriptionField.getValue()
+                Name: this.oObjectNameField.getValue(),
+                Type_ID: this.oType_IDField.getSelectedKey(),
+                Content: this.oContentField.getValue(),
+                Guide: this.oGuideField.getValue(),
+                Description: this.oDescriptionField.getValue()
             });
             var self = this;
             this.onNavLOList();

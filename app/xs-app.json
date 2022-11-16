@@ -1,9 +1,9 @@
 {
     "authenticationMethod": "route",
     "logout": {
-        "logoutEndpoint": "/learn_and_return/webapp/index.html#/logout",
-        "logoutPage": "learn_and_return/webapp/index.html"
+        "logoutEndpoint": "/logout"
     },
+    "login": {},
     "routes": [{
             "source": "^/app/(.*)$",
             "target": "$1",

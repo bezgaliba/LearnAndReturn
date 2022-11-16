@@ -10,6 +10,7 @@
          <f:content>
          <Label text="{i18n>addLearningObjectName}"/>
          <Input
+            maxLength="200"
             id="formLearningObjectName"
             required="true"
             placeholder="..."/>
@@ -24,16 +25,19 @@
          </Select>
          <Label text="{i18n>addLearningObjectContent}"/>
          <Input
+            maxLength="3040"
             id="formLearningObjectContent"
             required="true"
             placeholder="..."/>
          <Label text="{i18n>addLearningObjectGuide}"/>
          <Input
+            maxLength="1240"
             id="formLearningObjectGuide"
             required="true"
             placeholder="..."/>
          <Label text="{i18n>addLearningObjectDescription}"/>
          <Input 
+            maxLength="1240"
             height="500px"
             id="formLearningObjectDescription"
             placeholder="..." />

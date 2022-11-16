@@ -1,19 +1,26 @@
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
+    "../model/formatter",
     "sap/ui/core/routing/History"
-], function(BaseController, JSONModel, History) {
+], function(BaseController, JSONModel, formatter, History) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.LearningObjectObject", {
 
-        onInit: function() {
+        formatter: formatter,
+
+        onInit: async function() {
             var oViewModel = new JSONModel({
                 busy: true,
                 delay: 0
             });
+            var oUserModel = new JSONModel();
+            await oUserModel.loadData("/user-api/attributes")
             this.getRouter().getRoute("learningObject").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "learningObjectView");
+            this.getView().setModel(oUserModel, "userModel")
+            console.log("init end")
         },
 
         _onObjectMatched: function(oEvent) {
@@ -58,10 +65,17 @@ sap.ui.define([
         },
 
         onCompletion: function() {
-            var oListBinding = this.byId("completionList").getBinding("items")
-            oListBinding.create({
-                up__ID: this.sModifiedObjectId
-            }, false);
+            var bHascompleted = this.byId("completionList").getAggregation("items").map(
+                oEle => { return oEle.getProperty("title") }).findIndex(
+                sEle => { return sEle === this.getView().getModel("userModel").getData().name }) !== -1;
+            if (!bHascompleted) {
+                var oListBinding = this.byId("completionList").getBinding("items");
+                oListBinding.create({
+                    up__ID: this.sModifiedObjectId
+                }, false);
+            } else {
+                console.log("uve completed")
+            }
         },
 
         onEdit: function(oEvent) {

@@ -24,18 +24,20 @@ sap.ui.define([
         },
 
         onCreate: function() {
-            this.oListBinding = this.getView().getModel().bindList('/Course');
+            var oListBinding = this.getView().getModel().bindList('/Course');
             this.oCourseTitleField = this.getView().byId("formCourseTitle");
             this.oCourseDescriptionField = this.getView().byId("formCourseDescription");
+            this.oCourseShortDescriptionField = this.getView().byId("formCourseShortDescription");
             this.oCourseImageURLField = this.getView().byId("formCourseImageURL");
             this.oCourseCategoryField = this.getView().byId("formCourseCategory");
             this.oCourseMaterialField = this.getView().byId("formCourseMaterial");
             oListBinding.create({
-                CourseName: oCourseTitleField.getValue(),
-                Description: oCourseDescriptionField.getValue(),
-                ImageURL: oCourseImageURLField.getValue(),
-                CourseCategory_ID: oCourseCategoryField.getSelectedKey(),
-                CourseMaterial: oCourseMaterialField.getSelectedKeys().map((sKey) => {
+                CourseName: this.oCourseTitleField.getValue(),
+                Description: this.oCourseDescriptionField.getValue(),
+                ShortDescription: this.oCourseDescriptionField.getValue(),
+                ImageURL: this.oCourseImageURLField.getValue(),
+                CourseCategory_ID: this.oCourseCategoryField.getSelectedKey(),
+                CourseMaterial: this.oCourseMaterialField.getSelectedKeys().map((sKey) => {
                     return { LearningObject_ID: sKey };
                 })
             });
@@ -45,6 +47,7 @@ sap.ui.define([
 
         clearFields: function() {
             this.oCourseTitleField.setValue("");
+            this.oCourseShortDescriptionField.setValue("");
             this.oCourseDescriptionField.setValue("");
             this.oCourseImageURLField.setValue("");
             this.oCourseCategoryField.removeItem("");

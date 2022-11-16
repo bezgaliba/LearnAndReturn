@@ -3,12 +3,7 @@ sap.ui.define([], function() {
 
     return {
 
-        /**
-         * Rounds the number unit value to 2 digits
-         * @public
-         * @param {string} sValue the number string to be rounded
-         * @returns {string} sValue with 2 digits rounded
-         */
+
         numberUnit: function(sValue) {
             if (!sValue) {
                 return "";
@@ -31,6 +26,10 @@ sap.ui.define([], function() {
             } else if (iValue == 5) {
                 return "★★★★★";
             }
+        },
+
+        isCompleted: function(sUser) {
+            return this.byId("completionList").getAggregation("items")?.map(oEle => { return oEle.getProperty("title") }).findIndex(sEle => { return sEle === sUser }) !== -1
         }
     };
 });

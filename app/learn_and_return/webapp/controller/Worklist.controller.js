@@ -92,7 +92,6 @@ sap.ui.define([
             if (!this.oDefaultDialog) {
                 this.oDefaultDialog = new Dialog({
                     title: this.getView().getModel("i18n").getResourceBundle().getText("endSession"),
-
                     content: new Text({
                         text: this.getView().getModel("i18n").getResourceBundle().getText("endSessionDesc")
                     }),
@@ -109,14 +108,12 @@ sap.ui.define([
                         text: this.getView().getModel("i18n").getResourceBundle().getText("confirmAction"),
                         press: function() {
                             this.oDefaultDialog.close()
-                            var oRouter = this.getOwnerComponent().getRouter();
-                            oRouter.navTo("Logout", {}, true);
+                            window.location.replace("/logout");
                         }.bind(this)
                     }),
                 });
                 this.getView().addDependent(this.oDefaultDialog);
             }
-
             this.oDefaultDialog.open();
         },
 
