@@ -24,12 +24,12 @@ sap.ui.define([
         },
 
         onCreate: function() {
-            let oListBinding = this.getView().getModel().bindList('/Course'),
-                oCourseTitleField = this.getView().byId("formCourseTitle"),
-                oCourseDescriptionField = this.getView().byId("formCourseDescription"),
-                oCourseImageURLField = this.getView().byId("formCourseImageURL"),
-                oCourseCategoryField = this.getView().byId("formCourseCategory"),
-                oCourseMaterialField = this.getView().byId("formCourseMaterial")
+            this.oListBinding = this.getView().getModel().bindList('/Course');
+            this.oCourseTitleField = this.getView().byId("formCourseTitle");
+            this.oCourseDescriptionField = this.getView().byId("formCourseDescription");
+            this.oCourseImageURLField = this.getView().byId("formCourseImageURL");
+            this.oCourseCategoryField = this.getView().byId("formCourseCategory");
+            this.oCourseMaterialField = this.getView().byId("formCourseMaterial");
             oListBinding.create({
                 CourseName: oCourseTitleField.getValue(),
                 Description: oCourseDescriptionField.getValue(),
@@ -44,15 +44,11 @@ sap.ui.define([
         },
 
         clearFields: function() {
-            let oCourseTitleField = this.getView().byId("formCourseTitle"),
-                oCourseDescriptionField = this.getView().byId("formCourseDescription"),
-                oCourseImageURLField = this.getView().byId("formCourseImageURL"),
-                oCourseCategoryField = this.getView().byId("formCourseCategory")
-            oCourseTitleField.setValue("");
-            oCourseDescriptionField.setValue("");
-            oCourseImageURLField.setValue("");
-            oCourseCategoryField.removeItem("");
-            oCourseMaterialField.clearSelection();
+            this.oCourseTitleField.setValue("");
+            this.oCourseDescriptionField.setValue("");
+            this.oCourseImageURLField.setValue("");
+            this.oCourseCategoryField.removeItem("");
+            this.oCourseMaterialField.clearSelection();
         }
     });
 });

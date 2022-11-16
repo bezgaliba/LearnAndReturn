@@ -10,12 +10,12 @@ sap.ui.define([
             oRouter.navTo("learningObjectList", {}, true);
         },
         onCreate: function() {
-            let oListBinding = this.getView().getModel().bindList('/LearningObject'),
-                oObjectNameField = this.getView().byId("formLearningObjectName"),
-                oType_IDField = this.getView().byId("formLearningObjectType"),
-                oContentField = this.getView().byId("formLearningObjectContent"),
-                oGuideField = this.getView().byId("formLearningObjectGuide"),
-                oDescriptionField = this.getView().byId("formLearningObjectDescription");
+            this.oListBinding = this.getView().getModel().bindList('/LearningObject');
+            this.oObjectNameField = this.getView().byId("formLearningObjectName");
+            this.oType_IDField = this.getView().byId("formLearningObjectType");
+            this.oContentField = this.getView().byId("formLearningObjectContent");
+            this.oGuideField = this.getView().byId("formLearningObjectGuide");
+            this.oDescriptionField = this.getView().byId("formLearningObjectDescription");
             oListBinding.create({
                 Name: oObjectNameField.getValue(),
                 Type_ID: oType_IDField.getSelectedKey(),
@@ -28,16 +28,11 @@ sap.ui.define([
             this.clearFields();
         },
         clearFields: function() {
-            let oObjectNameField = this.getView().byId("formLearningObjectName"),
-                oType_IDField = this.getView().byId("formLearningObjectType"),
-                oContentField = this.getView().byId("formLearningObjectContent"),
-                oGuideField = this.getView().byId("formLearningObjectGuide"),
-                oDescriptionField = this.getView().byId("formLearningObjectDescription");
-            oObjectNameField.setValue("");
-            oType_IDField.setValue("");
-            oContentField.setValue("");
-            oGuideField.setValue("");
-            oDescriptionField.setValue("");
+            this.oObjectNameField.setValue("");
+            this.oType_IDField.setValue("");
+            this.oContentField.setValue("");
+            this.oGuideField.setValue("");
+            this.oDescriptionField.setValue("");
         }
     });
 });
