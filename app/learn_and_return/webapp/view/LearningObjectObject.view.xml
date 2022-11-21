@@ -91,7 +91,6 @@
 							<ObjectListItem
 							press=""
 							title="{createdBy}"
-							unit="{createdAt}"
 							>
 							</ObjectListItem>
 						</List>

@@ -161,8 +161,8 @@ sap.ui.define([
                 }
                 this.oDefaultDialog.open();
             } else {
-                var oText = this.getView().getModel("i18n").getResourceBundle().getText("noItemSelected");
-                MessageToast.show(oText);
+                var sText = this.getView().getModel("i18n").getResourceBundle().getText("noItemSelected");
+                MessageToast.show(sText);
             }
         },
 

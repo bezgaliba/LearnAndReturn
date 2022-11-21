@@ -2,8 +2,9 @@ sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
     "../model/formatter",
-    "sap/ui/core/routing/History"
-], function(BaseController, JSONModel, formatter, History) {
+    "sap/ui/core/routing/History",
+    "sap/m/MessageToast"
+], function(BaseController, JSONModel, formatter, History, MessageToast) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.LearningObjectObject", {
@@ -73,8 +74,10 @@ sap.ui.define([
                 oListBinding.create({
                     up__ID: this.sModifiedObjectId
                 }, false);
+                this.onNavBack();
             } else {
-                console.log("uve completed")
+                var sText = this.getView().getModel("i18n").getResourceBundle().getText("learningObjectAlreadyCompleted");
+                MessageToast.show(sText);
             }
         },
 
