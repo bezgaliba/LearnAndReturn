@@ -6,7 +6,13 @@
    xmlns:f="sap.ui.layout.form"
    xmlns:main="sap.ui.webc.main"
    xmlns:core="sap.ui.core">
-   <f:SimpleForm id="simpleForm" title="{i18n>editAction} ''{CourseName}'' {i18n>CourseObject}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+   <f:SimpleForm
+      busy="{editCourseObjectView>/busy}"
+      busyIndicatorDelay="{editCourseObjectView>/delay}"
+      id="simpleForm"
+      title="{i18n>editAction} ''{CourseName}'' {i18n>CourseObject}"
+      editable="true"
+      class="editableForm sapUiSmallMarginTopBottom">
        <f:content>
       <Text 
          text="Don't forget to hit save!"/>

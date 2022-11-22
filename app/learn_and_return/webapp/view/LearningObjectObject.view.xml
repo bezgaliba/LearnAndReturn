@@ -6,6 +6,8 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
     <Page
+		busy="{learningObjectView>/busy}"
+		busyIndicatorDelay="{learningObjectView>/delay}"
 		title="{i18n>learningObjectTitle}"
 		class= "sapUiResponsivePadding--header" >
 		<content>
@@ -40,7 +42,6 @@
 							layout="ResponsiveGridLayout">
 							<core:Title text="{i18n>learningObjectContentHeaderTitle}"/>
 							<Label text="{i18n>learningObjectContentTitle}"/>
-							<!-- <core:HTML content='&lt;iframe src=&quot;{Content}&quot;/iframe&gt;'/> -->
 							<Text text="{Content}"/>
 							<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
 							<Label text="{i18n>learningObjectGuideTitle}" />
@@ -73,7 +74,7 @@
 						</f:SimpleForm>
 					</IconTabFilter>
 					<IconTabFilter
-						text="{i18n>Completion}">
+						text="{i18n>learningObjectGuideCompletionBtn}">
 						<f:SimpleForm
 							minWidth="1024"
 							maxContainerCols="2"

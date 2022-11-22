@@ -17,11 +17,11 @@ sap.ui.define([
                 delay: 0
             });
             var oUserModel = new JSONModel();
-            await oUserModel.loadData("/user-api/attributes")
+            /* await */
+            oUserModel.loadData("/user-api/attributes")
             this.getRouter().getRoute("learningObject").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "learningObjectView");
             this.getView().setModel(oUserModel, "userModel")
-            console.log("init end")
         },
 
         _onObjectMatched: function(oEvent) {

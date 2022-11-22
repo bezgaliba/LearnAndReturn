@@ -62,7 +62,6 @@ sap.ui.define([
         },
 
         routeLO: function(sPath) {
-            console.log(sPath);
             this.getRouter().navTo("learningObject", {
                 learningObjectId: sPath
             });

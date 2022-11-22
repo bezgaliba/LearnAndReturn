@@ -19,13 +19,16 @@ sap.ui.define([
     return BaseController.extend("learnandreturn.controller.LearningObjectList", {
         formatter: formatter,
         onInit: function() {
+            var oViewModel = new JSONModel({
+                busy: true,
+                delay: 0
+            });
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
         },
         onRefresh: function() {
             var oList = this.byId("learningObjectList");
             var oBinding = oList.getBinding("items");
-            console.log(oBinding);
             oBinding.refresh();
         },
         onSearch: function(oEvent) {
