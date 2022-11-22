@@ -43,34 +43,6 @@
                width="600px"
                id="formCourseImageURL"
                placeholder="..." />
-            <Label text="{i18n>addCourseCategory}"/>
-            <Select
-               forceSelection="false"
-               width="300px"
-               id="formCourseCategory"
-               required="true"
-               items="{
-                  path: '/CourseCategory',
-                  sorter: {
-                           path: 'name'
-                        }
-                  }">
-               <core:Item key="{ID}" text="{name}" />
-            </Select>
-            <Label text="{i18n>addCourseMaterial}"/>
-            <MultiComboBox
-               width="600px"
-               id="formCourseMaterial"
-               required="true"
-               placeholder="{i18n>selectAction}"
-               items="{
-                  path: '/LearningObject',
-                  sorter: {
-                        path: 'Name'
-                  }
-               }">
-               <core:Item key="{ID}" text="{Name}"/>
-            </MultiComboBox>
          </f:content>
       </f:SimpleForm>
      <Button text="{i18n>saveAction}" press=".onSave"></Button>

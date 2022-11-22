@@ -57,27 +57,5 @@ sap.ui.define([
                 oRouter.navTo("Home", {}, true);
             }
         },
-
-        onSave: function() {
-            let oListBinding = this.getView().getModel().bindList('/Course'),
-                oCourseCategoryField = this.getView().byId("formCourseCategory"),
-                oCourseMaterialField = this.getView().byId("formCourseMaterial")
-            oListBinding.create({
-                ID: this.sModifiedEditableCourseId,
-                CourseCategory_ID: oCourseCategoryField.getSelectedKey(),
-                CourseMaterial: oCourseMaterialField.getSelectedKeys().map((sKey) => {
-                    return { LearningObject_ID: sKey };
-                })
-            });
-            this.onNavBack();
-            this.clearFields();
-        },
-
-        // clearFields: function() {
-        //     let oCategoryTitleField = this.getView().byId("formCategoryTitle"),
-        //         oCategoryDescriptionField = this.getView().byId("formCategoryDescription")
-        //     oCategoryTitleField.setValue("");
-        //     oCategoryDescriptionField.setValue("");
-        // }
     });
 });
