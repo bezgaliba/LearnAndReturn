@@ -41,10 +41,11 @@
 							maxContainerCols="2"
 							layout="ResponsiveGridLayout">
 							<core:Title text="{i18n>learningObjectContentHeaderTitle}"/>
-							<Label text="{i18n>learningObjectContentTitle}"/>
-							<Text text="{Content}"/>
+							<Link
+								text="{i18n>learningObjectContentTitle}"
+								target="_blank"
+								href="{Content}"/>
 							<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
-							<Label text="{i18n>learningObjectGuideTitle}" />
 							<Text text="{Guide}"/>
 							<core:Title text="{i18n>learningObjectGuideCompletionTitle}"/>
 							<Button
