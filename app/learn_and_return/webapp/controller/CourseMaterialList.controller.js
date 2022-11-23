@@ -1,11 +1,15 @@
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/routing/History"
-], function(BaseController, JSONModel, History) {
+    "sap/ui/core/routing/History",
+    "../model/formatter",
+], function(BaseController, JSONModel, History, formatter) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.CourseMaterialList", {
+
+        formatter: formatter,
+
         onInit: function() {
             var oViewModel = new JSONModel({
                 busy: true,

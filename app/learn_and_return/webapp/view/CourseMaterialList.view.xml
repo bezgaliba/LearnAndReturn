@@ -39,17 +39,18 @@
                 title="{LearningObject/Name}"
                 type="Active"
                 showMarkers="true"
-                number="Status:">
+                number="{i18n>learningObjectAbout}">
                 <firstStatus>
                     <ObjectStatus
-                        text="{i18n>materialTrainingCompleted}"
-                        state="Success"
+                        text="Created by: {LearningObject/createdBy}"          
                     />
 			    </firstStatus>
                 <secondStatus>
                     <ObjectStatus
-                        text="{i18n>materialTrainingPending}"
-                        state="Warning"
+                        text="{
+                            path: 'LearningObject/createdAt',
+                            formatter: '.formatter.shortDate'
+                        }"
                     />
                 </secondStatus>
             </ObjectListItem>

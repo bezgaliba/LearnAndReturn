@@ -15,7 +15,7 @@
       class="editableForm sapUiSmallMarginTopBottom">
        <f:content>
       <Text 
-         text="Don't forget to hit save!"/>
+         text="{i18n>addCourseSave}"/>
          <Label text="{i18n>addCourseTitle}"/>
             <Input
                value="{CourseName}"
@@ -45,5 +45,5 @@
                placeholder="..." />
          </f:content>
       </f:SimpleForm>
-     <Button text="{i18n>saveAction}" press=".onSave"></Button>
+     <Button text="{i18n>saveAndNavAction}" press=".onNavBack"></Button>
 </mvc:View>

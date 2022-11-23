@@ -27,9 +27,10 @@ sap.ui.define([], function() {
                 return "★★★★★";
             }
         },
-
-        isCompleted: function(sUser) {
-            return this.byId("completionList").getAggregation("items")?.map(oEle => { return oEle.getProperty("title") }).findIndex(sEle => { return sEle === sUser }) !== -1
-        }
+        shortDate: function(dDate) {
+            var dNewDate = new Date(dDate);
+            var oDateInfo = "Last modified: " + dNewDate.getDate() + '/' + (dNewDate.getMonth() + 1) + '/' + dNewDate.getFullYear();
+            return oDateInfo
+        },
     };
 });
