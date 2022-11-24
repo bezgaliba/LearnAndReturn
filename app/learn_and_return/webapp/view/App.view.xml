@@ -6,10 +6,10 @@
     <FlexBox alignItems="Start" justifyContent="SpaceBetween">
             <items>
             <Title
-                class="sapUiResponsiveMargin"
+                class="sapUiSmallMargin"
                 text="Learn ＆ Return"/>
             <Button
-                class="sapUiResponsiveMargin"
+                class="sapUiSmallMargin"
                 text="Logout"
                 type="Emphasized"
                 press=".onLogoutConfirmation"/>

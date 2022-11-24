@@ -5,10 +5,6 @@
     displayBlock="true"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-    <Page
-		enableScrolling="true"
-		title="LOs (Admin/Instructor view)"
-		titleLevel="H4">
         <List
         mode="SingleSelectLeft"
         id="learningObjectList"
@@ -69,5 +65,4 @@
                 text="{Type/name}"/>
             </ObjectListItem>
 		</List>
-	</Page>
 </mvc:View>

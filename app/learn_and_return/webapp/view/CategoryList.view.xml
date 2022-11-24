@@ -37,6 +37,7 @@
                         icon="sap-icon://add"
                         tooltip="{i18n>createAction}"
                         press=".onNavCreate"
+                        enabled="false"
                     />
                     <Button
                         id="deleteCategory"

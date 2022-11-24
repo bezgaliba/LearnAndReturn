@@ -1,7 +1,7 @@
 namespace my.LandR;
 using { cuid, sap.common.CodeList, managed } from '@sap/cds/common';
 
-entity CourseCategory : cuid, CodeList {
+entity CourseCategory : cuid, managed, CodeList {
 }
 
 entity Course : cuid, managed {
