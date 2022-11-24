@@ -16,11 +16,6 @@
 				alignItems="Center"
 				justifyContent="End">
                 <Button
-                    text="Logout"
-                    type="Emphasized"
-                    class="sapUiSmallMarginEnd"
-                    press="onLogoutConfirmation"/>
-                <Button
                     class="sapUiSmallMargin"
                     text="Learning Objects"
                     press="onNavLO"/>
@@ -28,9 +23,6 @@
                     class="sapUiSmallMarginEnd"
                     text="Course Category"
                     press="onNavCat"/>
-                <Title
-                    class="sapUiSmallMargin"
-                    text="Learn ＆ Return"/>
             </FlexBox>
         </semantic:titleHeading>
 

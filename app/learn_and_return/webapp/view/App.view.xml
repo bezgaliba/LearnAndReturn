@@ -3,7 +3,19 @@
     displayBlock="true"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
-        <App
+    <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+            <items>
+            <Title
+                class="sapUiResponsiveMargin"
+                text="Learn ＆ Return"/>
+            <Button
+                class="sapUiResponsiveMargin"
+                text="Logout"
+                type="Emphasized"
+                press=".onLogoutConfirmation"/>
+            </items>
+            </FlexBox>
+            <App
             id="app"
             busy="{appView>/busy}"
             busyIndicatorDelay="{appView>/delay}"

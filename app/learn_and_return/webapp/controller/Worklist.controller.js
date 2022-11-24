@@ -88,35 +88,6 @@ sap.ui.define([
 
         },
 
-        onLogoutConfirmation: function() {
-            if (!this.oDefaultDialog) {
-                this.oDefaultDialog = new Dialog({
-                    title: this.getView().getModel("i18n").getResourceBundle().getText("endSession"),
-                    content: new Text({
-                        text: this.getView().getModel("i18n").getResourceBundle().getText("endSessionDesc")
-                    }),
-                    type: DialogType.Message,
-                    beginButton: new Button({
-                        type: ButtonType.Emphasized,
-                        text: this.getView().getModel("i18n").getResourceBundle().getText("cancelAction"),
-                        press: function() {
-                            this.oDefaultDialog.close();
-                        }.bind(this)
-                    }),
-                    endButton: new Button({
-                        type: ButtonType.Emphasized,
-                        text: this.getView().getModel("i18n").getResourceBundle().getText("confirmAction"),
-                        press: function() {
-                            this.oDefaultDialog.close()
-                            window.location.replace("/logout");
-                        }.bind(this)
-                    }),
-                });
-                this.getView().addDependent(this.oDefaultDialog);
-            }
-            this.oDefaultDialog.open();
-        },
-
         deleteCourse: function() {
             var oSelected = this.byId("courseTable").getSelectedItem();
             if (oSelected) {
