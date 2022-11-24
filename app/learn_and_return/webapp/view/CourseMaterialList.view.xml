@@ -8,15 +8,11 @@
     xmlns:mvc="sap.ui.core.mvc">
     
     <Page
+    title="{i18n>materialTitle} {CourseName}"
     busy="{materialView>/busy}"
     busyIndicatorDelay="{materialView>/delay}">
-    <Button
-        text="{i18n>navBackButtonTitle}"
-        press=".onNavBack"/>
-    <Title
-        text="{i18n>materialTitle} {CourseName}"
-        level="H2"/>
     <List
+        class="sapUiSmallMarginBottom"
         id="learningObjectList"
         select=".onSelect"
         items="{
@@ -55,5 +51,9 @@
                 </secondStatus>
             </ObjectListItem>
 		</List>
+        <Button
+        class="sapUiSmallMarginBegin"
+        text="{i18n>navBackButtonTitle}"
+        press=".onNavBack"/>
     </Page>
 </mvc:View>

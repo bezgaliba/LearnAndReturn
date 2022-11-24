@@ -63,6 +63,7 @@
                         press=".onDeleteConfirmation"
                         />
                         <ComboBox
+                            placeholder="{i18n>selectCategory}"
                             id="selectedCategory"
                             showClearIcon="true"
                             change=".onLiveChange"
