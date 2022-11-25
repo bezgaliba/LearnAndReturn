@@ -58,9 +58,22 @@ service LMSService @(path: '/browse', impl: './srv.js', requires: 'authenticated
             {
                 grant: 'READ',
                 to: 'Student'
-            },
+            }
     ])
         as projection on LandR.LearningObject;
-    entity LearningObjectType
+    entity LearningObjectType @(restrict: [
+            {
+                grant: '*',
+                to: 'Admin'
+            },
+            {
+                grant: 'READ',
+                to: 'Instructor'
+            },
+            {
+                grant: 'READ',
+                to: 'Student'
+            }
+    ])
         as projection on LandR.LearningObjectType;
 }
