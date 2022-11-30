@@ -5,11 +5,18 @@ sap.ui.define([
     "../model/formatter",
     "sap/ui/core/format/DateFormat",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function(BaseController, JSONModel, History, formatter, DateFormat, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/Sorter",
+], function(BaseController, JSONModel, History, formatter, DateFormat, Filter, FilterOperator, Sorter) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.Object", {
+
+        // onBeforeRendering: function() {
+        //     this.getModel().attachRequestCompleted(function() {
+        //         this.getAverage()
+        //     })
+        // },
 
         formatter: formatter,
         onInit: function() {
@@ -21,6 +28,8 @@ sap.ui.define([
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
         },
+
+
 
         onNavBack: function() {
             var oHistory = History.getInstance();
@@ -57,6 +66,13 @@ sap.ui.define([
             });
         },
 
+        getAverage: function() {
+            var iSum = 0;
+            var iCount = this.getView().byId("reviewList").getAggregation("items").map(oEle => { iSum += oEle.getProperty("info").length }).length;
+            var iAvg = iSum / iCount;
+            this.getModel('objectView').setProperty("/avg", iAvg)
+        },
+
         _onBindingChange: function() {
             var oView = this.getView(),
                 oElementBinding = oView.getElementBinding();
@@ -64,9 +80,6 @@ sap.ui.define([
                 this.getRouter().getTargets().display("objectNotFound");
                 return;
             }
-            // var oList = this.byId("reviewList");
-            // var oBinding = oList.getBinding("items");
-            // oBinding.filter(new Filter("ReviewID", FilterOperator.EQ, sObjectId));
         },
 
 
@@ -108,7 +121,5 @@ sap.ui.define([
                 materialObjectId: oItem.getBindingContext().getPath().substring("/Course".length)
             });
         },
-
     });
-
 });

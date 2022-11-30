@@ -19,10 +19,12 @@ sap.ui.define([
 
         formatter: formatter,
 
-        onInit: function() {
-            var oViewModel;
+        onInit: async function() {
+            await this.disableButton('createCourse');
             this._aTableSearchState = [];
-            oViewModel = new JSONModel({
+            var oViewModel = new JSONModel({
+                busy: true,
+                delay: 0,
                 worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
                 tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
             });

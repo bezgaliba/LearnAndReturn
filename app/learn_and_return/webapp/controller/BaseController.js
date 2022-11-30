@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/UIComponent",
-    "sap/m/library"
-], function(Controller, UIComponent, mobileLibrary) {
+    "sap/m/library",
+    "sap/ui/model/json/JSONModel"
+], function(Controller, UIComponent, mobileLibrary, JSONModel) {
     "use strict";
 
     // shortcut for sap.m.URLHelper
@@ -46,6 +47,15 @@ sap.ui.define([
          */
         getResourceBundle: function() {
             return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+        },
+
+        disableButton: async function(sID) {
+            var oUserModel = new JSONModel();
+            await oUserModel.loadData("/user-api/attributes")
+            this.getView().setModel(oUserModel, "userModel")
+            if (!oUserModel.getData().scopes.includes('Student')) {
+                this.getView().byId(sID).setVisible(true)
+            }
         }
     });
 

@@ -16,12 +16,9 @@ sap.ui.define([
                 busy: true,
                 delay: 0
             });
-            var oUserModel = new JSONModel();
-            /* await */
-            oUserModel.loadData("/user-api/attributes")
             this.getRouter().getRoute("learningObject").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "learningObjectView");
-            this.getView().setModel(oUserModel, "userModel")
+            await this.disableButton('');
         },
 
         _onObjectMatched: function(oEvent) {

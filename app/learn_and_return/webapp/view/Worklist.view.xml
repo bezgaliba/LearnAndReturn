@@ -51,6 +51,7 @@
                             level="H3"/>
                         <ToolbarSpacer />
                         <Button
+                            visible="false"
                             id="createCourse"
                             icon="sap-icon://add"
                             tooltip="{i18n>createAction}"

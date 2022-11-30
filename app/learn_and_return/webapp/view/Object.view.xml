@@ -70,26 +70,35 @@
                         <FlexBox
                                 direction="Column"
                                 alignItems="Start">
+
                             <Text
                                 class="sapUiSmallMarginTop"
-                                text="Choose stars + write a comment"/>
+                                text="{objectView>/avg}"/>
                             <RatingIndicator
-                                id="ratingIndicator"
-                                maxValue="5"
-                                class="sapUiSmallMarginTop"
-                                value="5"
-                                change=".setIndicator"
-                                iconSize="16px"
-                                tooltip="Rating Tooltip"/>
+                                    id="ratingIndicator"
+                                    maxValue="5"
+                                    class="sapUiLargeMarginEnd"
+                                    value="5"
+                                    change=".setIndicator"
+                                    iconSize="16px"
+                                    tooltip="Rating Tooltip"/>
                         </FlexBox>
                         <FeedInput
                             id="commentItem"
                             post=".onPost"/>
                         <List
-                            items="{
-                                path: 'Review'
-                            }"
                             id="reviewList"
+                            busy="{objectView>/busy}"
+                            busyIndicatorDelay="{objectView>/delay}"
+                            growing="true"
+                            growingThreshold="5"
+                            items="{
+                                path: 'Review',
+                                sorter: {
+                                    path: 'createdAt',
+                                    descending: true
+                                }
+                            }"
                             noDataText="{i18n>objectNoData}"
                             showSeparators="Inner"
                             >
