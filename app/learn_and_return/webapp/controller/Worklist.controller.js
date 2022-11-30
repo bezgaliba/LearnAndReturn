@@ -28,6 +28,7 @@ sap.ui.define([
                 worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
                 tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
             });
+
             this.setModel(oViewModel, "worklistView");
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
@@ -130,8 +131,10 @@ sap.ui.define([
                             }.bind(this)
                         }),
                     });
+
                     this.getView().addDependent(this.oDefaultDialog);
                 }
+
                 this.oDefaultDialog.open();
             } else {
                 var sText = this.getView().getModel("i18n").getResourceBundle().getText("noItemSelected");

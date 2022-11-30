@@ -6,6 +6,7 @@ sap.ui.define([
     return BaseController.extend("learnandreturn.controller.AddCategory", {
 
         onInit: function() {},
+
         onNavCategoryList: function() {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("category", {}, true);
@@ -23,6 +24,7 @@ sap.ui.define([
                 name: this.oCategoryTitleField.getValue(),
                 descr: this.oCategoryDescriptionField.getValue(),
             });
+
             this.onNavCategoryList();
             this.clearFields();
         },

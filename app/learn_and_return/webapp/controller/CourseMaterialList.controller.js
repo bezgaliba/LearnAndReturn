@@ -15,6 +15,7 @@ sap.ui.define([
                 busy: true,
                 delay: 0
             });
+
             this.getRouter().getRoute("material").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "materialView");
         },

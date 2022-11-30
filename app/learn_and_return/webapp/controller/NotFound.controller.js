@@ -1,15 +1,11 @@
 sap.ui.define([
     "./BaseController"
-], function (BaseController) {
+], function(BaseController) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.NotFound", {
 
-        /**
-         * Navigates to the worklist when the link is pressed
-         * @public
-         */
-        onLinkPressed : function () {
+        onLinkPressed: function() {
             this.getRouter().navTo("worklist");
         }
 

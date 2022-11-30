@@ -19,17 +19,17 @@ sap.ui.define([
         // },
 
         formatter: formatter,
+
         onInit: function() {
             this.iRating = 5;
             var oViewModel = new JSONModel({
                 busy: true,
                 delay: 0
             });
+
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
         },
-
-
 
         onNavBack: function() {
             var oHistory = History.getInstance();
@@ -66,12 +66,12 @@ sap.ui.define([
             });
         },
 
-        getAverage: function() {
-            var iSum = 0;
-            var iCount = this.getView().byId("reviewList").getAggregation("items").map(oEle => { iSum += oEle.getProperty("info").length }).length;
-            var iAvg = iSum / iCount;
-            this.getModel('objectView').setProperty("/avg", iAvg)
-        },
+        // getAverage: function() {
+        //     var iSum = 0;
+        //     var iCount = this.getView().byId("reviewList").getAggregation("items").map(oEle => { iSum += oEle.getProperty("info").length }).length;
+        //     var iAvg = iSum / iCount;
+        //     this.getModel('objectView').setProperty("/avg", iAvg)
+        // },
 
         _onBindingChange: function() {
             var oView = this.getView(),
@@ -81,7 +81,6 @@ sap.ui.define([
                 return;
             }
         },
-
 
         onPost: function(oEvent) {
             var oListBinding = this.byId("reviewList").getBinding("items")

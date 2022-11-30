@@ -14,6 +14,7 @@ sap.ui.define([
     var DialogType = mobileLibrary.DialogType;
 
     return BaseController.extend("learnandreturn.controller.CategoryList", {
+
         onInit: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
@@ -36,14 +37,17 @@ sap.ui.define([
             var oBinding = oList.getBinding("items");
             oBinding.filter(aFilters, "Application");
         },
+
         onNavHome: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Home", {});
         },
+
         onNavCreate: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("AddCategory", {});
         },
+
         deleteCategory: function() {
             var oSelected = this.byId("categoryList").getSelectedItem();
             if (oSelected) {
@@ -54,6 +58,7 @@ sap.ui.define([
                 });
             }
         },
+
         onDeleteConfirmation: function() {
             var oSelected = this.byId("categoryList").getSelectedItem();
             if (oSelected) {
@@ -83,8 +88,10 @@ sap.ui.define([
                             }.bind(this)
                         }),
                     });
+
                     this.getView().addDependent(this.oDefaultDialog);
                 }
+
                 this.oDefaultDialog.open();
             } else {
                 var oText = this.getView().getModel("i18n").getResourceBundle().getText("noItemSelected");

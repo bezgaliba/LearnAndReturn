@@ -16,6 +16,7 @@ sap.ui.define([
                 busy: true,
                 delay: 0
             });
+
             this.getRouter().getRoute("learningObject").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "learningObjectView");
             await this.disableButton('');
@@ -81,7 +82,6 @@ sap.ui.define([
         onEdit: function(oEvent) {
             this._showObject(oEvent.getSource())
         },
-
 
         _showObject: function(oItem) {
             this.getRouter().navTo("editLearningObject", {

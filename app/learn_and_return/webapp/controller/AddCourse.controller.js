@@ -4,6 +4,7 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.AddCourse", {
+
         onInit: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
@@ -41,6 +42,7 @@ sap.ui.define([
                     return { LearningObject_ID: sKey };
                 })
             });
+
             this.onNavWorklist();
             this.clearFields();
         },

@@ -4,11 +4,14 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.AddLearningObject", {
+
         onInit: function() {},
+
         onNavLOList: function() {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("learningObjectList", {}, true);
         },
+
         onCreate: function() {
             var oListBinding = this.getView().getModel().bindList('/LearningObject');
             this.oObjectNameField = this.getView().byId("formLearningObjectName");
@@ -23,10 +26,11 @@ sap.ui.define([
                 Guide: this.oGuideField.getValue(),
                 Description: this.oDescriptionField.getValue()
             });
-            var self = this;
+
             this.onNavLOList();
             this.clearFields();
         },
+
         clearFields: function() {
             this.oObjectNameField.setValue("");
             this.oType_IDField.setValue("");

@@ -41,8 +41,10 @@ sap.ui.define([
                         }.bind(this)
                     }),
                 });
+
                 this.getView().addDependent(this.oDefaultDialog);
             }
+
             this.oDefaultDialog.open();
         },
     });

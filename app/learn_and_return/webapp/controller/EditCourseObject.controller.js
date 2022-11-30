@@ -6,11 +6,13 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.EditCourseObject", {
+
         onInit: function() {
             var oViewModel = new JSONModel({
                 busy: true,
                 delay: 0
             });
+
             this.getRouter().getRoute("editCourseObject").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "editCourseObjectView");
         },
