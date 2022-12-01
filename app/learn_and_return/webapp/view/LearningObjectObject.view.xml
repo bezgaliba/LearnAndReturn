@@ -6,96 +6,128 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
     <Page
+		title="{i18n>learningObjectPageTitle} {Name}"
+		titleAlignment="Center"
 		busy="{learningObjectView>/busy}"
 		busyIndicatorDelay="{learningObjectView>/delay}">
 		<Button
-				text="{i18n>navBackButtonTitle}"
-				press=".onNavBack"/>
-			<Button
-				icon="sap-icon://edit"
-				text="{i18n>editAction}"
-				type="Emphasized"
-                class="sapUiSmallMarginEnd"
-				press=".onEdit"/>
-			<ObjectHeader
-				title="{Name}"
-				backgroundDesign="Solid">
-				<statuses>
-					<ObjectStatus title="{i18n>learningObjectStatusType}" text="{Type/name}" state="Success" />
-				</statuses>
-				<attributes>
-					<ObjectAttribute text="{Description}" />
-				</attributes>
-			</ObjectHeader>
-			<IconTabBar
-				expanded="{device>/isNoPhone}"
-				class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
-				<items>
-					<IconTabFilter
-						text="{i18n>learningObjectContentTabTitle}">
-						<f:SimpleForm
-							minWidth="1024"
-							maxContainerCols="2"
-							layout="ResponsiveGridLayout">
-							<core:Title text="{i18n>learningObjectContentHeaderTitle}"/>
-							<Link
-								text="{i18n>learningObjectContentTitle}"
-								target="_blank"
-								href="{Content}"/>
-							<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
-							<Text text="{Guide}"/>
-							<core:Title text="{i18n>learningObjectGuideCompletionTitle}"/>
-							<Button
-								type="Accept"
-								width="200px"
-								text="{i18n>learningObjectGuideCompletionBtn}"
-								press=".onCompletion"/>
-						</f:SimpleForm>
-					</IconTabFilter>
-					<IconTabFilter
-						text="{i18n>learningObjectLogsTabTitle}">
-						<f:SimpleForm
-							minWidth="1024"
-							maxContainerCols="2"
-							layout="ResponsiveGridLayout">
-							<f:title>
-								<core:Title text="{i18n>learningObjectHistoryTitle}"/>
-							</f:title>
-							<Label text="{i18n>createdBy}"/>
-							<Text text="{createdBy}"/>
-							<Label text="{i18n>createdAt}"/>
-							<Text text="{createdAt}"/>
-							<Label text="{i18n>modifiedBy}"/>
-							<Text text="{modifiedBy}"/>
-							<Label text="{i18n>modifiedAt}"/>
-							<Text text="{modifiedAt}"/>
-						</f:SimpleForm>
-					</IconTabFilter>
-					<IconTabFilter
-						text="{i18n>learningObjectGuideCompletionBtn}">
-						<f:SimpleForm
-							minWidth="1024"
-							maxContainerCols="2"
-							layout="ResponsiveGridLayout">
-							<f:title>
-								<core:Title text="{i18n>learningObjectCompletionTitle}"/>
-							</f:title>
-							<List
-								items="{
-									path: 'CompletionList'
-								}"
-								id="completionList"
-								noDataText="{i18n>learningObjectNoCompletion}"
-							>
-							<ObjectListItem
-							press=""
-							title="{createdBy}"
-							>
-							</ObjectListItem>
-						</List>
-						</f:SimpleForm>
-					</IconTabFilter>
-				</items>
-			</IconTabBar>
+			text="{i18n>navBackButtonTitle}"
+			class="sapUiSmallMargin"
+			press=".onNavBack"
+			/>
+		<Button
+			id="editLO"
+            visible="false"
+			icon="sap-icon://edit"
+			text="{i18n>editAction}"
+			type="Emphasized"
+			class="sapUiSmallMargin"
+			press=".onEdit"/>
+		<ObjectHeader
+			title="{Name}"
+			backgroundDesign="Solid">
+			<statuses>
+				<ObjectStatus
+				class="sapMObjectStatusMedium"
+				title="{i18n>learningObjectStatusType}"
+				text="{Type/name}"
+				state="Warning" />
+				<ObjectStatus
+				id="completionStatus"
+				class="sapMObjectStatusLarge"
+				title="{i18n>learningObjectCompletionStatus}"
+				text=" "
+				state="Warning"
+				icon="sap-icon://lateness" />
+			</statuses>
+			<attributes>
+				<ObjectAttribute text="{Description}" />
+			</attributes>
+		</ObjectHeader>
+		<FlexBox
+        alignItems="End"
+        justifyContent="End">
+			<items>
+				<Button
+					class="sapUiSmallMargin"
+					text="Check Training Status"
+					press=".submitStatus"
+					/>
+			</items>
+   		</FlexBox>
+		<IconTabBar
+			expanded="{device>/isNoPhone}"
+			class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter
+					text="{i18n>learningObjectContentTabTitle}">
+					<f:SimpleForm
+						minWidth="1024"
+						maxContainerCols="2"
+						layout="ResponsiveGridLayout">
+						<core:Title text="{i18n>learningObjectContentHeaderTitle}"/>
+						<Link
+							text="{i18n>learningObjectContentTitle}"
+							target="_blank"
+							href="{Content}"/>
+						<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
+						<Text text="{Guide}"/>
+						<core:Title text="{i18n>learningObjectGuideCompletionTitle}"/>
+						<Button
+							type="Accept"
+							width="200px"
+							text="{i18n>learningObjectGuideCompletionBtn}"
+							press=".onCompletion"/>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter
+					id="logsTab"
+					visible="false"
+					text="{i18n>learningObjectLogsTabTitle}">
+					<f:SimpleForm
+						minWidth="1024"
+						maxContainerCols="2"
+						layout="ResponsiveGridLayout">
+						<f:title>
+							<core:Title text="{i18n>learningObjectHistoryTitle}"/>
+						</f:title>
+						<Label text="{i18n>createdBy}"/>
+						<Text text="{createdBy}"/>
+						<Label text="{i18n>createdAt}"/>
+						<Text text="{createdAt}"/>
+						<Label text="{i18n>modifiedBy}"/>
+						<Text text="{modifiedBy}"/>
+						<Label text="{i18n>modifiedAt}"/>
+						<Text text="{modifiedAt}"/>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter
+					id="listTab"
+					visible="false"
+					text="{i18n>learningObjectCompleteTabTitle}">
+					<f:SimpleForm
+						minWidth="1024"
+						maxContainerCols="2"
+						layout="ResponsiveGridLayout">
+						<f:title>
+							<core:Title text="{i18n>learningObjectCompletionTitle}"/>
+						</f:title>
+						<List
+							items="{
+								path: 'CompletionList'
+							}"
+							id="completionList"
+							noDataText="{i18n>learningObjectNoCompletion}"
+						>
+						<ObjectListItem
+						press=""
+						title="{createdBy}"
+						>
+						</ObjectListItem>
+					</List>
+					</f:SimpleForm>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
 	</Page>
 </mvc:View>

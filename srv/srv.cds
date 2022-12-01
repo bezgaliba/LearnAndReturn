@@ -56,7 +56,7 @@ service LMSService @(path: '/browse', impl: './srv.js', requires: 'authenticated
                 to: 'Instructor'
             },
             {
-                grant: 'READ',
+                grant: ['READ', 'CREATE'],
                 to: 'Student'
             }
     ])

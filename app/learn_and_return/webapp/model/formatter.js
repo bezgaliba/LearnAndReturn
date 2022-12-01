@@ -11,7 +11,6 @@ sap.ui.define([], function() {
             return parseFloat(sValue).toFixed(2);
         },
 
-
         intToStars: function(iValue) {
             if (iValue == 0) {
                 return "☆";
@@ -27,6 +26,7 @@ sap.ui.define([], function() {
                 return "★★★★★";
             }
         },
+
         shortDate: function(dDate) {
             var dNewDate = new Date(dDate);
             var oDateInfo = "Last modified: " + dNewDate.getDate() + '/' + (dNewDate.getMonth() + 1) + '/' + dNewDate.getFullYear();

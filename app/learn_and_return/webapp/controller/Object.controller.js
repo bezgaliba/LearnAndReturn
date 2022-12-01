@@ -20,7 +20,7 @@ sap.ui.define([
 
         formatter: formatter,
 
-        onInit: function() {
+        onInit: async function() {
             this.iRating = 5;
             var oViewModel = new JSONModel({
                 busy: true,
@@ -29,6 +29,8 @@ sap.ui.define([
 
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
+
+            await this.enableUIElement('editCourse');
         },
 
         onNavBack: function() {

@@ -12,6 +12,7 @@ sap.ui.define([
         formatter: formatter,
 
         onInit: async function() {
+            this.iCompletionFlag = 0;
             var oViewModel = new JSONModel({
                 busy: true,
                 delay: 0
@@ -19,7 +20,9 @@ sap.ui.define([
 
             this.getRouter().getRoute("learningObject").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "learningObjectView");
-            await this.disableButton('');
+
+            await this.enableUIElement('logsTab');
+            await this.enableUIElement('listTab');
         },
 
         _onObjectMatched: function(oEvent) {
@@ -61,13 +64,32 @@ sap.ui.define([
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("Home", {}, true);
             }
+            this.byId("completionStatus").setText("")
+            this.byId("completionStatus").setState("Warning")
+            this.byId("completionStatus").setIcon("sap-icon://lateness")
+        },
+
+        submitStatus: function() {
+            var bHasCompleted = this.byId("completionList").getAggregation("items").map(
+                oEle => { return oEle.getProperty("title") }).findIndex(
+                sEle => { return sEle === this.getView().getModel("userModel").getData().name }) !== -1;
+            if (!bHasCompleted) {
+                this.byId("completionStatus").setText("Pending")
+                this.byId("completionStatus").setState("Error")
+                this.byId("completionStatus").setIcon("sap-icon://sys-help-2")
+            } else {
+                this.byId("completionStatus").setText("Completed")
+                this.byId("completionStatus").setState("Success")
+                this.byId("completionStatus").setIcon("sap-icon://sys-enter-2")
+            }
+            MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("learningObjectStatusCheck"));
         },
 
         onCompletion: function() {
-            var bHascompleted = this.byId("completionList").getAggregation("items").map(
+            var bHasCompleted = this.byId("completionList").getAggregation("items").map(
                 oEle => { return oEle.getProperty("title") }).findIndex(
                 sEle => { return sEle === this.getView().getModel("userModel").getData().name }) !== -1;
-            if (!bHascompleted) {
+            if (!bHasCompleted) {
                 var oListBinding = this.byId("completionList").getBinding("items");
                 oListBinding.create({
                     up__ID: this.sModifiedObjectId

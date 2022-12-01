@@ -24,11 +24,11 @@ sap.ui.define([
             return this.getOwnerComponent().getModel("i18n").getResourceBundle();
         },
 
-        disableButton: async function(sID) {
-            var oUserModel = new JSONModel();
-            await oUserModel.loadData("/user-api/attributes")
-            this.getView().setModel(oUserModel, "userModel")
-            if (!oUserModel.getData().scopes.includes('Student')) {
+        enableUIElement: async function(sID) {
+            this.oUserModel = new JSONModel();
+            await this.oUserModel.loadData("/user-api/attributes")
+            this.getView().setModel(this.oUserModel, "userModel")
+            if (!this.oUserModel.getData().scopes.includes('Student')) {
                 this.getView().byId(sID).setVisible(true)
             }
         }

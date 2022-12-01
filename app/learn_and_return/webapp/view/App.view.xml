@@ -15,9 +15,7 @@
                 press=".onLogoutConfirmation"/>
             </items>
             </FlexBox>
-            <App
-            id="app"
-            busy="{appView>/busy}"
-            busyIndicatorDelay="{appView>/delay}"
-            />
+            <App id="app"
+            >
+        </App>
 </mvc:View>

@@ -20,7 +20,6 @@ sap.ui.define([
         formatter: formatter,
 
         onInit: async function() {
-            await this.disableButton('createCourse');
             this._aTableSearchState = [];
             var oViewModel = new JSONModel({
                 busy: true,
@@ -28,10 +27,17 @@ sap.ui.define([
                 worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
                 tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
             });
-
             this.setModel(oViewModel, "worklistView");
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
+
+            await this.enableUIElement('createCourse');
+            await this.enableUIElement('deleteCourse');
+            await this.enableUIElement('navLO');
+            await this.enableUIElement('navCat');
+
+            oViewModel.setProperty("/busy", false);
         },
 
         onRefresh: function() {
