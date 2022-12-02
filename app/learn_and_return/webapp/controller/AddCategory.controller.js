@@ -5,7 +5,9 @@ sap.ui.define([
 
     return BaseController.extend("learnandreturn.controller.AddCategory", {
 
-        onInit: function() {},
+        onInit: function() {
+            this.getRouter().getRoute("AddCategory").attachPatternMatched(this.studentCheck, this);
+        },
 
         onNavCategoryList: function() {
             var oRouter = this.getOwnerComponent().getRouter();

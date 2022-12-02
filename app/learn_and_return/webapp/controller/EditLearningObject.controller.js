@@ -14,6 +14,7 @@ sap.ui.define([
             });
 
             this.getRouter().getRoute("editLearningObject").attachPatternMatched(this._onObjectMatched, this);
+            this.getRouter().getRoute("editLearningObject").attachPatternMatched(this.studentCheck, this);
             this.setModel(oViewModel, "editLearningObjectView");
         },
 

@@ -29,7 +29,6 @@ sap.ui.define([
 
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
-
             await this.enableUIElement('editCourse');
         },
 

@@ -36,7 +36,7 @@
 				id="completionStatus"
 				class="sapMObjectStatusLarge"
 				title="{i18n>learningObjectCompletionStatus}"
-				text=" "
+				text=""
 				state="Warning"
 				icon="sap-icon://lateness" />
 			</statuses>

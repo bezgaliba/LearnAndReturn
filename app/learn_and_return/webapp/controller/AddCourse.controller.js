@@ -8,6 +8,7 @@ sap.ui.define([
         onInit: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
+            this.getRouter().getRoute("addCourse").attachPatternMatched(this.studentCheck, this);
         },
 
         onRefresh: function() {

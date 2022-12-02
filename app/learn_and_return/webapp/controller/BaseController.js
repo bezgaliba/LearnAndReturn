@@ -24,6 +24,14 @@ sap.ui.define([
             return this.getOwnerComponent().getModel("i18n").getResourceBundle();
         },
 
+        studentCheck: async function() {
+            this.oUserModel = new JSONModel();
+            await this.oUserModel.loadData("/user-api/attributes")
+            if (this.oUserModel.getData().scopes.includes('Student')) {
+                this.getRouter().getTargets().display("objectNotFound");
+            }
+        },
+
         enableUIElement: async function(sID) {
             this.oUserModel = new JSONModel();
             await this.oUserModel.loadData("/user-api/attributes")

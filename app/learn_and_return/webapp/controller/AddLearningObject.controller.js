@@ -5,7 +5,9 @@ sap.ui.define([
 
     return BaseController.extend("learnandreturn.controller.AddLearningObject", {
 
-        onInit: function() {},
+        onInit: function() {
+            this.getRouter().getRoute("addLearningObject").attachPatternMatched(this.studentCheck, this);
+        },
 
         onNavLOList: function() {
             var oRouter = this.getOwnerComponent().getRouter();

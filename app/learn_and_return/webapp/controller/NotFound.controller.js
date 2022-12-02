@@ -6,9 +6,7 @@ sap.ui.define([
     return BaseController.extend("learnandreturn.controller.NotFound", {
 
         onLinkPressed: function() {
-            this.getRouter().navTo("worklist");
+            this.getRouter().navTo("Home");
         }
-
     });
-
 });
