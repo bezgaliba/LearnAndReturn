@@ -1,5 +1,6 @@
 sap.ui.define([
     "./BaseController",
+    "sap/m/MessageToast"
 ], function(BaseController) {
     "use strict";
 
@@ -23,6 +24,7 @@ sap.ui.define([
         onNavWorklist: function() {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("Home", {}, true);
+            this.clearFields();
         },
 
         onCreate: function() {
@@ -33,19 +35,21 @@ sap.ui.define([
             this.oCourseImageURLField = this.getView().byId("formCourseImageURL");
             this.oCourseCategoryField = this.getView().byId("formCourseCategory");
             this.oCourseMaterialField = this.getView().byId("formCourseMaterial");
-            oListBinding.create({
-                CourseName: this.oCourseTitleField.getValue(),
-                Description: this.oCourseDescriptionField.getValue(),
-                ShortDescription: this.oCourseDescriptionField.getValue(),
-                ImageURL: this.oCourseImageURLField.getValue(),
-                CourseCategory_ID: this.oCourseCategoryField.getSelectedKey(),
-                CourseMaterial: this.oCourseMaterialField.getSelectedKeys().map((sKey) => {
-                    return { LearningObject_ID: sKey };
-                })
-            });
-
-            this.onNavWorklist();
-            this.clearFields();
+            if (this.oCourseImageURLField.getValue().includes('http') && !this.oCourseImageURLField.getValue().includes('://')) {
+                oListBinding.create({
+                    CourseName: this.oCourseTitleField.getValue(),
+                    Description: this.oCourseDescriptionField.getValue(),
+                    ShortDescription: this.oCourseDescriptionField.getValue(),
+                    ImageURL: this.oCourseImageURLField.getValue(),
+                    CourseCategory_ID: this.oCourseCategoryField.getSelectedKey(),
+                    CourseMaterial: this.oCourseMaterialField.getSelectedKeys().map((sKey) => {
+                        return { LearningObject_ID: sKey };
+                    })
+                });
+                this.onNavWorklist();
+            } else {
+                MessageToast.show(this.getView().getModel("i18n").getResourceBundle().getText("addProvideValidURLLink"));
+            }
         },
 
         clearFields: function() {

@@ -19,6 +19,7 @@ sap.ui.define([
 
         formatter: formatter,
 
+
         onInit: async function() {
             this._aTableSearchState = [];
             var oViewModel = new JSONModel({
@@ -94,7 +95,6 @@ sap.ui.define([
                 }
                 this._applySearch(aTableSearchState);
             }
-
         },
 
         deleteCourse: function() {
@@ -155,7 +155,10 @@ sap.ui.define([
         },
 
         _applySearch: function(aTableSearchState) {
+            this.byId('selectedCategory').setValue("")
+            var oTable = this.byId("courseTable")
             var oViewModel = this.getModel("worklistView")
+            oTable.getBinding("items").filter(aTableSearchState, "Application");
             if (aTableSearchState.length !== 0) {
                 oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("noSearchData"));
             }
@@ -165,6 +168,7 @@ sap.ui.define([
             let sCourseCat = this.byId('selectedCategory').getSelectedKey(),
                 oTable = this.byId("courseTable"),
                 oFilter = sCourseCat ? new Filter('CourseCategory/ID', FilterOperator.EQ, sCourseCat) : null;
+            this.byId('searchField').setValue("")
             oTable.getBinding("items").filter(oFilter);
         }
     });
