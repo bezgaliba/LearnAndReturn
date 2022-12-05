@@ -21,10 +21,6 @@ sap.ui.define([
         formatter: formatter,
 
         onInit: function() {
-            var oViewModel = new JSONModel({
-                busy: true,
-                delay: 0
-            });
             this.getRouter().getRoute("learningObjectList").attachPatternMatched(this.studentCheck, this);
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);

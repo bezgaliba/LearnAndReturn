@@ -6,32 +6,33 @@
     xmlns:semantic="sap.f.semantic">
     <semantic:SemanticPage
         id="page"
-        headerPinnable="false"
-        toggleHeaderOnTitleClick="false"
         busy="{worklistView>/busy}"
         busyIndicatorDelay="{worklistView>/delay}"
         >
-
         <semantic:titleHeading
             id="headingPage"
             visible="false">
-            <FlexBox
-                height="50px"
-				alignItems="Center"
-				justifyContent="End">
-                <Button
-                    id="navLO"
+            <Panel>
+                <Text
+                    text="{i18n>initGreeting}, {userModel>/firstname}"/>
+                <FlexBox
+                    alignItems="Center"
+                    justifyContent="Center"
                     visible="false"
-                    class="sapUiSmallMargin"
-                    text="Learning Objects"
-                    press="onNavLO"/>
-                <Button
-                    id="navCat"
-                    visible="false"
-                    class="sapUiSmallMarginEnd"
-                    text="Course Category"
-                    press="onNavCat"/>
-            </FlexBox>
+                    id="headerBtns"
+                    >
+                    <Button
+                        visible="false"
+                        class="sapUiSmallMarginTop sapUiSmallMarginEnd" 
+                        text="Learning Objects"
+                        press="onNavLO"/>
+                    <Button
+                        visible="false"
+                        class="sapUiSmallMarginTop sapUiSmallMarginEnd"
+                        text="Course Category"
+                        press="onNavCat"/>
+                </FlexBox>
+            </Panel>
         </semantic:titleHeading>
 
         <semantic:content>

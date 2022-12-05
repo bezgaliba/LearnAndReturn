@@ -35,8 +35,13 @@ sap.ui.define([
 
             await this.enableUIElement('createCourse');
             await this.enableUIElement('deleteCourse');
-            await this.enableUIElement('navLO');
-            await this.enableUIElement('navCat');
+            await this.enableUIElement('headerBtns');
+
+            this.setModel(this.oUserModel, "userModel");
+
+            if (this.oUserModel.getData().scopes.includes('Student')) {
+                this.byId("courseTable").setProperty("mode", "None")
+            }
 
             oViewModel.setProperty("/busy", false);
         },
