@@ -5,7 +5,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
-    <Button text="{i18n>navBackButtonTitle}" press=".onNavWorklist"></Button>
+    <Button class="sapUiSmallMargin" text="{i18n>navBackButtonTitle}" press=".onNavWorklist"></Button>
         <f:SimpleForm id="simpleForm" title="{i18n>addCourseHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
             <f:content>
             <Label text="{i18n>addCourseTitle}"/>

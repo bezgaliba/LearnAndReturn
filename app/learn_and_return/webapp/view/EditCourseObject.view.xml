@@ -15,7 +15,7 @@
       class="editableForm sapUiSmallMarginTopBottom">
        <f:content>
       <Text 
-         text="{i18n>SaveNotify}"/>
+         text="{i18n>saveNotify}"/>
          <Label text="{i18n>addCourseTitle}"/>
             <Input
                value="{CourseName}"

@@ -44,10 +44,6 @@
                         tooltip="{i18n>deleteAction}"
                         press=".onDeleteConfirmation"
                     />
-					<Button
-                        icon="sap-icon://settings"
-                        press=".handleButtonPress"
-                    />
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem
