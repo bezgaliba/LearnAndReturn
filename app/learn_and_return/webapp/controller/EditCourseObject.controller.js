@@ -49,7 +49,7 @@ sap.ui.define([
             this.oCourseDescriptionField = this.getView().byId("formCourseDescription");
             this.oCourseShortDescriptionField = this.getView().byId("formCourseShortDescription");
             this.oCourseImageURLField = this.getView().byId("formCourseImageURL");
-            if (!this.oCourseImageURLField.getValue().includes('http') || !this.oCourseImageURLField.getValue().includes('://') && this.oCourseImageURLField.getValue() !== '') {
+            if ((!this.oCourseImageURLField.getValue().includes('http') || !this.oCourseImageURLField.getValue().includes('://')) && this.oCourseImageURLField.getValue() !== '') {
                 sErrorMsg += oErrorMsgBinding.getText("addProvideValidURLLink")
                 this.oCourseImageURLField.setValueState('Warning')
             } else {

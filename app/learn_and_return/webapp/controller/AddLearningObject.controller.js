@@ -36,7 +36,7 @@ sap.ui.define([
             this.oContentField = this.getView().byId("formLearningObjectContent");
             this.oGuideField = this.getView().byId("formLearningObjectGuide");
             this.oDescriptionField = this.getView().byId("formLearningObjectDescription");
-            if (!this.oContentField.getValue().includes('http') || !this.oContentField.getValue().includes('://') || this.oContentField.getValue() == '') {
+            if ((!this.oContentField.getValue().includes('http') || !this.oContentField.getValue().includes('://')) && this.oContentField.getValue() !== '') {
                 sErrorMsg += oErrorMsgBinding.getText("addProvideValidURLLink")
                 this.oContentField.setValueState('Warning')
             } else {
