@@ -39,6 +39,6 @@ sap.ui.define([
             if (!this.oUserModel.getData().scopes.includes('Student')) {
                 this.getView().byId(sID).setVisible(true)
             }
-        }
+        },
     });
 });

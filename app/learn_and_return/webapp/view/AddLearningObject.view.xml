@@ -5,7 +5,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:mvc="sap.ui.core.mvc">
-      <Button text="{i18n>navBackButtonTitle}" press=".onNavLOList"></Button>
+      <Button class="sapUiSmallMargin" text="{i18n>navBackButtonTitle}" press=".onNavLOList"></Button>
       <f:SimpleForm id="simpleForm" title="{i18n>addLearningObjectHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
          <f:content>
          <Label text="{i18n>addLearningObjectName}"/>
@@ -16,6 +16,7 @@
             placeholder="..."/>
          <Label text="{i18n>addLearningObjectType}"/>
          <Select
+               forceSelection="false"
                id="formLearningObjectType"
                required="true"
                items="{
@@ -38,11 +39,9 @@
          <Label text="{i18n>addLearningObjectDescription}"/>
          <Input 
             maxLength="1240"
-            height="500px"
             id="formLearningObjectDescription"
             placeholder="..." />
          </f:content>
       </f:SimpleForm>
-   <Button text="{i18n>createAction}" press="onCreate"></Button>
-   <Button text="Validate" press=".checkValidation"></Button>
+   <Button class="sapUiSmallMargin" text="{i18n>createAction}" press="onCreateValidation"></Button>
 </mvc:View>

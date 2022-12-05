@@ -23,6 +23,7 @@ sap.ui.define([
 
             await this.enableUIElement('logsTab');
             await this.enableUIElement('listTab');
+            await this.enableUIElement('editLO');
         },
 
         _onObjectMatched: function(oEvent) {

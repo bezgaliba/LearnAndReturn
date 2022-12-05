@@ -1,8 +1,9 @@
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/routing/History"
-], function(BaseController, JSONModel, History) {
+    "sap/ui/core/routing/History",
+    "sap/m/MessageBox"
+], function(BaseController, JSONModel, History, MessageBox) {
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.EditLearningObject", {
@@ -45,6 +46,45 @@ sap.ui.define([
             if (!oElementBinding.getBoundContext()) {
                 this.getRouter().getTargets().display("objectNotFound");
                 return;
+            }
+        },
+
+        onSaveValidation: function() {
+            var sErrorMsg = ''
+            var oErrorMsgBinding = this.getView().getModel("i18n").getResourceBundle();
+            this.oObjectNameField = this.getView().byId("formLearningObjectName");
+            this.oType_IDField = this.getView().byId("formLearningObjectType");
+            this.oContentField = this.getView().byId("formLearningObjectContent");
+            this.oGuideField = this.getView().byId("formLearningObjectGuide");
+            this.oDescriptionField = this.getView().byId("formLearningObjectDescription");
+            if (!this.oContentField.getValue().includes('http') || !this.oContentField.getValue().includes('://') || this.oContentField.getValue() == '') {
+                sErrorMsg += oErrorMsgBinding.getText("addProvideValidURLLink")
+                this.oContentField.setValueState('Warning')
+            } else {
+                this.oContentField.setValueState()
+            }
+            if (this.oObjectNameField.getValue() == '') {
+                sErrorMsg += oErrorMsgBinding.getText("addProvideLOTitle");
+                this.oObjectNameField.setValueState('Warning')
+            } else {
+                this.oObjectNameField.setValueState()
+            }
+            if (this.oType_IDField.getSelectedKey().length == 0) {
+                sErrorMsg += oErrorMsgBinding.getText("addProvideLOType");
+                this.oType_IDField.setValueState('Warning')
+            } else {
+                this.oType_IDField.setValueState()
+            }
+            if (this.oGuideField.getValue() == '') {
+                sErrorMsg += oErrorMsgBinding.getText("addProvideLOInstructions");
+                this.oGuideField.setValueState('Warning')
+            } else {
+                this.oGuideField.setValueState()
+            }
+            if (sErrorMsg.length !== 0) {
+                MessageBox.error(sErrorMsg)
+            } else {
+                this.onNavBack()
             }
         },
 

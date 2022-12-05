@@ -22,6 +22,5 @@
                 placeholder="..."/>
         </f:content>
      </f:SimpleForm>
-     <Button text="{i18n>createAction}" press="onCreate"></Button>
-     <Button text="Testing" press=".onTest"></Button>
+     <Button class="sapUiSmallMargin" text="{i18n>createAction}" press="onCreateValidation"></Button>
 </mvc:View>

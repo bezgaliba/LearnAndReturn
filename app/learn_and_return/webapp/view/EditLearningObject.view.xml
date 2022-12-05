@@ -15,7 +15,7 @@
       class="editableForm sapUiSmallMarginTopBottom">
       <f:content>
       <Text 
-         text="Note that changes are saved automatically."/>
+         text="{i18n>saveNotify}"/>
          <Label text="{i18n>addLearningObjectName}"/>
          <Input
             value="{Name}"
@@ -53,5 +53,5 @@
             placeholder="..." />
          </f:content>
       </f:SimpleForm>
-     <Button text="{i18n>navBackButtonTitle}" press=".onNavBack"></Button>
+     <Button class="sapUiSmallMargin" text="{i18n>saveAction}" press="onSaveValidation"></Button>
 </mvc:View>
