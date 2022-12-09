@@ -43,11 +43,9 @@
                         height="auto">
                     </Image>
                     <Title
-                        text="Created by: {createdBy}"
-                        />
+                        text="Created by: {createdBy}"/>
                     <Title
-                        text="Created at : {createdAt}"
-                        />
+                        text="Created at : {createdAt}"/>
                     <Button
                         text="{i18n>enrollNowButtonTitle}"
                         type="Accept"
@@ -61,13 +59,11 @@
                 backgroundDesign="Transparent"
                 headerText="{i18n>objectDescription}">
                 <ObjectAttribute
-                text="{Description}"
-                />
+                text="{Description}"/>
             </Panel>
                 <Panel
                     backgroundDesign="Transparent"
-                    headerText="{i18n>objectReview}"
-                    >
+                    headerText="{i18n>objectReview}">
                     <content>
                         <FlexBox
                                 direction="Column"
@@ -75,12 +71,12 @@
 
                             <Text
                                 class="sapUiSmallMarginTop"
-                                text="{objectView>/avg}"/>
+                                text="{i18n>objectLeaveReview}"/>
                             <RatingIndicator
                                     id="ratingIndicator"
                                     maxValue="5"
-                                    class="sapUiLargeMarginEnd"
                                     value="5"
+                                    class="sapUiSmallMarginBottom"
                                     change=".setIndicator"
                                     iconSize="16px"
                                     tooltip="Rating Tooltip"/>
@@ -102,8 +98,7 @@
                                 }
                             }"
                             noDataText="{i18n>objectNoData}"
-                            showSeparators="Inner"
-                            >
+                            showSeparators="Inner">
                             <FeedListItem
                                 sender="{createdBy}"
                                 info="{
@@ -111,13 +106,11 @@
                                     formatter: '.formatter.intToStars'
                                 }"
                                 text="{Comment}"
-                                timestamp="{createdAt}"
-                                />
+                                timestamp="{createdAt}"/>
                         </List>
                     </content>
                 </Panel>
             </l:VerticalLayout>
         </semantic:content>
     </semantic:SemanticPage>
-
 </mvc:View>

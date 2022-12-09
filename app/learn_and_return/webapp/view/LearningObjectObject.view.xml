@@ -53,7 +53,7 @@
 					id="statusBtn"
 					visible="false"
 					class="sapUiSmallMargin"
-					text="{i18n>learningObjectStatusCheck}"
+					text="{i18n>learningObjectStatusCheckBtn}"
 					press=".submitStatus"
 					/>
 			</items>
@@ -77,6 +77,7 @@
 						<Text text="{Guide}"/>
 						<Button
 							id="completionBtn"
+							class="sapUiLargeMarginBegin"
 							visible="false"
 							type="Accept"
 							width="200px"

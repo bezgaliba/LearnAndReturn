@@ -11,13 +11,6 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("learnandreturn.controller.Object", {
-
-        // onBeforeRendering: function() {
-        //     this.getModel().attachRequestCompleted(function() {
-        //         this.getAverage()
-        //     })
-        // },
-
         formatter: formatter,
 
         onInit: async function() {
@@ -66,13 +59,6 @@ sap.ui.define([
                 }
             });
         },
-
-        // getAverage: function() {
-        //     var iSum = 0;
-        //     var iCount = this.getView().byId("reviewList").getAggregation("items").map(oEle => { iSum += oEle.getProperty("info").length }).length;
-        //     var iAvg = iSum / iCount;
-        //     this.getModel('objectView').setProperty("/avg", iAvg)
-        // },
 
         _onBindingChange: function() {
             var oView = this.getView(),
