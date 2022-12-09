@@ -24,10 +24,6 @@
                     <Button
                     text="{i18n>navBackButtonTitle}"
                     press=".onNavHome"/>
-                    <SearchField
-                    placeholder="Search for Learning Object..."
-                    liveChange=".onSearch"
-                    width="40%"/>
                     <Button
                         id="createLearningObject"
                         icon="sap-icon://add"
@@ -40,10 +36,10 @@
                         tooltip="{i18n>deleteAction}"
                         press=".onDeleteConfirmation"
                     />
-					<Button
-                        icon="sap-icon://settings"
-                        press=".handleButtonPress"
-                    />
+                    <SearchField
+                    placeholder="Search for Learning Object..."
+                    liveChange=".onSearch"
+                    width="40%"/>
 				</Toolbar>
 			</headerToolbar>
 			<ObjectListItem
