@@ -44,18 +44,6 @@ sap.ui.define([
             oBinding.filter(aFilters, "Application");
         },
 
-        onMCBSearch: function(oEvent) {
-            var aFilters = [];
-            var sQuery = oEvent.getSource().getValue();
-            if (sQuery && sQuery.length > 0) {
-                var filter = new Filter("Name", FilterOperator.Contains, sQuery);
-                aFilters.push(filter);
-            }
-            var oList = this.byId("learningObjectList");
-            var oBinding = oList.getBinding("items");
-            oBinding.filter(aFilters, "Application");
-        },
-
         onNavHome: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Home", {});

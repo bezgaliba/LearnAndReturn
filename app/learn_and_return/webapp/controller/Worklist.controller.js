@@ -36,6 +36,8 @@ sap.ui.define([
             await this.enableUIElement('createCourse');
             await this.enableUIElement('deleteCourse');
             await this.enableUIElement('headerBtns');
+            await this.enableUIElement('LOBtn');
+            await this.enableUIElement('catBtn');
 
             this.setModel(this.oUserModel, "userModel");
 

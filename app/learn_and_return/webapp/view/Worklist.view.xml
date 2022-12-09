@@ -22,11 +22,13 @@
                     id="headerBtns"
                     >
                     <Button
+                        id="LOBtn"
                         visible="false"
                         class="sapUiSmallMarginTop sapUiSmallMarginEnd" 
                         text="Learning Objects"
                         press="onNavLO"/>
                     <Button
+                        id="catBtn"
                         visible="false"
                         class="sapUiSmallMarginTop sapUiSmallMarginEnd"
                         text="Course Category"

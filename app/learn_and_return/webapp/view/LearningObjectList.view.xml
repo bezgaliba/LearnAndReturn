@@ -28,17 +28,6 @@
                     placeholder="Search for Learning Object..."
                     liveChange=".onSearch"
                     width="40%"/>
-                    <MultiComboBox
-                        placeholder="Select Type..."
-                        maxWidth="300px"
-                        items="{
-                            path: '/LearningObjectType',
-                            sorter: {
-                                path: 'name'
-                            }
-                        }">
-                        <core:Item key="{ID}" text="{name}"/>
-                    </MultiComboBox>
                     <Button
                         id="createLearningObject"
                         icon="sap-icon://add"
