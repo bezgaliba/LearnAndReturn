@@ -40,5 +40,14 @@ sap.ui.define([
                 this.getView().byId(sID).setVisible(true)
             }
         },
+
+        enableCompletion: async function(sID) {
+            this.oUserModel = new JSONModel();
+            await this.oUserModel.loadData("/user-api/attributes")
+            this.getView().setModel(this.oUserModel, "userModel")
+            if (!this.oUserModel.getData().scopes.includes('Admin') && !this.oUserModel.getData().scopes.includes('Instructor')) {
+                this.getView().byId(sID).setVisible(true)
+            }
+        }
     });
 });

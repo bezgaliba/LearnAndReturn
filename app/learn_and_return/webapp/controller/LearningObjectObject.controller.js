@@ -19,11 +19,14 @@ sap.ui.define([
             });
 
             this.getRouter().getRoute("learningObject").attachPatternMatched(this._onObjectMatched, this);
-            this.setModel(oViewModel, "learningObjectView");
+            this.setModel(oViewModel, "learningObjectView")
 
-            await this.enableUIElement('logsTab');
-            await this.enableUIElement('listTab');
-            await this.enableUIElement('editLO');
+            await this.enableUIElement('logsTab')
+            await this.enableUIElement('listTab')
+            await this.enableUIElement('editLO')
+            await this.enableCompletion('completionBtn')
+            await this.enableCompletion('statusBtn')
+            await this.enableCompletion('completionStatus')
         },
 
         _onObjectMatched: function(oEvent) {

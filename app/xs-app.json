@@ -1,10 +1,11 @@
 {
     "authenticationMethod": "route",
     "logout": {
-        "logoutEndpoint": "/logout"
+        "logoutEndpoint": "/logout",
+        "logoutPage": "/learn_and_return/webapp/index.html"
     },
     "login": {
-        "callbackEndpoint": "/learn_and_return/webapp/"
+        "callbackEndpoint": "/learn_and_return/webapp/index.html"
     },
     "routes": [{
             "source": "^/app/(.*)$",

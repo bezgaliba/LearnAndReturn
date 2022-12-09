@@ -34,6 +34,7 @@
 				state="Warning" />
 				<ObjectStatus
 				id="completionStatus"
+				visible="false"
 				class="sapMObjectStatusLarge"
 				title="{i18n>learningObjectCompletionStatus}"
 				text=""
@@ -49,8 +50,10 @@
         justifyContent="End">
 			<items>
 				<Button
+					id="statusBtn"
+					visible="false"
 					class="sapUiSmallMargin"
-					text="Check Training Status"
+					text="{i18n>learningObjectStatusCheck}"
 					press=".submitStatus"
 					/>
 			</items>
@@ -72,8 +75,9 @@
 							href="{Content}"/>
 						<core:Title text="{i18n>learningObjectGuideHeaderTitle}"/>
 						<Text text="{Guide}"/>
-						<core:Title text="{i18n>learningObjectGuideCompletionTitle}"/>
 						<Button
+							id="completionBtn"
+							visible="false"
 							type="Accept"
 							width="200px"
 							text="{i18n>learningObjectGuideCompletionBtn}"

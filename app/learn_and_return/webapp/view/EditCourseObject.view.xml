@@ -45,5 +45,5 @@
                placeholder="..." />
          </f:content>
       </f:SimpleForm>
-     <Button text="{i18n>saveAction}" press=".onSaveValidation"></Button>
+     <Button class="sapUiSmallMargin" text="{i18n>saveAction}" press=".onSaveValidation"></Button>
 </mvc:View>

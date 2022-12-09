@@ -14,7 +14,7 @@
             visible="false">
             <Panel>
                 <Text
-                    text="{i18n>initGreeting}, {userModel>/firstname}"/>
+                    text="{i18n>initGreeting}, {userModel>/firstname}!"/>
                 <FlexBox
                     alignItems="Center"
                     justifyContent="Center"
