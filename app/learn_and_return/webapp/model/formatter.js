@@ -29,7 +29,7 @@ sap.ui.define([], function() {
 
         shortDate: function(dDate) {
             var dNewDate = new Date(dDate);
-            var oDateInfo = "Last modified: " + dNewDate.getDate() + '/' + (dNewDate.getMonth() + 1) + '/' + dNewDate.getFullYear();
+            var oDateInfo = dNewDate.getDate() + '/' + (dNewDate.getMonth() + 1) + '/' + dNewDate.getFullYear();
             return oDateInfo
         },
     };

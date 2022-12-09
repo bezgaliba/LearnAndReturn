@@ -38,12 +38,12 @@
                 number="{i18n>learningObjectAbout}">
                 <firstStatus>
                     <ObjectStatus
-                        text="Created by: {LearningObject/createdBy}"          
+                        text="{i18n>createdBy}: {LearningObject/createdBy}"          
                     />
 			    </firstStatus>
                 <secondStatus>
                     <ObjectStatus
-                        text="{
+                        text="{i18n>modifiedAt}: {
                             path: 'LearningObject/createdAt',
                             formatter: '.formatter.shortDate'
                         }"
