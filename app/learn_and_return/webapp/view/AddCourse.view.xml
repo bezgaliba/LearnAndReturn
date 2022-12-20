@@ -1,47 +1,17 @@
-<mvc:View
-    controllerName="learnandreturn.controller.AddCourse"
-    displayBlock="true"
-    xmlns="sap.m"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
-    xmlns:mvc="sap.ui.core.mvc">
-    <Button class="sapUiSmallMargin" text="{i18n>navBackButtonTitle}" press=".onNavWorklist"></Button>
-        <f:SimpleForm id="simpleForm" title="{i18n>addCourseHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
-            <f:content>
-            <Label text="{i18n>addCourseTitle}"/>
-            <Input
-                maxLength="100"
-                width="600px"
-                id="formCourseTitle"
-                required="true"
-                placeholder="..."/>
-            <Label text="{i18n>addCourseDescription}"/>
-            <Input
-                maxLength="1240"
-                width="600px"
-                id="formCourseShortDescription"
-                required="true"
-                placeholder="..."/>
-            <Label text="{i18n>addCourseShortDescription}"/>
-            <Input
-                maxLength="420"
-                width="600px"
-                id="formCourseDescription"
-                required="true"
-                placeholder="..."/>
-            <Label text="{i18n>addCourseImageURL}"/>
-            <Input
-                maxLength="2048"
-                width="600px"
-                id="formCourseImageURL"
-                placeholder="..." />
-            <Label text="{i18n>addCourseCategory}"/>
-            <Select
-                forceSelection="false"
-                width="300px"
-                id="formCourseCategory"
-                required="true"
-                items="{
+<mvc:View controllerName="learnandreturn.controller.AddCourse" displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
+    <Button class="sapUiSmallMargin" text="{i18n>navBackButtonTitle}" press=".onNavWorklist" />
+    <f:SimpleForm id="simpleForm" title="{i18n>addCourseHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+        <f:content>
+            <Label text="{i18n>addCourseTitle}" />
+            <Input maxLength="100" width="600px" id="formCourseTitle" required="true" placeholder="..." />
+            <Label text="{i18n>addCourseDescription}" />
+            <Input maxLength="1240" width="600px" id="formCourseDescription" required="true" placeholder="..." />
+            <Label text="{i18n>addCourseShortDescription}" />
+            <Input maxLength="420" width="600px" id="formCourseShortDescription" required="true" placeholder="..." />
+            <Label text="{i18n>addCourseImageURL}" />
+            <Input maxLength="2048" width="600px" id="formCourseImageURL" placeholder="..." />
+            <Label text="{i18n>addCourseCategory}" />
+            <Select forceSelection="false" width="300px" id="formCourseCategory" required="true" items="{
                     path: '/CourseCategory',
                     sorter: {
                             path: 'name'
@@ -49,21 +19,16 @@
                     }">
                 <core:Item key="{ID}" text="{name}" />
             </Select>
-            <Label text="{i18n>addCourseMaterial}"/>
-            <MultiComboBox
-                width="600px"
-                id="formCourseMaterial"
-                required="true"
-                placeholder="{i18n>selectAction}"
-                items="{
+            <Label text="{i18n>addCourseMaterial}" />
+            <MultiComboBox width="600px" id="formCourseMaterial" required="true" placeholder="{i18n>selectAction}" items="{
                     path: '/LearningObject',
                     sorter: {
                         path: 'Name'
                     }
                 }">
-                <core:Item key="{ID}" text="{Name}"/>
+                <core:Item key="{ID}" text="{Name}" />
             </MultiComboBox>
         </f:content>
     </f:SimpleForm>
-    <Button class="sapUiSmallMargin" text="{i18n>createAction}" press="onCreateValidation"></Button>
+    <Button class="sapUiSmallMargin" text="{i18n>createAction}" press="onCreateValidation" />
 </mvc:View>
