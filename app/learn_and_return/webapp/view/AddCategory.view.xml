@@ -1,12 +1,28 @@
-<mvc:View controllerName="learnandreturn.controller.AddCategory" displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc">
-    <Button class="sapUiSmallMargin" text="{i18n>navBackButtonTitle}" press=".onNavCategoryList" />
-    <f:SimpleForm id="simpleForm" title="{i18n>addCourseHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
-        <f:content>
-            <Label text="{i18n>addCategoryTitle}" />
-            <Input width="600px" maxLength="100" id="formCategoryTitle" required="true" placeholder="..." />
-            <Label text="{i18n>addCategoryDescription}" />
-            <Input width="600px" maxLength="420" id="formCategoryDescription" required="true" placeholder="..." />
+<mvc:View
+    controllerName="learnandreturn.controller.AddCategory"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Button class="sapUiSmallMargin" text="{i18n>navBackButtonTitle}" press=".onNavCategoryList"></Button>
+        <f:SimpleForm id="simpleForm" title="{i18n>addCourseHeader}" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+            <f:content>
+            <Label text="{i18n>addCategoryTitle}"/>
+            <Input
+                width="600px"
+                maxLength="100"
+                id="formCategoryTitle"
+                required="true"
+                placeholder="..."/>
+            <Label text="{i18n>addCategoryDescription}"/>
+            <Input
+                width="600px"
+                maxLength="180"
+                id="formCategoryDescription"
+                required="true"
+                placeholder="..."/>
         </f:content>
-    </f:SimpleForm>
-    <Button class="sapUiSmallMargin" text="{i18n>createAction}" press="onCreateValidation" />
+     </f:SimpleForm>
+     <Button class="sapUiSmallMargin" text="{i18n>createAction}" press="onCreateValidation"></Button>
 </mvc:View>
