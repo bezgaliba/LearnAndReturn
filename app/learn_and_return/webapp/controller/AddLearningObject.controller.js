@@ -13,6 +13,7 @@ sap.ui.define([
         onNavLOList: function() {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.navTo("learningObjectList", {}, true);
+            this.clearFields()
         },
 
         createLearningObject: function() {
@@ -36,7 +37,7 @@ sap.ui.define([
             this.oContentField = this.getView().byId("formLearningObjectContent");
             this.oGuideField = this.getView().byId("formLearningObjectGuide");
             this.oDescriptionField = this.getView().byId("formLearningObjectDescription");
-            if ((!this.oContentField.getValue().includes('http') || !this.oContentField.getValue().includes('://')) && this.oContentField.getValue() !== '') {
+            if ((!this.oContentField.getValue().includes('http') || !this.oContentField.getValue().includes('://')) || this.oContentField.getValue() == '') {
                 sErrorMsg += oErrorMsgBinding.getText("addProvideValidURLLink")
                 this.oContentField.setValueState('Warning')
             } else {
@@ -68,11 +69,12 @@ sap.ui.define([
         },
 
         clearFields: function() {
-            this.oObjectNameField.setValue("").setValueState();
-            this.oType_IDField.setValue("").setValueState();
-            this.oContentField.setValue("").setValueState();
-            this.oGuideField.setValue("").setValueState();
-            this.oDescriptionField.setValue("").setValueState();
+            this.oObjectNameField.setValue("").setValueState()
+            this.oType_IDField.clearSelection()
+            this.oContentField.setValue("").setValueState()
+            this.oGuideField.setValue("").setValueState()
+            this.oDescriptionField.setValue("").setValueState()
+            this.oType_IDField.setValueState()
         }
     });
 });

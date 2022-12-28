@@ -101,9 +101,9 @@ sap.ui.define([
             this.oCourseDescriptionField.setValue("").setValueState();
             this.oCourseImageURLField.setValue("").setValueState();
             this.oCourseCategoryField.setValueState()
-            this.oCourseCategoryField.removeItem("");
+            this.oCourseCategoryField.removeItem("")
             this.oCourseMaterialField.setValueState()
-            this.oCourseMaterialField.clearSelection();
+            this.oCourseMaterialField.clearSelection()
         }
     });
 });
