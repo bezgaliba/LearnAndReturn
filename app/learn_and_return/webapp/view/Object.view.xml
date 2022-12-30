@@ -82,6 +82,7 @@
                                     tooltip="Rating Tooltip"/>
                         </FlexBox>
                         <FeedInput
+                            maxLength="960"
                             id="commentItem"
                             post=".onPost"/>
                         <List
