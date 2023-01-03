@@ -11,6 +11,10 @@
     title="{i18n>materialTitle} {CourseName}"
     busy="{materialView>/busy}"
     busyIndicatorDelay="{materialView>/delay}">
+    <Button
+        class="sapUiSmallMargin"
+        text="{i18n>navBackButtonTitle}"
+        press=".onNavBack"/>
     <List
         class="sapUiSmallMarginBottom"
         id="learningObjectList"
@@ -51,9 +55,5 @@
                 </secondStatus>
             </ObjectListItem>
 		</List>
-        <Button
-        class="sapUiSmallMarginBegin"
-        text="{i18n>navBackButtonTitle}"
-        press=".onNavBack"/>
     </Page>
 </mvc:View>
