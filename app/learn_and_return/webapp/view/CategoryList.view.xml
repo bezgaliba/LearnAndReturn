@@ -7,7 +7,7 @@
     xmlns:mvc="sap.ui.core.mvc">
     <Page
 		enableScrolling="true"
-		title="Categories (Admin/Instructor view)"
+		title="{i18n>catTitle}"
 		titleLevel="H4">
         <List
         mode="SingleSelectLeft"
