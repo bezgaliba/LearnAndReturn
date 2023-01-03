@@ -33,7 +33,7 @@ sap.ui.define([
             oListBinding.create({
                 CourseName: this.oCourseTitleField.getValue(),
                 Description: this.oCourseDescriptionField.getValue(),
-                ShortDescription: this.oCourseDescriptionField.getValue(),
+                ShortDescription: this.oCourseShortDescriptionField.getValue(),
                 ImageURL: this.oCourseImageURLField.getValue(),
                 CourseCategory_ID: this.oCourseCategoryField.getSelectedKey(),
                 CourseMaterial: this.oCourseMaterialField.getSelectedKeys().map((sKey) => {
