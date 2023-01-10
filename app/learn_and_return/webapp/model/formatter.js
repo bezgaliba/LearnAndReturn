@@ -3,14 +3,12 @@ sap.ui.define([], function() {
 
     return {
 
-
-        numberUnit: function(sValue) {
-            if (!sValue) {
-                return "";
-            }
-            return parseFloat(sValue).toFixed(2);
-        },
-
+        /**
+         * Pārveido atsauksmes vērtējuma indikatora skaitlisko vērtību uz UI ikonām atsauksmes vēstures sarakstā
+         * Formatter metode tiek utilizēta skatā "Object"
+         * @param {Integer} iValue - Vērtējuma indikators
+         * @returns {String} - Zvaigžņu ikonas vēstures sarakstā
+         */
         intToStars: function(iValue) {
             if (iValue == 0) {
                 return "☆";
@@ -27,10 +25,16 @@ sap.ui.define([], function() {
             }
         },
 
+        /**
+         * Pārveido garo datuma/laika noformējumu uz īso
+         * Formatter metode tiek utilizēta skatā "CourseMaterialList"
+         * @param {Date} dDate - Padotais garais datuma formāts
+         * @returns {String}  - Padotais īsā datuma formāts
+         */
         shortDate: function(dDate) {
             var dNewDate = new Date(dDate);
-            var oDateInfo = dNewDate.getDate() + '/' + (dNewDate.getMonth() + 1) + '/' + dNewDate.getFullYear();
-            return oDateInfo
+            var sDateInfo = dNewDate.getDate() + '/' + (dNewDate.getMonth() + 1) + '/' + dNewDate.getFullYear();
+            return sDateInfo
         },
     };
 });

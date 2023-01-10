@@ -108,10 +108,10 @@
                     <Column id="titleColumn">
                         <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
                     </Column>
-                    <Column id="categoryColumn" hAlign="End">
+                    <Column id="categoryColumn">
                         <Text text="{i18n>tableCategory}" id="Category"/>
                     </Column>
-                    <Column id="descriptionColumn" hAlign="End">
+                    <Column id="descriptionColumn">
                         <Text text="{i18n>tableDescription}" id="Description"/>
                     </Column>
                 </columns>

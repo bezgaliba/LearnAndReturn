@@ -48,7 +48,7 @@
                 <secondStatus>
                     <ObjectStatus
                         text="{i18n>modifiedAt}: {
-                            path: 'LearningObject/createdAt',
+                            path: 'LearningObject/modifiedAt',
                             formatter: '.formatter.shortDate'
                         }"
                     />

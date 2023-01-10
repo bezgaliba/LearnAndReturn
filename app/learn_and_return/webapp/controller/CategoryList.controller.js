@@ -1,3 +1,5 @@
+//Komentāri ir ņemti, ņemot vērā 'Mācību vadības sistēma "Learn&Return"' oficiālo dokumentāciju
+
 sap.ui.define([
     "./BaseController",
     "sap/m/library",
@@ -15,21 +17,34 @@ sap.ui.define([
 
     return BaseController.extend("learnandreturn.controller.CategoryList", {
 
+        /**
+         * Skata ģenerēšanas brīdī...
+         */
         onInit: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.attachRoutePatternMatched(this.onRefresh, this);
+            // Pārbauda, vai lietotājs ir students, pieprasot 'AddCategory' skatu
             this.getRouter().getRoute("category").attachPatternMatched(this.studentCheck, this);
         },
 
+        /**
+         * KAT_501 “Kategoriju saraksta atjaunošana”
+         * Automātiski atjaunina kategoriju sarakstu. Šī funkcija ir pakļauta citām funkcijām un nestrādā patstāvīgi.
+         */
         onRefresh: function() {
             var oList = this.byId("categoryList"),
                 oBindingList = oList.getBinding("items")
             oBindingList.refresh();
         },
 
+        /**
+         * KAT_502 “Kategorijas filtrēšana”
+         * Ļauj lietotājam ar lomu “Instructor” vai “Admin” filtrēt kategoriju pēc to nosaukuma sarakstā
+         * @param {Object} oEvent - Meklētājrīka objekts
+         */
         onSearch: function(oEvent) {
             var aFilters = [];
-            var sQuery = oEvent.getSource().getValue();
+            var sQuery = oEvent.getSoure().getValue()
             if (sQuery && sQuery.length > 0) {
                 var filter = new Filter("name", FilterOperator.Contains, sQuery);
                 aFilters.push(filter);
@@ -39,16 +54,26 @@ sap.ui.define([
             oBinding.filter(aFilters, "Application");
         },
 
+        /**
+         * Novirza lietotāju uz kursa sarakstu jeb sākumskatu
+         */
         onNavHome: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("Home", {});
         },
 
+        /**
+         * Novirza lietotāju uz kategorijas pievienošanas skatu
+         */
         onNavCreate: function() {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("AddCategory", {});
         },
 
+        /**
+         * KAT_401 “Kategorijas noņemšana”
+         * Ļauj lietotājam, kuram ir piešķirta loma “Instructor” vai “Admin”, noņemt kategoriju no sistēmas
+         */
         deleteCategory: function() {
             var oSelected = this.byId("categoryList").getSelectedItem();
             if (oSelected) {
@@ -60,6 +85,10 @@ sap.ui.define([
             }
         },
 
+        /**
+         * KAT_401 “Kategorijas noņemšana” turp.
+         * Dialoga loga izveide kā JSON modelis, ko uzbindo uz noklusēto skata modeli.
+         */
         onDeleteConfirmation: function() {
             var oSelected = this.byId("categoryList").getSelectedItem();
             if (oSelected) {
@@ -94,7 +123,9 @@ sap.ui.define([
                 }
 
                 this.oDefaultDialog.open();
-            } else {
+            }
+            // Case, ja nav izvēlētos objekts
+            else {
                 var oText = this.getView().getModel("i18n").getResourceBundle().getText("noItemSelected");
                 MessageToast.show(oText);
             }
