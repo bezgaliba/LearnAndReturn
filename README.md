@@ -7,6 +7,6 @@ Implemented with SAP technology.
 
 ## Credits
 
-Created by Maris Kalnins,
+Created by Māris K.,
 3rd year student,
 Production: 2022 October ---> December
